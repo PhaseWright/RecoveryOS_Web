@@ -1,0 +1,15 @@
+{
+  "name": "recoveryos-web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync:privacy": "node ./scripts/sync-privacy-policy.mjs",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.0.10"
+  }
+}
