@@ -94,6 +94,7 @@ document.querySelector("#app").innerHTML = `
       </section>
 
       <section class="feature-gallery" aria-label="RecoveryOS app screenshots">
+        <p class="gallery-hint">On mobile: swipe up/down in this section to slide through screenshots.</p>
         <article class="screenshot-card">
           <img src="/screenshots/Workbook.png" alt="RecoveryOS workbook progression view" loading="lazy" />
           <h3>Workbooks</h3>
