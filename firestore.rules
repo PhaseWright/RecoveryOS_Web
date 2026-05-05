@@ -9,7 +9,7 @@ service cloud.firestore {
       allow read, update, delete: if false;
 
       allow create: if
-        request.resource.data.keys().hasOnly(['email', 'createdAt', 'source', 'page'])
+        request.resource.data.keys().hasOnly(['email', 'createdAt', 'source', 'page', 'legacyId'])
         && request.resource.data.email is string
         && request.resource.data.email.size() > 3
         && request.resource.data.email.size() <= 254
@@ -17,6 +17,9 @@ service cloud.firestore {
         && request.resource.data.source == 'recoveryos-web-landing'
         && request.resource.data.page is string
         && request.resource.data.page.size() <= 32
+        && request.resource.data.legacyId is string
+        && request.resource.data.legacyId.size() > 0
+        && request.resource.data.legacyId.size() <= 280
         && request.resource.data.createdAt == request.time;
     }
 

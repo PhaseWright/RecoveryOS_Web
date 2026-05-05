@@ -1,4 +1,4 @@
-import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { getFirebaseDb, isFirebaseConfigured } from "./firebaseClient";
 
 const WAITLIST_COLLECTION = "waitlist_signups";
@@ -44,25 +44,24 @@ export async function joinWaitlist(email) {
   const db = getFirebaseDb();
   const normalizedEmail = validation.normalized;
   const entryRef = doc(db, WAITLIST_COLLECTION, toWaitlistDocId(normalizedEmail));
-  const existing = await getDoc(entryRef);
 
-  if (existing.exists()) {
-    return { status: "duplicate", message: "You're already on the waitlist." };
+  try {
+    await setDoc(entryRef, {
+      email: normalizedEmail,
+      createdAt: serverTimestamp(),
+      source: SOURCE_MARKER,
+      page: "home",
+      // Keep legacy marker field to support future migration tooling if needed.
+      legacyId: toLegacyWaitlistDocId(normalizedEmail),
+    });
+  } catch (error) {
+    // Rules deny updates, so a second signup to the same deterministic doc id
+    // is interpreted as an already-registered email.
+    if (error?.code === "permission-denied") {
+      return { status: "duplicate", message: "You're already on the waitlist." };
+    }
+    throw error;
   }
-
-  // Keep backward compatibility with legacy IDs while avoiding false duplicates from collisions.
-  const legacyRef = doc(db, WAITLIST_COLLECTION, toLegacyWaitlistDocId(normalizedEmail));
-  const legacyExisting = await getDoc(legacyRef);
-  if (legacyExisting.exists() && legacyExisting.data()?.email === normalizedEmail) {
-    return { status: "duplicate", message: "You're already on the waitlist." };
-  }
-
-  await setDoc(entryRef, {
-    email: normalizedEmail,
-    createdAt: serverTimestamp(),
-    source: SOURCE_MARKER,
-    page: "home",
-  });
 
   return { status: "created", message: "Thanks. You're on the waitlist." };
 }
