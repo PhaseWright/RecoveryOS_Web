@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "prod": "recoveryos-web"
+  },
+  "targets": {},
+  "etags": {}
+}
