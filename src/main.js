@@ -20,10 +20,10 @@ document.querySelector("#app").innerHTML = `
     <main>
       <section class="hero">
         <p class="eyebrow">RecoveryOS by PhaseWright Labs</p>
-        <h1>Recovery that trains the body, not just the will.</h1>
+        <h1>Recovery isn't willpower. It's practice.</h1>
         <p class="hero-copy">
-          Recovery OS is a compassionate daily system for people rebuilding life after addiction -
-          with nervous system tools, craving awareness, journaling, patterns, and identity practice in one calm app.
+          Most days are won in the small moments - the pause before a bad decision, the breath before a craving peaks,
+          the check-in you actually do. RecoveryOS is where that practice lives.
         </p>
         <div class="hero-actions">
           <!-- Install CTA intentionally disabled until store listing is live. -->
@@ -40,17 +40,18 @@ document.querySelector("#app").innerHTML = `
       </section>
 
       <section class="positioning-strip" aria-label="RecoveryOS positioning">
-        Not a 12-step program. Not a shame app. Not a replacement for professional care.
-        A practical daily companion for the body, mind, and life you are rebuilding.
+        Not a 12-step program. Not a shame tracker. Not a replacement for your counselor or your community.
+        A daily tool built around how your body and brain actually heal.
       </section>
 
       <section id="gap" class="section-block">
         <div>
-          <p class="eyebrow">The gap</p>
-          <h2>Most recovery apps count sober days. Recovery OS helps you build the day.</h2>
+          <p class="eyebrow">The real problem</p>
+          <h2>Other apps count your days. RecoveryOS helps you survive them.</h2>
           <p>
-            When stress, boredom, shame, or cravings show up, you need more than a number.
-            You need a quick way to regulate, reflect, reconnect, and make the next useful move.
+            Sobriety is measured in moments, not milestones. When a craving hits at 2pm on a Tuesday,
+            you don't need a streak counter - you need something that helps you regulate, recognize what's happening,
+            and choose your next move. That's what RecoveryOS is built for.
           </p>
         </div>
         <img class="section-mark" src="/brand/RecoveryOS_Mark.svg" alt="" aria-hidden="true" />
@@ -58,22 +59,27 @@ document.querySelector("#app").innerHTML = `
 
       <section id="protocol" class="features">
         <article class="feature-card">
-          <h2>Nervous system</h2>
+          <p class="feature-label">Regulate first</p>
+          <h2>Stability before decisions</h2>
           <p>
-            Build body-level regulation before decision-making so recovery starts from stability, not panic.
+            Your nervous system doesn't know the difference between a craving and a threat. RecoveryOS gives you
+            body-first tools to regulate before you react - because good decisions come from calm, not willpower alone.
           </p>
         </article>
         <article class="feature-card">
-          <h2>Dopamine and cravings</h2>
+          <p class="feature-label">Know your patterns</p>
+          <h2>Track urges without judgment</h2>
           <p>
-            Track urges, triggers, and actions in a way that creates signal over time without self-judgement.
+            Log cravings, triggers, and responses over time. Not to shame you - to show you.
+            Patterns you can see are patterns you can work with.
           </p>
         </article>
         <article class="feature-card">
-          <h2>Identity, connection, reflection</h2>
+          <p class="feature-label">Build the self</p>
+          <h2>Six domains. One honest check-in.</h2>
           <p>
-            Use a gentle check-in across six domains: nervous system, dopamine management, craving log,
-            identity and mind, connection, and nutrition/reflection.
+            A daily audit across nervous system, dopamine management, craving log, identity and mind, connection,
+            and nutrition. Not to grade yourself - to know yourself.
           </p>
         </article>
       </section>

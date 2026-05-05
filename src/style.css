@@ -208,6 +208,15 @@ h1 {
   color: #f2f8fc;
 }
 
+.feature-label {
+  margin: 0 0 0.45rem;
+  color: #10d8c4;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+}
+
 .feature-card p {
   margin: 0;
   color: #98b2c6;
