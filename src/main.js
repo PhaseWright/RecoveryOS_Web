@@ -133,8 +133,7 @@ document.querySelector("#app").innerHTML = `
           But nonetheless, relapses happened, and every time, I felt I had to start at the bottom again. That is not the case.
           I have learned, grown, and found new tools that helped me build a version of myself that can exist beyond recovery.
           I built RecoveryOS because I knew what I needed to stay focused on who I am, not what I was.
-          It has been helping me, and I hope it can help you too. We all deserve to be our best selves, free of shame,
-          and proud of the new steps we take on this journey.
+          It has been helping me. I hope it helps you.
         </blockquote>
         <p class="founder-signoff">— Michael, founder of RecoveryOS</p>
       </section>
