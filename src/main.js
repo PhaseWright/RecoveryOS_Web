@@ -140,11 +140,16 @@ document.querySelector("#app").innerHTML = `
 
       <section id="privacy" class="trust">
         <h2>Privacy and trust signals</h2>
+        <p>
+          We built RecoveryOS to be useful without feeling invasive. You stay in control of what you share, when you share it,
+          and why.
+        </p>
         <ul class="trust-list">
-          <li>Local-first architecture aligned with RecoveryOS app behavior.</li>
-          <li>No mandatory account to use core app workflows.</li>
-          <li>Policy transparency: legal and Firebase setup are documented publicly.</li>
-          <li>Waitlist only stores what we need: email, signup timestamp, and source marker.</li>
+          <li>All of your app data stays on your own device by default.</li>
+          <li>You can use basic RecoveryOS without creating an account.</li>
+          <li>We will never sell your data to third parties.</li>
+          <li>We know how important your recovery and privacy is to you, and we will never compromise that.</li>
+          <li>If you join the waitlist, we only keep the basics: your email, signup time, and where the signup came from.</li>
         </ul>
       </section>
 
