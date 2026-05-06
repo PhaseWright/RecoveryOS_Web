@@ -258,10 +258,6 @@ h1 {
   margin-bottom: 2rem;
 }
 
-.gallery-hint {
-  display: none;
-}
-
 .screenshot-card {
   background: #0b1524;
   border: 1px solid #1a2e44;
@@ -447,18 +443,6 @@ h1 {
     display: none;
   }
 
-  .gallery-hint {
-    display: block;
-    margin: 0 0 0.15rem;
-    padding: 0.35rem 0.2rem;
-    color: #9db7c9;
-    font-size: 0.82rem;
-    letter-spacing: 0.01em;
-    width: 100%;
-    flex: 0 0 100%;
-    scroll-snap-align: none;
-  }
-
   .screenshot-card {
     scroll-snap-align: center;
     flex: 0 0 min(84vw, 420px);
@@ -473,12 +457,17 @@ h1 {
 
   .header-links {
     width: 100%;
-    flex-wrap: wrap;
-    overflow: visible;
-    justify-content: flex-start;
-    align-items: stretch;
-    row-gap: 0.55rem;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 0.55rem;
+  }
+
+  .header-links a:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  .header-links a:nth-child(5) {
+    grid-column: 4 / span 2;
   }
 
   .header-links a {
@@ -489,7 +478,7 @@ h1 {
     padding: 0.45rem 0.65rem;
     font-size: 0.88rem;
     text-align: center;
-    flex: 1 1 calc((100% - 1.1rem) / 3);
+    grid-column: span 2;
     min-width: 0;
   }
 
