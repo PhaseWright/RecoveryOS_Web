@@ -33,6 +33,63 @@ We use a dedicated Firebase project for the marketing site so it stays isolated 
 
 The Firebase Web API key is intentionally public — security depends on Firestore rules in `firestore.rules` and (recommended later) App Check with reCAPTCHA v3.
 
+## Where waitlist emails are stored
+
+In Firebase Console:
+
+1. Open project `recoveryos-web`
+2. Go to **Firestore Database**
+3. Open collection `waitlist_signups`
+
+Each document contains the submitted `email` plus metadata fields (`createdAt`, `source`, `page`, `legacyId`).
+
+## Automatic confirmation emails (server-side, proper setup)
+
+This repo now includes a Firebase Function trigger that sends a confirmation email whenever a new waitlist signup is created:
+
+- Trigger: `waitlist_signups/{entryId}` create
+- Provider API: Resend (`https://api.resend.com/emails`)
+- Sender: `RecoveryOS <no-reply@recoveryos.org>`
+- Reply-to / tester contact: `michael@recoveryos.org`
+- Admin notification recipient: `codemanmike@outlook.com`
+- Delivery logs: Firestore collection `waitlist_email_log`
+
+### Email content sent
+
+Subject: `You're on the RecoveryOS waitlist`
+
+Body:
+
+- Thank you for joining the waitlist
+- CTA: email `michael@recoveryos.org` to join Android tester group
+- Internal alert copy is also sent to `codemanmike@outlook.com` for each new signup
+
+### One-time setup steps
+
+1. Create/verify a Resend account and verify domain `recoveryos.org`.
+2. Add and verify sender identity `no-reply@recoveryos.org`.
+3. Create a Resend API key with mail send access.
+4. In terminal at repo root:
+
+   ```powershell
+   cd functions
+   npm install
+   cd ..
+   firebase functions:secrets:set RESEND_API_KEY
+   ```
+
+5. Paste the Resend API key when prompted.
+6. Deploy functions:
+
+   ```powershell
+   firebase deploy --only functions
+   ```
+
+7. Test by submitting a new waitlist email on the site, then confirm:
+   - signup doc appears in `waitlist_signups`
+   - send log appears in `waitlist_email_log` with `status: sent`
+   - recipient receives confirmation from `no-reply@recoveryos.org`
+
 ## Local development
 
 ```bash
