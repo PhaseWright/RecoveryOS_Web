@@ -203,6 +203,7 @@ export const bugReportRelay = onRequest(
     region: "us-central1",
     secrets: [RESEND_API_KEY],
     retry: false,
+    invoker: "public",
   },
   async (request, response) => {
     const origin = request.get("origin") || "";
