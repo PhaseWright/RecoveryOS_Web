@@ -23,6 +23,7 @@ const DEDUPE_WINDOW_MS = 5 * 60 * 1000;
 const ALLOWED_BUG_REPORT_ORIGINS = new Set([
   "https://recoveryos.org",
   "https://www.recoveryos.org",
+  "https://localhost",
   "http://localhost:5173",
   "http://localhost:4173",
   "capacitor://localhost",
@@ -33,7 +34,7 @@ initializeApp();
 const db = getFirestore();
 
 function addCorsHeaders(response, origin = "") {
-  if (origin && ALLOWED_BUG_REPORT_ORIGINS.has(origin)) {
+  if (origin && (ALLOWED_BUG_REPORT_ORIGINS.has(origin) || /^https?:\/\/localhost(?::\d+)?$/i.test(origin))) {
     response.set("Access-Control-Allow-Origin", origin);
   } else {
     response.set("Access-Control-Allow-Origin", "https://recoveryos.org");
@@ -203,7 +204,6 @@ export const bugReportRelay = onRequest(
     region: "us-central1",
     secrets: [RESEND_API_KEY],
     retry: false,
-    invoker: "public",
   },
   async (request, response) => {
     const origin = request.get("origin") || "";

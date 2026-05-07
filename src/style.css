@@ -95,7 +95,7 @@ a {
 }
 
 .brand-lockup img {
-  width: min(330px, 68vw);
+  width: min(530px, 68vw);
   height: auto;
   display: block;
 }
