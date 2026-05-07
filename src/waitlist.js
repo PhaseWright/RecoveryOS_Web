@@ -1,8 +1,12 @@
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
-import { getFirebaseDb, isFirebaseConfigured } from "./firebaseClient";
+import { ensureFirebaseAppCheck, getFirebaseDb, isFirebaseConfigured } from "./firebaseClient";
 
 const WAITLIST_COLLECTION = "waitlist_signups";
 const SOURCE_MARKER = "recoveryos-web-landing";
+
+/** Same-tab throttle to blunt scripted spam (rules remain the real contract). */
+const MIN_SUBMIT_INTERVAL_MS = 2500;
+let lastJoinAttemptAt = 0;
 
 function normalizeEmail(email) {
   return email.trim().toLowerCase();
@@ -40,6 +44,14 @@ export async function joinWaitlist(email) {
   if (!validation.ok) {
     return { status: "invalid", message: validation.message };
   }
+
+  const now = Date.now();
+  if (lastJoinAttemptAt && now - lastJoinAttemptAt < MIN_SUBMIT_INTERVAL_MS) {
+    return { status: "invalid", message: "Please wait a moment before trying again." };
+  }
+  lastJoinAttemptAt = now;
+
+  await ensureFirebaseAppCheck();
 
   const db = getFirebaseDb();
   const normalizedEmail = validation.normalized;

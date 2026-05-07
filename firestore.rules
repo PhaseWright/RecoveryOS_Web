@@ -2,7 +2,8 @@ rules_version = '2';
 
 // We restrict the marketing site's Firestore writes to the waitlist collection
 // only, with strict shape + size validation. The Firebase Web API key is public
-// by design; security relies on these rules and (later) App Check.
+// by design; we recommend Firebase App Check (reCAPTCHA v3) on the client and
+// enforcement in the Firebase Console for abuse/cost control.
 service cloud.firestore {
   match /databases/{database}/documents {
     match /waitlist_signups/{entryId} {

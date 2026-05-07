@@ -30,3 +30,33 @@ export function getFirebaseApp() {
 export function getFirebaseDb() {
   return getFirestore(getFirebaseApp());
 }
+
+let appCheckReady = Promise.resolve();
+let appCheckInitStarted = false;
+
+/**
+ * When VITE_FIREBASE_APPCHECK_SITE_KEY is set, we attach App Check (reCAPTCHA v3) before Firestore writes.
+ * Enable enforcement in Firebase Console to rely on tokens server-side; we still validate shape in rules.
+ */
+export function ensureFirebaseAppCheck() {
+  const siteKey = (import.meta.env.VITE_FIREBASE_APPCHECK_SITE_KEY || "").trim();
+  if (!siteKey || !isFirebaseConfigured()) {
+    return Promise.resolve();
+  }
+  if (!appCheckInitStarted) {
+    appCheckInitStarted = true;
+    appCheckReady = (async () => {
+      const app = getFirebaseApp();
+      const { initializeAppCheck, ReCaptchaV3Provider } = await import("firebase/app-check");
+      if (import.meta.env.DEV) {
+        // We use the debug provider flow in local dev; register the printed token in Firebase Console once.
+        globalThis.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+      }
+      initializeAppCheck(app, {
+        provider: new ReCaptchaV3Provider(siteKey),
+        isTokenAutoRefreshEnabled: true,
+      });
+    })();
+  }
+  return appCheckReady;
+}

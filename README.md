@@ -31,7 +31,9 @@ We use a dedicated Firebase project for the marketing site so it stays isolated 
 
    Confirm `CLOUDFLARE_API_TOKEN` is also present (scope: Account → Cloudflare Pages: Edit).
 
-The Firebase Web API key is intentionally public — security depends on Firestore rules in `firestore.rules` and (recommended later) App Check with reCAPTCHA v3.
+7. **Optional but recommended:** add `VITE_FIREBASE_APPCHECK_SITE_KEY` (reCAPTCHA v3 site key from Firebase Console → App Check) as a build secret so production bundles send App Check tokens. Then enable **App Check enforcement** for Firestore in the console when you are ready.
+
+The Firebase Web API key is intentionally public — security depends on Firestore rules in `firestore.rules`, client-side throttles/honeypot, and (recommended) App Check enforcement.
 
 ## Where waitlist emails are stored
 
@@ -90,6 +92,91 @@ Body:
    - send log appears in `waitlist_email_log` with `status: sent`
    - recipient receives confirmation from `no-reply@recoveryos.org`
 
+## App bug report relay (Firebase no-reply worker)
+
+This repo now also hosts the RecoveryOS app bug-report relay endpoint:
+
+- Function export: `bugReportRelay`
+- HTTP route: `POST /bug-report` (on the function URL)
+- Purpose: receive bug reports from the mobile app, store them in Firestore, and email the developer inbox via Resend
+- Sender: `RecoveryOS <no-reply@recoveryos.org>`
+- Admin recipient: `codemanmike@outlook.com`
+- Reply-to header: `support@recoveryos.org`
+- Firestore collections:
+  - `app_bug_reports` (raw payload metadata + context)
+  - `app_bug_report_mail_log` (delivery state to Resend)
+  - `app_bug_report_rate_limit` (short rolling rate window per client fingerprint)
+  - `app_bug_report_dedupe` (short-window duplicate suppression fingerprint)
+
+### Bug report payload contract (from app)
+
+Required:
+
+- `source`: must be `recoveryos-app`
+- `message`: free text (server normalizes + truncates)
+
+Optional:
+
+- `screenshot.dataUrl`: `data:image/*;base64,...` (max ~2 MB decoded)
+- `context`: structured diagnostics (app version, device metadata, recent logs, last error, settings snapshot)
+
+### Abuse controls (enabled)
+
+- **Rate limiting:** max 5 requests per ~10 minutes per client fingerprint; returns HTTP `429` with `Retry-After`.
+- **Duplicate suppression:** repeated near-identical reports in a 5-minute window are acknowledged with HTTP `202` (`{ ok: true, deduped: true }`) and are not re-emailed.
+
+### One-time setup for bug relay
+
+1. Ensure function deps are installed:
+
+   ```powershell
+   cd functions
+   npm install
+   cd ..
+   ```
+
+2. Make sure Resend is already configured (`RESEND_API_KEY` secret), then deploy:
+
+   ```powershell
+   firebase deploy --only functions
+   ```
+
+3. After deploy, get the HTTPS function URL:
+
+   ```powershell
+   firebase functions:list
+   ```
+
+   Copy the URL for `bugReportRelay` (region `us-central1`).
+
+4. In the app repo (`E:\PhaseWright\Apps\RecoveryOS`), set:
+
+   - `.env.local` for local dev:
+
+     ```env
+     VITE_FIREBASE_NOREPLY_WORKER_URL=https://us-central1-<your-project-id>.cloudfunctions.net/bugReportRelay
+     ```
+
+   - CI / release env with the same key/value.
+
+   The app appends `/bug-report` automatically if needed, so point at the function base URL above.
+
+5. Rebuild/deploy the app with that env var present.
+
+### Validation checklist (end-to-end)
+
+1. Open app -> Dashboard -> `Report a bug` -> submit message + screenshot.
+2. Confirm HTTP success in app UI (`Report sent`).
+3. In Firebase Console, verify:
+   - new doc in `app_bug_reports`
+   - matching status doc in `app_bug_report_mail_log` with `status: sent`
+4. Confirm email arrives in `codemanmike@outlook.com` from `no-reply@recoveryos.org`.
+5. If email fails, inspect:
+
+   ```powershell
+   firebase functions:log --only bugReportRelay
+   ```
+
 ## Local development
 
 ```bash
@@ -146,6 +233,7 @@ Document fields:
 - `createdAt` (Firestore `serverTimestamp`)
 - `source` (`recoveryos-web-landing`)
 - `page` (`home`)
+- `legacyId` (slug derived from email for migration tooling)
 
 Duplicate handling is best-effort at client level by using a deterministic document id based on normalized email.
 
@@ -155,7 +243,7 @@ The active rules live in `firestore.rules` and are validated server-side on ever
 
 - only the `waitlist_signups` collection accepts writes;
 - writes must be `create` only (no read/update/delete);
-- the document must contain exactly `email`, `createdAt`, `source`, `page`;
+- the document must contain exactly `email`, `createdAt`, `source`, `page`, and `legacyId` (deterministic id + migration marker);
 - `email` must be a string ≤ 254 chars and match a basic email regex;
 - `source` must equal `recoveryos-web-landing`;
 - `createdAt` must equal `request.time` (forces use of `serverTimestamp()`).

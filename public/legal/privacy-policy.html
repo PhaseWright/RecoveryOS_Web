@@ -39,6 +39,15 @@
   <p>If you redeem a <strong>gift code</strong>, the app sends the code, your email address (for recovery), and an anonymous per-install device identifier to our entitlement service (Cloudflare Worker) so we can validate the code and bind it to your device. We use that contact only for entitlement support unless you separately email us.</p>
   <p>If <strong>remote operator unlock</strong> is enabled in your build, a support unlock code may be sent to the same class of service for verification. That code is used only to issue a time-bounded unlock token and is not used for marketing.</p>
 
+  <h2>5a. Optional in-app bug reports (Firebase no-reply relay)</h2>
+  <p>If you choose to submit a bug report from within the app, we send the report to a Firebase-hosted relay so we can route it to our support mailbox. Depending on what you include, the payload may contain:</p>
+  <ul>
+    <li>your free-text description of the issue;</li>
+    <li>an optional screenshot you attach;</li>
+    <li>technical diagnostics needed for troubleshooting (for example app version, device metadata, recent local log snapshots, last captured app error, and selected settings state).</li>
+  </ul>
+  <p>This data is used only for support and debugging, not for advertising or profiling.</p>
+
   <h2>6. Analytics and advertising</h2>
   <p>The app does not include third-party analytics SDKs or advertising networks. We do not sell your personal information.</p>
 
@@ -64,6 +73,6 @@
   <p>Recovery OS is not directed at children under 13. We do not knowingly collect personal information from children.</p>
 
   <h2>11. Contact</h2>
-  <p>For privacy questions, contact the developer at the support email shown in the Play Store listing or in-app About screen.</p>
+  <p>For privacy questions, contact <a href="mailto:support@recoveryos.org">support@recoveryos.org</a>.</p>
 </body>
 </html>

@@ -1,9 +1,11 @@
 import "./style.css";
 import { isFirebaseConfigured } from "./firebaseClient.js";
 import { joinWaitlist } from "./waitlist.js";
+import { telemetryEvent } from "./telemetry.js";
 
 document.querySelector("#app").innerHTML = `
   <div class="page">
+    <a class="skip-link" href="#waitlist">Skip to waitlist</a>
     <header class="site-header">
       <a class="brand-lockup" href="/" aria-label="RecoveryOS home">
         <img src="/brand/RecoveryOS_Horizontal_Logo.svg" alt="RecoveryOS" />
@@ -150,6 +152,7 @@ document.querySelector("#app").innerHTML = `
           <li>We will never sell your data to third parties.</li>
           <li>We know how important your recovery and privacy is to you, and we will never compromise that.</li>
           <li>If you join the waitlist, we only keep the basics: your email, signup time, and where the signup came from.</li>
+          <li>If you choose to send a bug report from the app, we receive only what you submit (message, optional screenshot, and diagnostics required to troubleshoot).</li>
         </ul>
       </section>
 
@@ -175,6 +178,16 @@ document.querySelector("#app").innerHTML = `
         </div>
 
         <form id="waitlist-form" class="waitlist-form" novalidate>
+          <!-- Honeypot: bots that fill this get a silent success so we do not train retries against Firestore. -->
+          <input
+            type="text"
+            id="waitlist-hp"
+            class="waitlist-hp"
+            name="company"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
           <label for="waitlist-email">Email address</label>
           <div class="waitlist-row">
             <input
@@ -204,6 +217,9 @@ document.querySelector("#app").innerHTML = `
         Need support?
         <a href="mailto:support@recoveryos.org">support@recoveryos.org</a>
       </p>
+      <p class="footer-legal">
+        <a href="/legal/privacy-policy.html">Privacy policy</a>
+      </p>
     </footer>
   </div>
 `;
@@ -228,6 +244,14 @@ function setFormState({ loading = false, tone = "neutral", message = "" } = {}) 
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
+
+  const hp = document.querySelector("#waitlist-hp");
+  if (hp?.value?.trim()) {
+    telemetryEvent("waitlist_honeypot_hit");
+    setFormState({ loading: false, tone: "success", message: "Thanks. You're on the waitlist." });
+    form.reset();
+    return;
+  }
 
   if (!firebaseReady) {
     setFormState({
@@ -256,6 +280,7 @@ form.addEventListener("submit", async (event) => {
 
     setFormState({ loading: false, tone: "error", message: result.message });
   } catch (error) {
+    telemetryEvent("waitlist_submit_error", { code: error?.code || "unknown" });
     setFormState({
       loading: false,
       tone: "error",
