@@ -439,6 +439,8 @@ function initScreenshotLightbox() {
   let ty = 0;
   /** @type {Element | null} */
   let lastFocus = null;
+  /** @type {(() => void) | null} */
+  let pendingCloseCleanup = null;
 
   function applyTransform() {
     pan.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
@@ -471,6 +473,10 @@ function initScreenshotLightbox() {
 
   /** @param {HTMLImageElement} sourceImg */
   function open(sourceImg) {
+    if (pendingCloseCleanup) {
+      overlay.removeEventListener("transitionend", pendingCloseCleanup);
+      pendingCloseCleanup = null;
+    }
     lastFocus = document.activeElement;
     img.src = sourceImg.currentSrc || sourceImg.src;
     img.alt = sourceImg.alt || "";
@@ -492,18 +498,19 @@ function initScreenshotLightbox() {
     document.body.style.overflow = "";
     document.removeEventListener("keydown", onDocumentEscape, true);
     /* We wait for the CSS fade-out to finish before clearing state so it doesn't snap away. */
-    overlay.addEventListener(
-      "transitionend",
-      () => {
-        img.removeAttribute("src");
-        img.alt = "";
-        resetTransform();
-        if (lastFocus && typeof lastFocus.focus === "function") {
-          lastFocus.focus({ preventScroll: true });
-        }
-      },
-      { once: true },
-    );
+    if (pendingCloseCleanup) {
+      overlay.removeEventListener("transitionend", pendingCloseCleanup);
+    }
+    pendingCloseCleanup = () => {
+      pendingCloseCleanup = null;
+      img.removeAttribute("src");
+      img.alt = "";
+      resetTransform();
+      if (lastFocus && typeof lastFocus.focus === "function") {
+        lastFocus.focus({ preventScroll: true });
+      }
+    };
+    overlay.addEventListener("transitionend", pendingCloseCleanup, { once: true });
   }
 
   /** @param {Touch} t1 @param {Touch} t2 */
