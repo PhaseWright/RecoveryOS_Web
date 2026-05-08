@@ -21,11 +21,10 @@ document.querySelector("#app").innerHTML = `
 
     <main>
       <section class="hero">
-        <p class="eyebrow">RecoveryOS by PhaseWright Labs</p>
         <h1>Recovery isn't willpower. It's practice.</h1>
         <p class="hero-copy">
-          Most days are won in the small moments - the pause before a bad decision, the breath before a craving peaks,
-          the check-in you actually do. RecoveryOS is where that practice lives.
+          This is where the practice starts. Not a 12-step program. Not a shame tracker. Not a replacement for your counselor or your community.
+          A daily tool built around how your body and brain actually heal.
         </p>
         <div class="hero-actions">
           <!-- Install CTA intentionally disabled until store listing is live. -->
@@ -39,11 +38,6 @@ document.querySelector("#app").innerHTML = `
             View professional overview
           </a>
         </div>
-      </section>
-
-      <section class="positioning-strip" aria-label="RecoveryOS positioning">
-        Not a 12-step program. Not a shame tracker. Not a replacement for your counselor or your community.
-        A daily tool built around how your body and brain actually heal.
       </section>
 
       <section id="gap" class="section-block">
