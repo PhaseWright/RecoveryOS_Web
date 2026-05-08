@@ -1,0 +1,49 @@
+{
+  "plugins": {
+    "redis-development": {
+      "enabled": true
+    },
+    "firebase": {
+      "enabled": true
+    },
+    "cloudflare": {
+      "enabled": true
+    },
+    "create-plugin": {
+      "enabled": true
+    },
+    "pr-review-canvas": {
+      "enabled": true
+    },
+    "docs-canvas": {
+      "enabled": true
+    },
+    "superpowers": {
+      "enabled": true
+    },
+    "browse": {
+      "enabled": true
+    },
+    "slack": {
+      "enabled": true
+    },
+    "figma": {
+      "enabled": true
+    },
+    "sentry": {
+      "enabled": true
+    },
+    "continual-learning": {
+      "enabled": true
+    },
+    "orchestrate": {
+      "enabled": true
+    },
+    "cursor-sdk": {
+      "enabled": true
+    },
+    "resend": {
+      "enabled": true
+    }
+  }
+}

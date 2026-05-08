@@ -32,6 +32,5 @@ _*-backup/
 *.orig
 *.tmp
 
-# Cursor IDE machine-local state
-.cursor/settings.json
+# Cursor IDE machine-local state (we track `.cursor/settings.json` for cross-repo plugin parity — see AGENTS.md)
 .cursor/hooks/state/

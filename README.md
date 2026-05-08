@@ -2,6 +2,8 @@
 
 Marketing site for RecoveryOS at `https://recoveryos.org`.
 
+**Cursor / AI agents:** we keep onboarding and tool rules in [`AGENTS.md`](AGENTS.md) (aligned with the RecoveryOS app repo).
+
 The landing page includes an early-access waitlist form backed by Firebase Firestore.
 
 ## First-time Firebase setup (waitlist)
