@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "sync:privacy": "node ./scripts/sync-privacy-policy.mjs",
+    "fetch:marketing-assets": "node ./scripts/fetch-marketing-assets.mjs",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
