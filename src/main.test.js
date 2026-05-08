@@ -25,4 +25,23 @@ describe("screenshot lightbox", () => {
     expect(lightboxImg.src).toBe(thumbs[1].currentSrc || thumbs[1].src);
     expect(lightboxImg.alt).toBe(thumbs[1].alt);
   });
+
+  it("traps tab focus inside the open lightbox", async () => {
+    await import("./main.js");
+
+    const thumb = document.querySelector(".screenshot-card img");
+    const closeBtn = document.querySelector(".screenshot-lightbox__close");
+
+    thumb.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
+
+    const tabEvent = new KeyboardEvent("keydown", {
+      key: "Tab",
+      bubbles: true,
+      cancelable: true,
+    });
+    document.dispatchEvent(tabEvent);
+
+    expect(tabEvent.defaultPrevented).toBe(true);
+    expect(document.activeElement).toBe(closeBtn);
+  });
 });

@@ -465,10 +465,17 @@ function initScreenshotLightbox() {
   }
 
   /** @param {KeyboardEvent} e */
-  function onDocumentEscape(e) {
-    if (e.key !== "Escape") return;
-    e.preventDefault();
-    close();
+  function onDocumentKeydown(e) {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      close();
+      return;
+    }
+
+    if (e.key === "Tab") {
+      e.preventDefault();
+      closeBtn.focus({ preventScroll: true });
+    }
   }
 
   /** @param {HTMLImageElement} sourceImg */
@@ -487,8 +494,8 @@ function initScreenshotLightbox() {
     overlay.classList.add("screenshot-lightbox--open");
     overlay.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-    document.removeEventListener("keydown", onDocumentEscape, true);
-    document.addEventListener("keydown", onDocumentEscape, true);
+    document.removeEventListener("keydown", onDocumentKeydown, true);
+    document.addEventListener("keydown", onDocumentKeydown, true);
     closeBtn.focus({ preventScroll: true });
   }
 
@@ -496,7 +503,7 @@ function initScreenshotLightbox() {
     overlay.classList.remove("screenshot-lightbox--open");
     overlay.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-    document.removeEventListener("keydown", onDocumentEscape, true);
+    document.removeEventListener("keydown", onDocumentKeydown, true);
     /* We wait for the CSS fade-out to finish before clearing state so it doesn't snap away. */
     if (pendingCloseCleanup) {
       overlay.removeEventListener("transitionend", pendingCloseCleanup);
