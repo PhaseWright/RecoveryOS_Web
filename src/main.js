@@ -439,6 +439,8 @@ function initScreenshotLightbox() {
   let ty = 0;
   /** @type {Element | null} */
   let lastFocus = null;
+  /** @type {(() => void) | null} */
+  let pendingCloseCleanup = null;
 
   function applyTransform() {
     pan.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
@@ -463,14 +465,25 @@ function initScreenshotLightbox() {
   }
 
   /** @param {KeyboardEvent} e */
-  function onDocumentEscape(e) {
-    if (e.key !== "Escape") return;
-    e.preventDefault();
-    close();
+  function onDocumentKeydown(e) {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      close();
+      return;
+    }
+
+    if (e.key === "Tab") {
+      e.preventDefault();
+      closeBtn.focus({ preventScroll: true });
+    }
   }
 
   /** @param {HTMLImageElement} sourceImg */
   function open(sourceImg) {
+    if (pendingCloseCleanup) {
+      overlay.removeEventListener("transitionend", pendingCloseCleanup);
+      pendingCloseCleanup = null;
+    }
     lastFocus = document.activeElement;
     img.src = sourceImg.currentSrc || sourceImg.src;
     img.alt = sourceImg.alt || "";
@@ -481,8 +494,8 @@ function initScreenshotLightbox() {
     overlay.classList.add("screenshot-lightbox--open");
     overlay.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-    document.removeEventListener("keydown", onDocumentEscape, true);
-    document.addEventListener("keydown", onDocumentEscape, true);
+    document.removeEventListener("keydown", onDocumentKeydown, true);
+    document.addEventListener("keydown", onDocumentKeydown, true);
     closeBtn.focus({ preventScroll: true });
   }
 
@@ -490,20 +503,21 @@ function initScreenshotLightbox() {
     overlay.classList.remove("screenshot-lightbox--open");
     overlay.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-    document.removeEventListener("keydown", onDocumentEscape, true);
+    document.removeEventListener("keydown", onDocumentKeydown, true);
     /* We wait for the CSS fade-out to finish before clearing state so it doesn't snap away. */
-    overlay.addEventListener(
-      "transitionend",
-      () => {
-        img.removeAttribute("src");
-        img.alt = "";
-        resetTransform();
-        if (lastFocus && typeof lastFocus.focus === "function") {
-          lastFocus.focus({ preventScroll: true });
-        }
-      },
-      { once: true },
-    );
+    if (pendingCloseCleanup) {
+      overlay.removeEventListener("transitionend", pendingCloseCleanup);
+    }
+    pendingCloseCleanup = () => {
+      pendingCloseCleanup = null;
+      img.removeAttribute("src");
+      img.alt = "";
+      resetTransform();
+      if (lastFocus && typeof lastFocus.focus === "function") {
+        lastFocus.focus({ preventScroll: true });
+      }
+    };
+    overlay.addEventListener("transitionend", pendingCloseCleanup, { once: true });
   }
 
   /** @param {Touch} t1 @param {Touch} t2 */
