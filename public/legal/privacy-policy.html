@@ -8,28 +8,32 @@
     body { font-family: system-ui, Segoe UI, sans-serif; line-height: 1.6; max-width: 42rem; margin: 0 auto; padding: 1.25rem; color: #1a2a3a; background: #f7fafc; }
     h1 { font-size: 1.35rem; letter-spacing: 0.08em; }
     h2 { font-size: 1.05rem; margin-top: 1.75rem; }
-    p, li { font-size: 0.95rem; }
+    p, li, td, th { font-size: 0.95rem; }
     ul { padding-left: 1.2rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+    th, td { border: 1px solid #d6dee6; padding: 0.45rem 0.6rem; text-align: left; vertical-align: top; }
+    th { background: #eef2f6; }
     .muted { color: #4a667a; font-size: 0.88rem; }
     a { color: #009980; }
   </style>
 </head>
 <body>
   <h1>RECOVERY OS — PRIVACY POLICY</h1>
-  <p class="muted">Effective date: 5 May 2026. We may update this page when the app or data practices change; the in-app About screen links to this URL for the Play Store listing.</p>
+  <p class="muted">Effective date: 5 May 2026. Last updated: 12 May 2026. We may update this page when the app or data practices change; the in-app About screen links to this URL for the Play Store listing.</p>
 
   <h2>1. Who we are</h2>
   <p>Recovery OS is published by PhaseWright Labs (developer: CodeManMike). This policy describes how the Recovery OS mobile and web app handles information.</p>
+  <p>PhaseWright Labs is the data controller for personal information processed by Recovery OS. PhaseWright Labs is an independent developer operating from Cape Town, South Africa. For a postal contact, email <a href="mailto:support@recoveryos.org">support@recoveryos.org</a> (or: support [at] recoveryos.org) and we will respond with one on request.</p>
 
   <h2>2. Local-first data</h2>
-  <p>Your recovery logs, journal content, settings, and most app data are stored <strong>only on your device</strong> (browser <code>localStorage</code> on web, the same persisted store in the Android wrapper). We do not operate a Recovery OS account database or cloud backup in the current product.</p>
+  <p>Your recovery logs, journal content, settings, and most app data are stored <strong>only on your device</strong> (browser <code>localStorage</code> on web, the same persisted store in the Android wrapper). We do not operate a Recovery OS user account, identity service, or cloud backup. There is no sign-in flow in this version of the app.</p>
 
   <h2>3. When data leaves your device</h2>
   <p>Data may leave your device only when <strong>you</strong> take an action that implies sharing or export, for example:</p>
   <ul>
     <li>Generating or sharing a progress report, share card, or PDF;</li>
     <li>Using OS-level share or save features you initiate;</li>
-    <li>Granting microphone access for voice memos (audio is processed and stored locally unless you export it).</li>
+    <li>Granting microphone access for voice memos. Recorded audio stays on your device. It is not uploaded; we display an in-app explanation before the microphone permission prompt is shown.</li>
   </ul>
 
   <h2>4. Google Play Billing (Android)</h2>
@@ -40,13 +44,15 @@
   <p>If <strong>remote operator unlock</strong> is enabled in your build, a support unlock code may be sent to the same class of service for verification. That code is used only to issue a time-bounded unlock token and is not used for marketing.</p>
 
   <h2>5a. Optional in-app bug reports (Firebase no-reply relay)</h2>
-  <p>If you choose to submit a bug report from within the app, we send the report to a Firebase-hosted relay so we can route it to our support mailbox. Depending on what you include, the payload may contain:</p>
+  <p>If you choose to submit a bug report from within the app, we send the report to a Firebase-hosted relay so we can route it to our support mailbox. The payload may contain:</p>
   <ul>
     <li>your free-text description of the issue;</li>
     <li>an optional screenshot you attach;</li>
-    <li>technical diagnostics needed for troubleshooting (for example app version, device metadata, recent local log snapshots, last captured app error, and selected settings state).</li>
+    <li>app version, device user-agent, language, platform, screen size, and the current URL;</li>
+    <li>the last captured app error;</li>
+    <li>a small set of non-sensitive UI settings: theme, text size, notification preferences, and Pro entitlement source and expiry.</li>
   </ul>
-  <p>This data is used only for support and debugging, not for advertising or profiling.</p>
+  <p><strong>We do not include your journal entries, sobriety start date, or chosen name in bug reports.</strong> This data is used only for support and debugging, not for advertising or profiling.</p>
 
   <h2>6. Analytics and advertising</h2>
   <p>The app does not include third-party analytics SDKs or advertising networks. We do not sell your personal information.</p>
@@ -58,7 +64,8 @@
     <li>the timestamp of submission;</li>
     <li>a static source/page marker indicating the form was the recoveryos.org landing page.</li>
   </ul>
-  <p>We use that information only to send launch updates, tester-cohort invites, and release announcements relating to RecoveryOS. We do not share it with advertising or analytics providers. Waitlist data is retained until public launch plus a reasonable wind-down period; you can request deletion at any time via the support contact below.</p>
+  <p>To prevent automated abuse, the waitlist form is protected by <strong>Google reCAPTCHA Enterprise via Firebase App Check</strong>. Submitting the form involves Google collecting browser and device signals (cookies, IP address, interaction signals) under <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Google's privacy policy</a>.</p>
+  <p>We use waitlist information only to send launch updates, tester-cohort invites, and release announcements relating to RecoveryOS. We do not share it with advertising or analytics providers. Waitlist data is retained until public launch plus a reasonable wind-down period; you can request deletion at any time via the support contact below, and we respond to deletion requests within 30 days.</p>
 
   <h2>7. Notifications</h2>
   <p>Local reminders (daily log, medications, weekly summary) are scheduled on your device. We do not send push notifications from our servers in the current product.</p>
@@ -67,12 +74,40 @@
   <p>Recovery OS may help you track routines and reflections related to wellbeing. It is not a medical device and not a substitute for professional care. Information you enter may be sensitive; treat your device and backups accordingly.</p>
 
   <h2>9. Retention and deletion</h2>
-  <p>Local data remains until you delete it in the app (where the app provides export/delete or reset options) or uninstall the app. Gift or billing-related records on our entitlement service are retained only as long as needed to honour the purchase or code terms.</p>
+  <table>
+    <thead>
+      <tr><th>Data category</th><th>Retention</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Local app data (journal, settings, voice memos)</td>
+        <td>Until you delete it in-app or uninstall the app. Voice memos auto-purge after 28 days.</td>
+      </tr>
+      <tr>
+        <td>Gift / operator-unlock records (Cloudflare Worker)</td>
+        <td>Until the entitlement expires + 30 days, then deleted.</td>
+      </tr>
+      <tr>
+        <td>Bug reports (support mailbox / relay)</td>
+        <td>90 days from receipt, then deleted.</td>
+      </tr>
+      <tr>
+        <td>Waitlist (Firestore)</td>
+        <td>Until public launch + 90 days, then deleted. Earlier on request.</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <h2>10. Children</h2>
-  <p>Recovery OS is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+  <h2>10. Audience</h2>
+  <p>Recovery OS is intended for adults (18 and over) managing their own recovery. It is not directed at children. We do not knowingly process information from anyone under 18; if you believe a minor has provided information, contact us and we will delete it.</p>
 
-  <h2>11. Contact</h2>
-  <p>For privacy questions, contact <a href="mailto:support@recoveryos.org">support@recoveryos.org</a>.</p>
+  <h2>11. Your rights under GDPR and similar laws</h2>
+  <p>If the GDPR (EU/EEA, UK) or a similar privacy law applies to you, you have the right to access, rectify, erase, restrict, object to, port, or withdraw consent for our processing of your personal information, and to lodge a complaint with a supervisory authority. To exercise any of these rights, email <a href="mailto:support@recoveryos.org">support@recoveryos.org</a>. We will respond within 30 days. Where Cloudflare or Google process data on our behalf outside your region, we rely on the EU-U.S. Data Privacy Framework and Standard Contractual Clauses as applicable.</p>
+
+  <h2>12. Security</h2>
+  <p>We use HTTPS for all network requests. Local data is protected by your device's standard storage protections — we set Android <code>allowBackup=false</code> so Android Auto Backup does not sync app data off-device. We do not encrypt local data at rest beyond what the operating system provides.</p>
+
+  <h2>13. Contact</h2>
+  <p>For privacy questions, contact <a href="mailto:support@recoveryos.org">support@recoveryos.org</a> (or: support [at] recoveryos.org).</p>
 </body>
 </html>
