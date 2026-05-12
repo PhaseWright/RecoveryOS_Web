@@ -9,7 +9,7 @@ We ship a Vite 8 marketing site for RecoveryOS (`recoveryos.org`). The waitlist 
 1. **Plugin surface** — Enabled Cursor plugins live in [`.cursor/settings.json`](.cursor/settings.json). We keep this aligned with the RecoveryOS app repo so agents see the same toolchain (Firebase, Resend, Cloudflare, orchestrate, cursor-sdk, browse, superpowers, etc.).
 2. **Secrets** — Never commit API keys. Use `.env` from [`.env.example`](.env.example) locally; CI uses GitHub secrets. Do not paste `CURSOR_API_KEY` or provider keys into chat or tracked files.
 3. **Auth order for tooling** — When we need external control planes in one session:
-   - `CURSOR_API_KEY` (personal key from Cursor Dashboard → Integrations) for Cursor SDK / orchestration; we read the Cursor SDK skill from the Cursor skills catalog (`sdk` / `@cursor/sdk` auth) before first use.
+   - `CURSOR_API_KEY` — user API key minted at `https://cursor.com/dashboard/cloud-agents`. Set as a **PowerShell environment variable** (`$env:CURSOR_API_KEY = "cursor_..."`) in the shell where the orchestrate CLI runs, or pass explicitly as `apiKey: process.env.CURSOR_API_KEY!` in SDK code. The SDK reads the env var if `apiKey` is omitted; no config file or keychain. The **orchestrate plugin only activates when the user explicitly types `/orchestrate <goal>`** in chat — agents do not call it autonomously (`disable-model-invocation: true`).
    - **Firebase** — mandatory preflight (below) before any Firebase/Firestore MCP or CLI work.
    - **Resend** — use Resend MCP `connect-to-editor` if required, then verify with read-only calls (e.g. `list-domains`).
 
