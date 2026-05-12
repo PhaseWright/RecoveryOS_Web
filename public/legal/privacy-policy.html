@@ -49,7 +49,8 @@
     <li>your free-text description of the issue;</li>
     <li>an optional screenshot you attach;</li>
     <li>app version, device user-agent, language, platform, screen size, and the current URL;</li>
-    <li>the last captured app error;</li>
+    <li>the last captured app error from the <em>current</em> app launch only (technical message and stack trace; we deliberately discard any error captured before the current launch so stale issues are never sent);</li>
+    <li>a random per-launch session identifier so our support team can tell whether a given error and report belong to the same run (this identifier is regenerated on every cold start and is not linked to your identity);</li>
     <li>a small set of non-sensitive UI settings: theme, text size, notification preferences, and Pro entitlement source and expiry.</li>
   </ul>
   <p><strong>We do not include your journal entries, sobriety start date, or chosen name in bug reports.</strong> This data is used only for support and debugging, not for advertising or profiling.</p>
