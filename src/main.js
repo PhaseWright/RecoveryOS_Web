@@ -142,7 +142,7 @@ document.querySelector("#app").innerHTML = `
             <ul class="compare-list compare-list--pro">
               <li>Spark daily insights reader</li>
               <li>Three structured workbooks (to start with, more to come)</li>
-              <li>Guided self-regulationn audio sessions</li>
+              <li>Guided self-regulation audio sessions</li>
               <li>Urge Surfing helper</li>
               <li>Voice memo journal</li>
               <li>Medication and supplement reminders</li>
