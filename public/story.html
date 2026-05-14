@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#070d18" />
+  <meta name="description" content="The story behind RecoveryOS — written by Michael du Preez, founder and recovering addict. Why it exists. Why it had to." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="canonical" href="https://recoveryos.org/story.html" />
+  <title>The Story — RecoveryOS</title>
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="RecoveryOS" />
+  <meta property="og:title" content="The Story — RecoveryOS" />
+  <meta property="og:description" content="Why RecoveryOS exists. Written by Michael du Preez, founder and recovering addict." />
+  <meta property="og:url" content="https://recoveryos.org/story.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Story — RecoveryOS" />
+  <meta name="twitter:description" content="Why RecoveryOS exists. Written by Michael du Preez, founder and recovering addict." />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      font-family: "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(0, 212, 170, 0.14), transparent 38%),
+        radial-gradient(circle at 20% 10%, rgba(0, 168, 255, 0.08), transparent 34%),
+        radial-gradient(circle at 70% 65%, rgba(36, 107, 254, 0.08), transparent 48%),
+        #070d18;
+      color: #dde8f0;
+      line-height: 1.7;
+    }
+
+    a { color: #00d4aa; text-underline-offset: 3px; }
+    a:hover { color: #7af5de; }
+
+    .page {
+      width: min(780px, 100%);
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    /* ── Header ── */
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid #162538;
+      padding-bottom: 1rem;
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .brand-lockup img {
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-back {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #7aa8bc;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-back:hover { color: #00d4aa; }
+
+    /* ── Story header ── */
+    .story-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: #00d4aa;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+    }
+
+    .story-title {
+      margin: 0 0 0.75rem;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #f2f8fc;
+    }
+
+    .story-byline {
+      margin: 0;
+      color: #7aa8bc;
+      font-size: 0.9rem;
+    }
+
+    /* ── Prose ── */
+    .prose {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #c8dae8;
+      max-width: 100%;
+    }
+
+    .prose p {
+      margin: 0 0 1.5rem;
+    }
+
+    .prose p:last-child { margin-bottom: 0; }
+
+    .prose em {
+      color: #dde8f0;
+      font-style: italic;
+    }
+
+    .prose strong {
+      color: #f2f8fc;
+      font-weight: 600;
+    }
+
+    /* ── Brief callout ── */
+    .brief-block {
+      background: #0d1626;
+      border: 1px solid #162538;
+      border-left: 3px solid #00d4aa;
+      border-radius: 0.5rem;
+      padding: 1.5rem 1.75rem;
+      margin: 0 0 3rem;
+    }
+
+    .brief-block .prose {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: #c8dae8;
+    }
+
+    /* ── Section divider ── */
+    .section-rule {
+      border: none;
+      border-top: 1px solid #162538;
+      margin: 3rem 0;
+    }
+
+    /* ── Section heading ── */
+    .section-heading {
+      margin: 0 0 1.5rem;
+      font-size: 1.35rem;
+      color: #f2f8fc;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Science frameworks ── */
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .framework-card {
+      background: #0d1626;
+      border: 1px solid #162538;
+      border-radius: 0.6rem;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .framework-card h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.9rem;
+      color: #00d4aa;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .framework-card .framework-source {
+      margin: 0 0 0.6rem;
+      font-size: 0.78rem;
+      color: #4a6a82;
+      font-style: italic;
+    }
+
+    .framework-card p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: #a9c0d0;
+      line-height: 1.6;
+    }
+
+    /* ── Signoff ── */
+    .story-signoff {
+      margin: 2.5rem 0 0;
+      font-size: 1rem;
+      color: #7aa8bc;
+      font-style: italic;
+    }
+
+    /* ── CTA block ── */
+    .cta-block {
+      margin-top: 3.5rem;
+      background: #0d1626;
+      border: 1px solid #162538;
+      border-radius: 0.85rem;
+      padding: 2rem 2rem;
+      text-align: center;
+    }
+
+    .cta-block h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.4rem;
+      color: #f2f8fc;
+      letter-spacing: -0.01em;
+    }
+
+    .cta-block p {
+      margin: 0 0 1.5rem;
+      color: #a9c0d0;
+      font-size: 0.97rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.6rem;
+      border-radius: 0.45rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.85; }
+
+    .btn-primary {
+      background: #00d4aa;
+      color: #021018;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #dde8f0;
+      border: 1px solid #2a4060;
+    }
+
+    .cta-pair {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #162538;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #4a6a82;
+    }
+
+    .site-footer a {
+      color: #7aa8bc;
+    }
+
+    .site-footer a:hover { color: #00d4aa; }
+
+    .site-footer p { margin: 0.25rem 0; }
+
+    @media (max-width: 600px) {
+      .page { padding: 1rem 1rem 3rem; }
+      .cta-block { padding: 1.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="site-header">
+      <a class="brand-lockup" href="/" aria-label="RecoveryOS home">
+        <img src="/brand/RecoveryOS_Horizontal_Logo.svg" alt="RecoveryOS" />
+      </a>
+      <a class="nav-back" href="/">← Back to RecoveryOS</a>
+    </header>
+
+    <main>
+
+      <section class="story-header">
+        <p class="eyebrow">The story behind the app</p>
+        <h1 class="story-title">I built what I needed.</h1>
+        <p class="story-byline">By Michael du Preez — founder, PhaseWright Labs / RecoveryOS</p>
+      </section>
+
+      <!-- Brief version -->
+      <div class="brief-block">
+        <div class="prose">
+          <p>My father was an alcoholic. A brilliant one. He taught me electronics, took me down rivers, and made me feel like the world was worth understanding. He also made me feel like I was never quite enough. He died after alcohol took everything from him.</p>
+          <p>My mother is in recovery. She raised me — when she could — and she still believes the best version of me is in there somewhere.</p>
+          <p>I know what it is to need something to feel strong. To reach for something just to stop being afraid. And I know what it is to sit in a meeting and feel the thing working, but also feel the gaps — the parts of the science nobody was explaining, the parts of me nobody was naming.</p>
+          <p>So I built what I needed.</p>
+          <p>RecoveryOS is not a sobriety counter. It is a personal operating system for rebuilding the brain and the self — grounded in neuroscience, built from lived experience, designed by someone who needed it first.</p>
+          <p>This is that app.</p>
+        </div>
+      </div>
+
+      <!-- Full story -->
+      <article class="prose">
+        <p>My father was the most complicated person I have ever known.</p>
+
+        <p>He was an alcoholic — bad enough that when my parents divorced, at three years old, he got custody. My mother was left with nothing. She spent my childhood financially dependent on a man who held all the cards, and I spent it in a house where the emotional temperature was always at 45 degrees. Not because my dad was cruel, not exactly. He was an inventor. He taught me electronics and took me down rivers and, when he was clear-headed, made me feel like the universe was a machine worth learning. But when he was drinking — and he drank — he was something else entirely.</p>
+
+        <p>I was five or six years old when I learned to hide accidents. Not mistakes. Accidents. Things that just happened, the way things happen to children. I learned early that existing imperfectly was dangerous. The belief that formed before I was old enough to question it: <em>I will never be good enough.</em></p>
+
+        <p>That belief does not announce itself. It runs quietly, underneath everything, like background code. I can be clever and funny and warm and broken all at once, and most people will only see the first three.</p>
+
+        <p>I eventually found something that made me feel strong. That made the fear go away. That made me feel like — finally — I was the hero of my own story instead of a kid in an overheated house trying to stay invisible. I want to be honest about that, because it matters: my addiction was not stupidity or weakness. It was a logical solution to a real problem — until it became a worse one.</p>
+
+        <p>My mother went through her own recovery. She knows this road.</p>
+
+        <p>My father did not make it. His drinking took his career, then his relationships, then eventually him. He died after his life came apart under the weight of it. I carry him with me — the brilliant version, the dangerous version, the man on the river, the ghost in the bottle. Addiction is not abstract to me. It has a face. More than one.</p>
+
+        <p>I found my way to NA. The steps worked in ways I didn't expect. Step 1 — admitting powerlessness — does something specific to the amygdala. Step 4 — the moral inventory — is the hardest and most valuable thing I have ever done. Step 12 is, as it turns out, advanced neuroscience dressed in spiritual language. I kept going. I kept learning.</p>
+
+        <p>But I also noticed the gaps.</p>
+
+        <p>Nobody was explaining <em>why</em> the craving felt like a command. Nobody was explaining that a craving is a prediction, not a verdict — and that predictions can be rewritten in a four-to-six-hour window after they fire. Nobody was explaining that my dopamine system doesn't recover overnight, or that the flat feeling in early recovery is a biological event, not evidence that joy has permanently left the building. Nobody was explaining the difference between shame — which paralyses — and guilt — which repairs. Nobody was teaching me to surf a craving the way MORE does, or to use the physiological sigh to stop a threat response before it becomes a relapse.</p>
+
+        <p>I started building the tools I wished someone had given me. The workbooks first — questions I needed to answer about who I actually was, underneath the addiction, underneath the armor, underneath the story I'd been telling since I was a kid hiding broken things in my father's house. Then the daily log — a structured way to track not just whether I used, but what my nervous system was doing, how my dopamine baseline was moving, what the cravings were actually promising, who I was becoming. Then Spark — a daily book of readings, one for each day of the year, each one sitting at the intersection of neuroscience and the honest experience of someone actually doing this work.</p>
+
+        <p>I built it because I'm a developer and building is what I do. But mostly I built it because I needed it, and I knew that if I needed it, somebody else needed it too.</p>
+
+        <p>RecoveryOS is not a 12-step app. It respects the steps — I use them — but it is built around the neuroscience of recovery: neuroplasticity, dopamine recalibration, memory reconsolidation, Polyvagal Theory, ACT, MORE. It uses the language of systems and biology rather than the language of character defects and higher powers, because for a lot of people — people like me — that language is the one that lands.</p>
+
+        <p>This is not a sobriety counter. It is a personal operating system for rebuilding. The log tracks your nervous system. The workbooks excavate your history. The tools in the app are grounded in evidence-based frameworks that have been tested in clinical trials. And behind all of it is a single idea: you are not broken. You are running the wrong version of the software. The upgrade is available. It requires manual installation, one day at a time.</p>
+
+        <p>My target state — the one I work toward — is a description I wrote in one of my own workbooks: <em>loose muscles, slight smile, clear eyes, bright world.</em> I found that state on a river at age 12, with my father in the brief moments he was fully there.</p>
+
+        <p>I am building back toward it. This app is part of how.</p>
+
+        <p>If you are in recovery, or you love someone in recovery, or you have been handed tools that helped but still felt like they were missing something — I built this for you. I built it for all of us. I built it because it didn't exist and somebody had to.</p>
+      </article>
+
+      <p class="story-signoff">— Michael du Preez, Cape Town</p>
+
+      <hr class="section-rule" />
+
+      <!-- Science frameworks -->
+      <section aria-labelledby="science-heading">
+        <h2 class="section-heading" id="science-heading">The science behind RecoveryOS</h2>
+        <p class="prose" style="margin-bottom: 1.75rem; font-size: 0.97rem; color: #a9c0d0;">Seven evidence-based frameworks integrated into a single daily practice.</p>
+
+        <div class="framework-grid">
+          <div class="framework-card">
+            <h3>Polyvagal Theory</h3>
+            <p class="framework-source">Stephen Porges</p>
+            <p>You cannot reprogram a brain in threat response. The Physiological Sigh and the Glance Method are direct tools for resetting the vagus nerve and de-escalating the amygdala. Hardware first.</p>
+          </div>
+
+          <div class="framework-card">
+            <h3>Memory Reconsolidation</h3>
+            <p class="framework-source">Karim Nader, Bruce Ecker</p>
+            <p>Every time a craving memory is recalled, it becomes unstable for 4–6 hours — a biological window during which it can be rewritten rather than merely suppressed. The Mismatch Technique is not a coping strategy. It is a neurological edit.</p>
+          </div>
+
+          <div class="framework-card">
+            <h3>MORE</h3>
+            <p class="framework-source">Eric Garland, University of Utah — 15+ RCTs</p>
+            <p>Mindfulness-Oriented Recovery Enhancement. Its three mechanisms — urge surfing, cognitive reappraisal, and savoring — work at different levels of the reward system simultaneously: attention, meaning, and receptor resensitisation.</p>
+          </div>
+
+          <div class="framework-card">
+            <h3>ACT</h3>
+            <p class="framework-source">Acceptance & Commitment Therapy</p>
+            <p>The harder you fight a craving, the more real and powerful you make it. ACT builds psychological flexibility instead: acceptance, cognitive defusion, values clarification, committed action. Step 1 is ACT's acceptance, translated.</p>
+          </div>
+
+          <div class="framework-card">
+            <h3>Dopamine Recalibration</h3>
+            <p class="framework-source">Huberman Protocol, NSDR</p>
+            <p>Addiction down-regulates D₂ receptors, producing the anhedonic flatness of early recovery. Non-Sleep Deep Rest replenishes dopamine reserves in the basal ganglia. The effort reframe is not a slogan — it is a dopamine hack.</p>
+          </div>
+
+          <div class="framework-card">
+            <h3>Jungian Shadow Work</h3>
+            <p class="framework-source">C.G. Jung</p>
+            <p>The parts of yourself sent underground to stay safe — the rage, the need, the grief — do not go away. They run things from underneath. Shadow work is the archaeology: excavating the exiles, naming them, integrating them.</p>
+          </div>
+
+          <div class="framework-card">
+            <h3>Nutritional Psychiatry</h3>
+            <p class="framework-source">Felice Jacka and others</p>
+            <p>You cannot rewire a brain on an empty tank. Dopamine precursors, omega-3s, magnesium, zinc, and gut-healthy foods are biological requirements, not wellness suggestions. 90% of serotonin is manufactured in the gut.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="cta-block">
+        <h2>Build a life your body and mind want to return to.</h2>
+        <p>RecoveryOS is in early access. Join the waitlist for launch updates, tester invites, and release announcements.</p>
+        <div class="cta-pair">
+          <a class="btn btn-primary" href="/#waitlist">Join the waitlist</a>
+          <a class="btn btn-secondary" href="/">See what's in the app</a>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <p>Built by PhaseWright Labs.</p>
+      <p>Need support? <a href="mailto:support@recoveryos.org">support@recoveryos.org</a></p>
+      <p><a href="/legal/privacy-policy.html">Privacy policy</a></p>
+    </footer>
+
+  </div>
+</body>
+</html>

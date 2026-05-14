@@ -746,6 +746,22 @@ h1 {
   font-weight: 600;
 }
 
+.founder-story-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #00d4aa;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.founder-story-link:hover {
+  color: #7af5de;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .waitlist {
   background: linear-gradient(180deg, #0d1626 0%, #0a121f 100%);
   border: 1px solid #1d3047;

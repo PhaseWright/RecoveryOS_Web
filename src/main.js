@@ -231,6 +231,7 @@ document.querySelector("#app").innerHTML = `
           It has been helping me. I hope it helps you.
         </blockquote>
         <p class="founder-signoff">— Michael, founder of RecoveryOS</p>
+        <a class="founder-story-link" href="/story.html">Read the full story →</a>
       </section>
 
       <section id="privacy" class="trust">
