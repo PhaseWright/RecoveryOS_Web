@@ -17,33 +17,39 @@ document.querySelector("#app").innerHTML = `
 
     <main>
       <section class="hero">
-        <h1>Recovery isn't willpower. It's practice.</h1>
-        <p class="hero-copy">
-          This is where the practice starts. Not a 12-step program. Not a shame tracker. Not a replacement for your counselor or your community.
-          A daily tool built around how your body and brain actually heal.
-        </p>
-        <div class="hero-actions">
-          <!-- Store CTAs: disabled until listings are live. -->
-          <div class="hero-stores">
-            <div class="hero-store-col">
-              <div class="hero-store-item">
-                <img class="hero-store-badge" src="/store/google-play.svg" alt="Google Play" decoding="async" />
-                <span class="hero-store-status">Coming soon</span>
+        <div class="hero-content">
+          <h1>Recovery isn't willpower. It's practice.</h1>
+          <p class="hero-copy">
+            This is where the practice starts. Not a 12-step program. Not a shame tracker. Not a replacement for your counselor or your community.
+            A daily tool built around how your body and brain actually heal.
+          </p>
+          <div class="hero-actions">
+            <div class="hero-stores">
+              <div class="hero-store-col">
+                <div class="hero-store-item">
+                  <img class="hero-store-badge" src="/store/google-play.svg" alt="Google Play" decoding="async" />
+                  <span class="store-badge store-badge--soon">Coming soon</span>
+                </div>
+                <a class="btn btn-secondary" href="#waitlist">Join early access waitlist</a>
               </div>
-              <a class="btn btn-secondary" href="#waitlist">Join early access waitlist</a>
-            </div>
-            <div class="hero-store-col">
-              <div class="hero-store-item">
-                <img class="hero-store-badge hero-store-badge--app-store" src="/store/app-store.svg" alt="Download on the App Store" decoding="async" />
-                <span class="hero-store-status">Coming soon</span>
+              <div class="hero-store-col">
+                <div class="hero-store-item">
+                  <img class="hero-store-badge hero-store-badge--app-store" src="/store/app-store.svg" alt="Download on the App Store" decoding="async" />
+                  <span class="store-badge store-badge--soon">Coming soon</span>
+                </div>
+                <a class="btn btn-secondary" href="#professionals">View professional overview</a>
               </div>
-              <a class="btn btn-secondary" href="#professionals">View professional overview</a>
             </div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="phone-frame">
+            <img src="/screenshots/Mood_Challenges.png" alt="" decoding="async" />
           </div>
         </div>
       </section>
 
-      <section id="gap" class="section-block">
+      <section id="gap" class="section-block" data-animate>
         <div>
           <p class="eyebrow">The real problem</p>
           <h2>Other apps count your days. RecoveryOS helps you survive them.</h2>
@@ -57,7 +63,7 @@ document.querySelector("#app").innerHTML = `
       </section>
 
       <section id="protocol" class="features">
-        <article class="feature-card">
+        <article class="feature-card" data-animate>
           <p class="feature-label">Regulate first</p>
           <h2>Stability before decisions</h2>
           <p>
@@ -65,7 +71,7 @@ document.querySelector("#app").innerHTML = `
             body-first tools to regulate before you react - because good decisions come from calm, not willpower alone.
           </p>
         </article>
-        <article class="feature-card">
+        <article class="feature-card" data-animate style="transition-delay: 0.1s">
           <p class="feature-label">Know your patterns</p>
           <h2>Track urges without judgment</h2>
           <p>
@@ -73,7 +79,7 @@ document.querySelector("#app").innerHTML = `
             Patterns you can see are patterns you can work with.
           </p>
         </article>
-        <article class="feature-card">
+        <article class="feature-card" data-animate style="transition-delay: 0.2s">
           <p class="feature-label">Build the self</p>
           <h2>Seven areas. One honest check-in.</h2>
           <p>
@@ -84,39 +90,39 @@ document.querySelector("#app").innerHTML = `
       </section>
 
       <section class="feature-gallery" aria-label="RecoveryOS app screenshots">
-        <article class="screenshot-card">
+        <article class="screenshot-card" data-animate>
           <img src="/screenshots/Workbook.png" alt="RecoveryOS workbook progression view" loading="lazy" />
           <h3>Workbooks</h3>
           <p>Long-form identity and recovery work with chapter progression.</p>
         </article>
-        <article class="screenshot-card">
+        <article class="screenshot-card" data-animate style="transition-delay: 0.08s">
           <img src="/screenshots/Spark.png" alt="RecoveryOS Spark insights reading view" loading="lazy" />
           <h3>Spark insights</h3>
           <p>Evidence-based entries that keep mindset, meaning, and direction in motion.</p>
         </article>
-        <article class="screenshot-card">
+        <article class="screenshot-card" data-animate style="transition-delay: 0.16s">
           <img src="/screenshots/Calendar.png" alt="RecoveryOS recovery calendar and trend view" loading="lazy" />
           <h3>Calendar intelligence</h3>
           <p>Review patterns, streaks, and trigger context across real calendar time.</p>
         </article>
-        <article class="screenshot-card">
+        <article class="screenshot-card" data-animate style="transition-delay: 0.24s">
           <img src="/screenshots/Mood_Challenges.png" alt="RecoveryOS mood and challenge dashboard" loading="lazy" />
           <h3>Mood and challenge signal</h3>
           <p>Daily score tracking with weekly insight blocks and practical wins logging.</p>
         </article>
-        <article class="screenshot-card">
+        <article class="screenshot-card" data-animate style="transition-delay: 0.32s">
           <img src="/screenshots/Backup_report.png" alt="RecoveryOS backup and report export tools" loading="lazy" />
           <h3>Backup and reports</h3>
           <p>Build support-ready summaries and retain ownership of your data.</p>
         </article>
-        <article class="screenshot-card">
+        <article class="screenshot-card" data-animate style="transition-delay: 0.40s">
           <img src="/screenshots/Settings.png" alt="RecoveryOS settings and progression panel" loading="lazy" />
           <h3>Adaptive settings</h3>
           <p>Personalize text size, safety options, goals, and progression framing.</p>
         </article>
       </section>
 
-      <section id="plans" class="compare-section trust" aria-labelledby="plans-heading">
+      <section id="plans" class="compare-section trust" aria-labelledby="plans-heading" data-animate>
         <h2 id="plans-heading">Free vs Pro — what's included</h2>
         <p class="compare-intro">
           RecoveryOS stays useful without a subscription. Pro deepens regulation, insight, and reporting when you want the full toolkit.
@@ -155,7 +161,7 @@ document.querySelector("#app").innerHTML = `
         </div>
       </section>
 
-      <section id="pro" class="pro-highlight" aria-labelledby="pro-heading">
+      <section id="pro" class="pro-highlight" aria-labelledby="pro-heading" data-animate>
         <div class="pro-highlight__inner">
           <p class="pro-highlight__eyebrow">RecoveryOS Pro</p>
           <h2 id="pro-heading">Regulate deeper. Get access to our <em>Spark</em> daily insights. Bring a real report to the conversation.</h2>
@@ -175,7 +181,7 @@ document.querySelector("#app").innerHTML = `
         </div>
       </section>
 
-      <section id="professionals" class="trust">
+      <section id="professionals" class="trust" data-animate>
         <h2>For professionals</h2>
         <p>
           RecoveryOS can sit alongside therapy, coaching, mutual aid, medication, sober living, or aftercare planning.
@@ -198,30 +204,30 @@ document.querySelector("#app").innerHTML = `
           These are our plans, but we will grow and evolve with your feedback.
         </p>
         <div class="roadmap-grid">
-          <article class="roadmap-card">
+          <article class="roadmap-card" data-animate>
             <h3>Libraries &amp; audio</h3>
             <p>Additional workbook libraries and expanded meditation / regulation audio beyond today's Pro NSDR player.</p>
           </article>
-          <article class="roadmap-card">
+          <article class="roadmap-card" data-animate style="transition-delay: 0.08s">
             <h3>Community</h3>
             <p>A deliberate community layer — designed around safety and recovery-first norms.</p>
           </article>
-          <article class="roadmap-card">
+          <article class="roadmap-card" data-animate style="transition-delay: 0.16s">
             <h3>Backup &amp; sync</h3>
             <p>Encrypted cloud backup and cross-device sync while preserving local-first ownership principles.</p>
           </article>
-          <article class="roadmap-card">
+          <article class="roadmap-card" data-animate style="transition-delay: 0.24s">
             <h3>Accountability</h3>
             <p>User-chosen accountability buddy flows with thoughtful automation — consent-forward by design.</p>
           </article>
-          <article class="roadmap-card roadmap-card--wide">
+          <article class="roadmap-card roadmap-card--wide" data-animate style="transition-delay: 0.32s">
             <h3>SupportOS</h3>
             <p>Companion experience for supporters, sponsors, and loved ones — extending the RecoveryOS ecosystem without blurring clinical boundaries.</p>
           </article>
         </div>
       </section>
 
-      <section class="founder-quote">
+      <section class="founder-quote" data-animate>
         <h2>A note from the founder</h2>
         <blockquote>
           I have been in recovery for many years, and I have been involved in service and recovery support for all of that time.
@@ -234,7 +240,7 @@ document.querySelector("#app").innerHTML = `
         <a class="founder-story-link" href="/story.html">Read the full story →</a>
       </section>
 
-      <section id="privacy" class="trust">
+      <section id="privacy" class="trust" data-animate>
         <h2>Privacy and trust signals</h2>
         <p>
           We built RecoveryOS to be useful without feeling invasive. You stay in control of what you share, when you share it,
@@ -250,7 +256,7 @@ document.querySelector("#app").innerHTML = `
         </ul>
       </section>
 
-      <section id="waitlist" class="waitlist">
+      <section id="waitlist" class="waitlist" data-animate>
         <div class="waitlist-head">
           <p class="eyebrow">Early Access</p>
           <h2>Join the RecoveryOS tester waitlist</h2>
@@ -286,6 +292,27 @@ document.querySelector("#app").innerHTML = `
               Join waitlist
             </button>
           </div>
+          <fieldset class="waitlist-interests">
+            <legend class="waitlist-interests__legend">What interests you most? <span class="waitlist-interests__opt">(optional)</span></legend>
+            <div class="waitlist-interests__grid">
+              <label class="waitlist-check">
+                <input type="checkbox" name="interests" value="daily-structure" />
+                <span>Daily structure &amp; journaling</span>
+              </label>
+              <label class="waitlist-check">
+                <input type="checkbox" name="interests" value="craving-management" />
+                <span>Craving &amp; trigger management</span>
+              </label>
+              <label class="waitlist-check">
+                <input type="checkbox" name="interests" value="progress-tracking" />
+                <span>Progress tracking &amp; reporting</span>
+              </label>
+              <label class="waitlist-check">
+                <input type="checkbox" name="interests" value="community" />
+                <span>Community &amp; accountability</span>
+              </label>
+            </div>
+          </fieldset>
           <p id="waitlist-message" class="waitlist-message" role="status" aria-live="polite"></p>
         </form>
       </section>
@@ -375,7 +402,10 @@ form.addEventListener("submit", async (event) => {
 
   try {
     const email = emailInput.value ?? "";
-    const result = await joinWaitlist(email);
+    const interests = [...form.querySelectorAll('input[name="interests"]:checked')].map(
+      (el) => el.value,
+    );
+    const result = await joinWaitlist(email, interests);
 
     if (result.status === "created") {
       setFormState({ loading: false, tone: "success", message: result.message });
@@ -650,4 +680,24 @@ function initScreenshotLightbox() {
   });
 }
 
+function initScrollAnimations() {
+  const targets = document.querySelectorAll("[data-animate]");
+  if (!targets.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animated");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -32px 0px" },
+  );
+
+  targets.forEach((el) => observer.observe(el));
+}
+
 initScreenshotLightbox();
+initScrollAnimations();

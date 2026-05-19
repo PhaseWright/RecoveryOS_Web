@@ -852,6 +852,221 @@ h1 {
   color: #00d4aa;
 }
 
+/* ============================================================
+   TYPOGRAPHY — Inter
+   ============================================================ */
+:root {
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+}
+
+/* ============================================================
+   HERO — 2-col layout with phone visual
+   ============================================================ */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.phone-frame {
+  position: relative;
+  width: 195px;
+  background: linear-gradient(160deg, #0c1828 0%, #060b14 100%);
+  border-radius: 2.8rem;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 10px 22px;
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 0 50px rgba(0, 212, 170, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.phone-frame::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  z-index: 1;
+}
+
+.phone-frame::after {
+  content: '';
+  position: absolute;
+  top: 22%;
+  right: -3px;
+  width: 3px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0 2px 2px 0;
+}
+
+.phone-frame img {
+  width: 100%;
+  border-radius: 2rem;
+  display: block;
+}
+
+/* ============================================================
+   HERO ENTRANCE ANIMATION
+   ============================================================ */
+@keyframes hero-fade-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.hero-content {
+  animation: hero-fade-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-visual {
+  animation: hero-fade-in 0.7s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ============================================================
+   SCROLL-TRIGGERED ANIMATIONS
+   ============================================================ */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-animate].animated {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate],
+  .hero-content,
+  .hero-visual {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   STORE STATUS BADGE PILLS
+   ============================================================ */
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.26rem 0.65rem;
+  border-radius: 99px;
+}
+
+.store-badge--soon {
+  background: rgba(245, 166, 35, 0.1);
+  border: 1px solid rgba(245, 166, 35, 0.28);
+  color: #f5a623;
+}
+
+.store-badge--soon::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   SPACING UPGRADES
+   ============================================================ */
+.section-block  { margin-bottom: 2.5rem; }
+.features       { margin-bottom: 3rem; }
+.feature-gallery { margin-bottom: 3rem; }
+.trust          { margin-bottom: 2.5rem; }
+.pro-highlight  { margin-bottom: 2.5rem; }
+.founder-quote  { margin-bottom: 2.5rem; }
+.feature-card   { padding: 1.4rem; }
+.roadmap-card   { padding: 1rem 1.1rem; }
+
+/* ============================================================
+   WAITLIST INTEREST CHECKBOXES
+   ============================================================ */
+.waitlist-interests {
+  margin: 1rem 0 0;
+  padding: 0;
+  border: none;
+}
+
+.waitlist-interests__legend {
+  color: #cadce8;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+  padding: 0;
+  display: block;
+}
+
+.waitlist-interests__opt {
+  color: #7aa8bc;
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+
+.waitlist-interests__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem 2rem;
+}
+
+.waitlist-check span {
+  white-space: nowrap;
+}
+
+.waitlist-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.88rem;
+  color: #a9c0d0;
+  user-select: none;
+}
+
+.waitlist-check input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #00d4aa;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.waitlist-check:hover span {
+  color: #dde8f0;
+}
+
+@media (max-width: 520px) {
+  .waitlist-interests__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 880px) {
   body {
     background:
@@ -859,6 +1074,14 @@ h1 {
       radial-gradient(circle at 20% 8%, rgba(0, 168, 255, 0.18), transparent 40%),
       radial-gradient(circle at 74% 70%, rgba(36, 107, 254, 0.18), transparent 52%),
       #070d18;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    display: none;
   }
 
   .brand-lockup img {
@@ -911,5 +1134,29 @@ h1 {
   .waitlist-form input {
     min-width: auto;
     width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-stores {
+    gap: 0.6rem 0.75rem;
+    flex-wrap: nowrap;
+  }
+
+  .hero-store-col {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .hero-store-badge {
+    max-width: 100%;
+    height: 36px;
+  }
+
+  .hero-stores .btn {
+    font-size: 0.78rem;
+    padding: 0.6rem 0.5rem;
+    white-space: normal;
+    text-align: center;
   }
 }
