@@ -782,7 +782,8 @@ h1 {
   margin-top: 1rem;
 }
 
-.waitlist-form label {
+/* We only target the email label — interest rows use .waitlist-check and must not inherit block/margins here. */
+.waitlist-form label[for="waitlist-email"] {
   display: block;
   margin-bottom: 0.45rem;
   color: #cadce8;
@@ -795,7 +796,8 @@ h1 {
   flex-wrap: wrap;
 }
 
-.waitlist-form input {
+/* We scope to the email row only — checkbox inputs must not inherit min-width/flex from the text field. */
+.waitlist-form .waitlist-row input[type="email"] {
   min-width: 270px;
   flex: 1;
   background: #060b14;
@@ -805,7 +807,7 @@ h1 {
   padding: 0.7rem 0.75rem;
 }
 
-.waitlist-form input:focus {
+.waitlist-form .waitlist-row input[type="email"]:focus {
   outline: none;
   border-color: #00d4aa;
   box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.18);
@@ -1035,26 +1037,33 @@ h1 {
   gap: 0.5rem 2rem;
 }
 
-.waitlist-check span {
-  white-space: nowrap;
-}
-
 .waitlist-check {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
   font-size: 0.88rem;
+  line-height: 1.35;
   color: #a9c0d0;
   user-select: none;
+  min-width: 0;
+}
+
+/* We let label text wrap in the grid cell; min-width 0 avoids flex overflow clipping the gutter. */
+.waitlist-check span {
+  min-width: 0;
+  line-height: inherit;
 }
 
 .waitlist-check input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
+  /* We reset UA margins and size to 1em so the control tracks the label font — same optical center on mobile and desktop. */
+  margin: 0;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  align-self: center;
   accent-color: #00d4aa;
   cursor: pointer;
-  flex-shrink: 0;
 }
 
 .waitlist-check:hover span {
@@ -1131,7 +1140,7 @@ h1 {
     flex-direction: column;
   }
 
-  .waitlist-form input {
+  .waitlist-form .waitlist-row input[type="email"] {
     min-width: auto;
     width: 100%;
   }
