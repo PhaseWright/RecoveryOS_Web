@@ -681,6 +681,9 @@ function initScreenshotLightbox() {
 }
 
 function initScrollAnimations() {
+  // We skip when IntersectionObserver is unavailable (jsdom in Vitest, very old browsers).
+  if (typeof IntersectionObserver === "undefined") return;
+
   const targets = document.querySelectorAll("[data-animate]");
   if (!targets.length) return;
 
