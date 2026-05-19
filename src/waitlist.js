@@ -35,7 +35,7 @@ export function validateEmail(email) {
   return { ok: true, normalized };
 }
 
-export async function joinWaitlist(email) {
+export async function joinWaitlist(email, interests = []) {
   if (!isFirebaseConfigured()) {
     throw new Error("Waitlist is unavailable because Firebase is not configured.");
   }
@@ -65,6 +65,7 @@ export async function joinWaitlist(email) {
       page: "home",
       // Keep legacy marker field to support future migration tooling if needed.
       legacyId: toLegacyWaitlistDocId(normalizedEmail),
+      ...(interests.length ? { interests } : {}),
     });
   } catch (error) {
     // Rules deny updates, so a second signup to the same deterministic doc id
