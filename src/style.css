@@ -1035,9 +1035,6 @@ h1 {
   gap: 0.5rem 2rem;
 }
 
-.waitlist-check span {
-  white-space: nowrap;
-}
 
 .waitlist-check {
   display: flex;
