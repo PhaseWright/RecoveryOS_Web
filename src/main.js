@@ -292,8 +292,8 @@ document.querySelector("#app").innerHTML = `
               Join waitlist
             </button>
           </div>
-          <fieldset class="waitlist-interests">
-            <legend class="waitlist-interests__legend">What interests you most? <span class="waitlist-interests__opt">(optional)</span></legend>
+          <div class="waitlist-interests" role="group" aria-labelledby="interests-label">
+            <p id="interests-label" class="waitlist-interests__legend">What interests you most? <span class="waitlist-interests__opt">(optional)</span></p>
             <div class="waitlist-interests__grid">
               <label class="waitlist-check">
                 <input type="checkbox" name="interests" value="daily-structure" />
@@ -312,7 +312,7 @@ document.querySelector("#app").innerHTML = `
                 <span>Community &amp; accountability</span>
               </label>
             </div>
-          </fieldset>
+          </div>
           <p id="waitlist-message" class="waitlist-message" role="status" aria-live="polite"></p>
         </form>
       </section>
