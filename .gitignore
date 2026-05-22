@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+
+# Environment — .env.example is the committed template
 .env*
 !.env.example
 
@@ -34,3 +36,15 @@ _*-backup/
 
 # Cursor IDE machine-local state (we track `.cursor/settings.json` for cross-repo plugin parity — see AGENTS.md)
 .cursor/hooks/state/
+
+# Machine-local file variants — named *-Mikes-PC.* on this workstation; never commit
+*-Mikes-PC*
+
+# Claude Code local config, permissions, and worktrees — not project source
+.claude/
+
+# Agent skill bundles populated by Claude Code / Hermes sync
+.agents/
+
+# Firebase local runtime cache (not firebase.json / .firebaserc)
+.firebase/

@@ -1,0 +1,108 @@
+{
+  "mcpServers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+    "firebase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "firebase-tools@latest",
+        "mcp",
+        "--dir",
+        "."
+      ],
+      "env": {
+        "IS_FIREBASE_MCP": "true"
+      }
+    },
+    "cloudflare-api": {
+      "type": "http",
+      "url": "https://mcp.cloudflare.com/mcp"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    },
+    "resend": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "resend-mcp"
+      ],
+      "env": {
+        "RESEND_API_KEY": "${RESEND_API_KEY}"
+      }
+    },
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
+    },
+    "sentry": {
+      "type": "http",
+      "url": "https://mcp.sentry.dev/mcp"
+    },
+    "postman": {
+      "type": "http",
+      "url": "https://mcp.postman.com/mcp"
+    },
+    "postiz": {
+      "type": "http",
+      "url": "http://localhost:4007/api/mcp",
+      "headers": {
+        "Authorization": "Bearer ${POSTIZ_API_KEY}"
+      }
+    },
+    "outlook": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\codem\\.claude\\plugins\\cache\\outlook-tools\\outlook\\0.1.0",
+        "run",
+        "outlook-mcp"
+      ]
+    },
+    "windows-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\codem\\AppData\\Local\\Packages\\Claude_pzs8sxrjxfjjc\\LocalCache\\Roaming\\Claude\\Claude Extensions\\ant.dir.cursortouch.windows-mcp",
+        "run",
+        "windows-mcp"
+      ],
+      "env": {
+        "MODE": "local",
+        "ANONYMIZED_TELEMETRY": "false",
+        "WINDOWS_MCP_PROFILE_SNAPSHOT": "false",
+        "WINDOWS_MCP_SCREENSHOT_BACKEND": "auto",
+        "WINDOWS_MCP_DEBUG": "false"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "E:\\PhaseWright",
+        "C:\\AI",
+        "C:\\Users\\codem\\Documents",
+        "C:\\Users\\codem\\Downloads"
+      ]
+    },
+    "blender": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\codem\\AppData\\Local\\Packages\\Claude_pzs8sxrjxfjjc\\LocalCache\\Roaming\\Claude\\Claude Extensions\\ant.dir.gh.blender.blender-mcp",
+        "run",
+        "blender-mcp"
+      ]
+    }
+  }
+}
