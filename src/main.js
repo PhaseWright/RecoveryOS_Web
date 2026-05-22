@@ -8,7 +8,7 @@ const socialSectionHidden =
 
 document.querySelector("#app").innerHTML = `
   <div class="page">
-    <a class="skip-link" href="#waitlist">Skip to waitlist</a>
+    <a class="skip-link" href="#waitlist">Skip to beta testing signup</a>
     <header class="site-header">
       <a class="brand-lockup" href="/" aria-label="RecoveryOS home">
         <img src="/brand/RecoveryOS_Horizontal_Logo.svg" alt="RecoveryOS" />
@@ -30,7 +30,7 @@ document.querySelector("#app").innerHTML = `
                   <img class="hero-store-badge" src="/store/google-play.svg" alt="Google Play" decoding="async" />
                   <span class="store-badge store-badge--soon">Coming soon</span>
                 </div>
-                <a class="btn btn-secondary" href="#waitlist">Join early access waitlist</a>
+                <a class="btn btn-secondary" href="#waitlist">Join the beta testing</a>
               </div>
               <div class="hero-store-col">
                 <div class="hero-store-item">
@@ -176,7 +176,7 @@ document.querySelector("#app").innerHTML = `
             <li>You get to help shape RecoveryOS into the best tool for your recovery.</li>
           </ul>
           <div class="pro-highlight__cta">
-            <a class="btn btn-primary pro-highlight__btn" href="#waitlist">Join the waitlist for launch + Pro updates</a>
+            <a class="btn btn-primary pro-highlight__btn" href="#waitlist">Join the beta testing for launch + Pro updates</a>
           </div>
         </div>
       </section>
@@ -191,7 +191,7 @@ document.querySelector("#app").innerHTML = `
         </p>
         <p>
           Sharing is always user-initiated: they choose whether to export, what to include in conversation, and when.
-          Raw inventory stays on-device unless they explicitly export or share; this site and waitlist follow the same privacy posture.
+          Raw inventory stays on-device unless they explicitly export or share; this site and beta testing signup follow the same privacy posture.
         </p>
         <p>
           It is not a replacement for treatment, therapy, medical advice, medication, crisis care, or clinical judgement.
@@ -251,15 +251,15 @@ document.querySelector("#app").innerHTML = `
           <li>You can use basic RecoveryOS without creating an account.</li>
           <li>We will never sell your data to third parties.</li>
           <li>We know how important your recovery and privacy is to you, and we will never compromise that.</li>
-          <li>If you join the waitlist, we only keep the basics: your email, signup time, and where the signup came from.</li>
+          <li>If you join the beta testing, we only keep the basics: your email, signup time, and where the signup came from.</li>
           <li>If you choose to send a bug report from the app, we receive only what you submit (message, optional screenshot, and diagnostics required to troubleshoot).</li>
         </ul>
       </section>
 
       <section id="waitlist" class="waitlist" data-animate>
         <div class="waitlist-head">
-          <p class="eyebrow">Early Access</p>
-          <h2>Join the RecoveryOS tester waitlist</h2>
+          <p class="eyebrow">Beta testing</p>
+          <h2>Join the RecoveryOS beta testing</h2>
           <p>
             Build a life your body and mind want to return to.
             We will send launch updates, tester invites, and release announcements.
@@ -289,7 +289,7 @@ document.querySelector("#app").innerHTML = `
               required
             />
             <button id="waitlist-submit" class="btn btn-primary" type="submit">
-              Join waitlist
+              Join the beta testing
             </button>
           </div>
           <div class="waitlist-interests" role="group" aria-labelledby="interests-label">
@@ -374,7 +374,7 @@ const firebaseReady = isFirebaseConfigured();
 
 function setFormState({ loading = false, tone = "neutral", message = "" } = {}) {
   submitButton.disabled = loading || !firebaseReady;
-  submitButton.textContent = loading ? "Joining..." : "Join waitlist";
+  submitButton.textContent = loading ? "Joining..." : "Join the beta testing";
   messageEl.textContent = message;
   messageEl.dataset.tone = tone;
 }
@@ -385,7 +385,7 @@ form.addEventListener("submit", async (event) => {
   const hp = document.querySelector("#waitlist-hp");
   if (hp?.value?.trim()) {
     telemetryEvent("waitlist_honeypot_hit");
-    setFormState({ loading: false, tone: "success", message: "Thanks. You're on the waitlist." });
+    setFormState({ loading: false, tone: "success", message: "Thanks. You're signed up for beta testing." });
     form.reset();
     return;
   }
@@ -393,7 +393,7 @@ form.addEventListener("submit", async (event) => {
   if (!firebaseReady) {
     setFormState({
       tone: "error",
-      message: "Waitlist is temporarily unavailable. Please try again after setup.",
+      message: "Beta testing signup is temporarily unavailable. Please try again after setup.",
     });
     return;
   }

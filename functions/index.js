@@ -407,14 +407,14 @@ export const sendWaitlistConfirmationEmail = onDocumentCreated(
       { merge: true }
     );
 
-    const subject = "You're on the RecoveryOS waitlist";
-    const text = `Thank you for joining the RecoveryOS waitlist.
+    const subject = "You're signed up for RecoveryOS beta testing";
+    const text = `Thank you for joining the RecoveryOS beta testing.
 
 If you'd like to join the Android tester group at this stage, email ${TESTER_CONTACT_EMAIL}.
 
 - RecoveryOS Team`;
 
-    const html = `<p>Thank you for joining the RecoveryOS waitlist.</p>
+    const html = `<p>Thank you for joining the RecoveryOS beta testing.</p>
 <p>If you'd like to join the Android tester group at this stage, email <a href="mailto:${TESTER_CONTACT_EMAIL}">${TESTER_CONTACT_EMAIL}</a>.</p>
 <p>- RecoveryOS Team</p>`;
 
@@ -453,8 +453,8 @@ If you'd like to join the Android tester group at this stage, email ${TESTER_CON
 
     const confirmationResult = await confirmationResponse.json();
 
-    const adminSubject = "New RecoveryOS waitlist signup";
-    const adminText = `A new waitlist signup was captured.
+    const adminSubject = "New RecoveryOS beta testing signup";
+    const adminText = `A new beta testing signup was captured.
 
 Email: ${recipient}
 Document ID: ${entryId}
@@ -463,7 +463,7 @@ Page: ${signup.page ?? "unknown"}
 
 If this person requests Android tester access, route them to ${TESTER_CONTACT_EMAIL}.`;
 
-    const adminHtml = `<p>A new waitlist signup was captured.</p>
+    const adminHtml = `<p>A new beta testing signup was captured.</p>
 <ul>
   <li><strong>Email:</strong> ${recipient}</li>
   <li><strong>Document ID:</strong> ${entryId}</li>

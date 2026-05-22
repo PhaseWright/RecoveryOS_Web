@@ -37,7 +37,7 @@ export function validateEmail(email) {
 
 export async function joinWaitlist(email, interests = []) {
   if (!isFirebaseConfigured()) {
-    throw new Error("Waitlist is unavailable because Firebase is not configured.");
+    throw new Error("Beta testing signup is unavailable because Firebase is not configured.");
   }
 
   const validation = validateEmail(email);
@@ -71,10 +71,10 @@ export async function joinWaitlist(email, interests = []) {
     // Rules deny updates, so a second signup to the same deterministic doc id
     // is interpreted as an already-registered email.
     if (error?.code === "permission-denied") {
-      return { status: "duplicate", message: "You're already on the waitlist." };
+      return { status: "duplicate", message: "You're already signed up for beta testing." };
     }
     throw error;
   }
 
-  return { status: "created", message: "Thanks. You're on the waitlist." };
+  return { status: "created", message: "Thanks. You're signed up for beta testing." };
 }
