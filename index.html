@@ -32,9 +32,49 @@
       name="twitter:description"
       content="Private, local-first recovery support built for the long game. Join the beta testing."
     />
+
+    <!-- Structured data: helps Google understand this is a recovery app, not just a page. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "RecoveryOS",
+      "operatingSystem": "Android",
+      "applicationCategory": "HealthApplication",
+      "description": "RecoveryOS is a private, local-first, non-12-step recovery support app. Body-first regulation tools, judgment-free urge tracking, and a daily seven-area check-in built around how the body and brain actually heal.",
+      "url": "https://recoveryos.org/",
+      "image": "https://recoveryos.org/brand/opengraph.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "PhaseWright Labs",
+        "url": "https://recoveryos.org/"
+      }
+    }
+    </script>
   </head>
   <body>
-    <div id="app"></div>
+    <!-- Crawler/no-JS fallback: real content in the initial HTML so low-authority indexing
+         doesn't depend entirely on JS rendering. The SPA replaces #app on load. -->
+    <div id="app">
+      <h1>RecoveryOS — Recovery isn't willpower. It's practice.</h1>
+      <p>
+        RecoveryOS is a private, local-first recovery support app. Not a 12-step program.
+        Not a shame tracker. Not a replacement for your counselor or your community. A daily
+        tool built around how your body and brain actually heal: body-first regulation before
+        you react, judgment-free urge and trigger tracking, and a daily seven-area check-in.
+        Your data stays on your device by default. Android beta testing is open now.
+      </p>
+      <noscript>
+        <p>RecoveryOS needs JavaScript for the full experience, but here's the short version:
+        a non-12-step, privacy-first daily recovery tool. Email frenchie.mike1123@gmail.com
+        or visit recoveryos.org to join the Android beta.</p>
+      </noscript>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

@@ -1,0 +1,8 @@
+# RecoveryOS — recoveryos.org
+# Allow everything; the site is public and we want it indexed.
+User-agent: *
+Allow: /
+
+# Block nothing sensitive lives behind the SPA; legal pages are fine to index.
+
+Sitemap: https://recoveryos.org/sitemap.xml
