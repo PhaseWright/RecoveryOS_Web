@@ -2,9 +2,19 @@ import "./style.css";
 import { isFirebaseConfigured } from "./firebaseClient.js";
 import { joinWaitlist } from "./waitlist.js";
 import { telemetryEvent } from "./telemetry.js";
+import {
+  initContactLinkTracking,
+  initStoreLinkTracking,
+  observeViewContentOnce,
+  trackLead,
+  trackViewContent,
+} from "./metaPixel.js";
+import { getStoreBadgeMarkup } from "./storeLinks.js";
 
 const socialSectionHidden =
   import.meta.env.DEV || import.meta.env.VITE_SHOW_SOCIAL === "true" ? "" : "hidden";
+
+const { googlePlay: googlePlayBadge, appStore: appStoreBadge } = getStoreBadgeMarkup();
 
 document.querySelector("#app").innerHTML = `
   <div class="page">
@@ -26,17 +36,11 @@ document.querySelector("#app").innerHTML = `
           <div class="hero-actions">
             <div class="hero-stores">
               <div class="hero-store-col">
-                <div class="hero-store-item">
-                  <img class="hero-store-badge" src="/store/google-play.svg" alt="Google Play" decoding="async" />
-                  <span class="store-badge store-badge--soon">Coming soon</span>
-                </div>
+                ${googlePlayBadge}
                 <a class="btn btn-secondary" href="#waitlist">Join the beta testing</a>
               </div>
               <div class="hero-store-col">
-                <div class="hero-store-item">
-                  <img class="hero-store-badge hero-store-badge--app-store" src="/store/app-store.svg" alt="Download on the App Store" decoding="async" />
-                  <span class="store-badge store-badge--soon">Coming soon</span>
-                </div>
+                ${appStoreBadge}
                 <a class="btn btn-secondary" href="#professionals">View professional overview</a>
               </div>
             </div>
@@ -408,6 +412,10 @@ form.addEventListener("submit", async (event) => {
     const result = await joinWaitlist(email, interests);
 
     if (result.status === "created") {
+      trackLead({
+        content_name: "beta_waitlist",
+        content_category: "marketing_site",
+      });
       setFormState({ loading: false, tone: "success", message: result.message });
       form.reset();
       return;
@@ -518,6 +526,10 @@ function initScreenshotLightbox() {
     lastFocus = document.activeElement;
     img.src = sourceImg.currentSrc || sourceImg.src;
     img.alt = sourceImg.alt || "";
+    trackViewContent({
+      content_name: sourceImg.alt || "app_screenshot",
+      content_category: "product_gallery",
+    });
     scale = computeFitScale(sourceImg);
     tx = 0;
     ty = 0;
@@ -704,3 +716,13 @@ function initScrollAnimations() {
 
 initScreenshotLightbox();
 initScrollAnimations();
+initContactLinkTracking();
+initStoreLinkTracking();
+observeViewContentOnce("#waitlist", {
+  content_name: "beta_waitlist_section",
+  content_category: "marketing_site",
+});
+observeViewContentOnce("#professionals", {
+  content_name: "professionals_overview",
+  content_category: "marketing_site",
+});

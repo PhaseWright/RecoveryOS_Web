@@ -169,6 +169,29 @@ h1 {
   opacity: 0.82;
 }
 
+.hero-store-item--active {
+  opacity: 1;
+  text-decoration: none;
+  border-radius: 0.45rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hero-store-item--active:hover,
+.hero-store-item--active:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 212, 170, 0.14);
+  outline: none;
+}
+
+.hero-store-item--active:focus-visible {
+  outline: 2px solid #00d4aa;
+  outline-offset: 3px;
+}
+
+.hero-store-item--pending {
+  cursor: default;
+}
+
 .hero-store-badge {
   display: block;
   height: 44px;

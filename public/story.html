@@ -18,6 +18,15 @@
   <meta name="twitter:title" content="The Story — RecoveryOS" />
   <meta name="twitter:description" content="Why RecoveryOS exists. Written by Michael du Preez, founder and recovering addict." />
 
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1522726426004273');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', { content_name: 'founder_story', content_category: 'marketing_site' });
+  </script>
+  <!-- End Meta Pixel Code -->
+
   <style>
     *, *::before, *::after { box-sizing: border-box; }
 
@@ -289,6 +298,9 @@
   </style>
 </head>
 <body>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1522726426004273&ev=PageView&noscript=1" alt="" />
+  </noscript>
   <div class="page">
 
     <header class="site-header">
@@ -428,5 +440,21 @@
     </footer>
 
   </div>
+  <script>
+    document.addEventListener(
+      "click",
+      function (event) {
+        var target = event.target;
+        var anchor =
+          target && target.closest ? target.closest('a[href^="mailto:"]') : null;
+        if (!anchor || typeof fbq !== "function") return;
+        fbq("track", "Contact", {
+          content_name: "support_email",
+          content_category: "marketing_site",
+        });
+      },
+      true,
+    );
+  </script>
 </body>
 </html>
