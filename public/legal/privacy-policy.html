@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Consent Mode v2 defaults - see index.html for the full explanation. Must run before GTM. -->
+  <script id="ros-privacy-overlay-marker">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500,
+    });
+    (function () {
+      try {
+        var saved = JSON.parse(localStorage.getItem('rios_consent_v1') || 'null');
+        if (saved && typeof saved === 'object') {
+          gtag('consent', 'update', {
+            analytics_storage: saved.analytics ? 'granted' : 'denied',
+            ad_storage: saved.marketing ? 'granted' : 'denied',
+            ad_user_data: saved.marketing ? 'granted' : 'denied',
+            ad_personalization: saved.marketing ? 'granted' : 'denied',
+          });
+        }
+      } catch (e) { /* We treat unreadable storage as "no decision yet". */ }
+    })();
+  </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,6 +33,8 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-TCL443VB');</script>
   <!-- End Google Tag Manager -->
+  <script defer src="/cookie-consent.js"></script>
+
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Recovery OS — Privacy Policy</title>
@@ -29,6 +56,7 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCL443VB"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+
   <h1>RECOVERY OS — PRIVACY POLICY</h1>
   <p class="muted">Effective date: 5 May 2026. Last updated: 9 June 2026. We may update this page when the app or data practices change; the in-app About screen links to this URL for the Play Store listing.</p>
 
@@ -67,16 +95,47 @@
     <li>your free-text description of the issue;</li>
     <li>an optional screenshot you attach;</li>
     <li>app version, device user-agent, language, platform, screen size, and the current URL;</li>
-    <li>the last captured app error from the <em>current</em> app launch only (technical message and stack trace; we deliberately discard any error captured before the current launch so stale issues are never sent);</li>
+    <li>the last captured app error (technical message and stack trace only — never your journal content), together with a flag telling our support team whether it occurred in the current app launch or a previous one;</li>
+    <li>a short trail of recent technical events from the current launch (feature names and status flags only — for example, "billing reconcile failed" — never any text you typed);</li>
     <li>a random per-launch session identifier so our support team can tell whether a given error and report belong to the same run (this identifier is regenerated on every cold start and is not linked to your identity);</li>
     <li>a small set of non-sensitive UI settings: theme, text size, notification preferences, and Pro entitlement source and expiry.</li>
   </ul>
   <p><strong>We do not include your journal entries, sobriety start date, or chosen name in bug reports.</strong> This data is used only for support and debugging, not for advertising or profiling.</p>
 
-  <h2>6. Analytics and advertising</h2>
+  <h2>6. Analytics and advertising (the app)</h2>
   <p>The app does not include third-party analytics SDKs or advertising networks. We do not sell your personal information.</p>
 
-  <h2>6a. Marketing site waitlist (recoveryos.org)</h2>
+
+  <h2>6a. Cookies and tracking on recoveryos.org (marketing site)</h2>
+  <p>Our public marketing site at <a href="https://recoveryos.org" rel="noopener noreferrer">recoveryos.org</a> — separate from the app itself — uses cookies and similar technologies for analytics and marketing, gated behind the cookie banner shown on your first visit:</p>
+  <table>
+    <thead>
+      <tr><th>Category</th><th>Technology</th><th>Purpose</th><th>Loads before consent?</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Necessary</td>
+        <td>Local storage of your cookie choice</td>
+        <td>Remembers your cookie preference so we don't ask every visit</td>
+        <td>Yes (required for the banner itself to function)</td>
+      </tr>
+      <tr>
+        <td>Analytics</td>
+        <td>Google Tag Manager (GTM) &amp; Google Analytics 4 (GA4)</td>
+        <td>Aggregate traffic and usage measurement (pages viewed, waitlist conversions, section engagement)</td>
+        <td>No — only after you accept analytics cookies</td>
+      </tr>
+      <tr>
+        <td>Marketing</td>
+        <td>Meta (Facebook) Pixel</td>
+        <td>Measuring and improving campaign performance for RecoveryOS ads and posts</td>
+        <td>No — only after you accept marketing cookies</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>You can change your choice at any time using the <strong>Cookie settings</strong> link in the site footer. Where Google Consent Mode v2 is supported, we also signal your choice directly to Google's tags. This site does not currently offer a full cookie policy separate from this section; the categories above are exhaustive for recoveryos.org as of the effective date below.</p>
+
+  <h2>6b. Marketing site waitlist (recoveryos.org)</h2>
   <p>Our public marketing site at <a href="https://recoveryos.org" rel="noopener noreferrer">recoveryos.org</a> includes an optional <strong>early-access waitlist</strong>. If you submit your email address there, we store the following in <strong>Google Firebase / Cloud Firestore</strong> as our processor:</p>
   <ul>
     <li>your email address (lowercased);</li>
@@ -132,5 +191,13 @@
 
   <h2>13. Contact</h2>
   <p>For privacy questions, contact <a href="mailto:support@recoveryos.org">support@recoveryos.org</a> (or: support [at] recoveryos.org).</p>
+
+  <hr style="border:none;border-top:1px solid #d6dee6;margin:2rem 0 1rem;" />
+  <p class="muted">
+    <a href="/">RecoveryOS home</a> ·
+    <a href="/legal/terms-of-service.html">Terms of service</a> ·
+    <a href="/ai-info.html">AI info</a> ·
+    <a href="#" data-ros-open-consent>Cookie settings</a>
+  </p>
 </body>
 </html>

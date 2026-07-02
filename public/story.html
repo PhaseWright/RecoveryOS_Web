@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Consent Mode v2 defaults - see index.html for the full explanation. Must run before GTM. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500,
+    });
+    (function () {
+      try {
+        var saved = JSON.parse(localStorage.getItem('rios_consent_v1') || 'null');
+        if (saved && typeof saved === 'object') {
+          gtag('consent', 'update', {
+            analytics_storage: saved.analytics ? 'granted' : 'denied',
+            ad_storage: saved.marketing ? 'granted' : 'denied',
+            ad_user_data: saved.marketing ? 'granted' : 'denied',
+            ad_personalization: saved.marketing ? 'granted' : 'denied',
+          });
+        }
+      } catch (e) { /* We treat unreadable storage as "no decision yet". */ }
+    })();
+  </script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,6 +33,7 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-TCL443VB');</script>
   <!-- End Google Tag Manager -->
+  <script defer src="/cookie-consent.js"></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#070d18" />
@@ -25,12 +51,23 @@
   <meta name="twitter:title" content="The Story — RecoveryOS" />
   <meta name="twitter:description" content="Why RecoveryOS exists. Written by Michael du Preez, founder and recovering addict." />
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel: harmless stub only - the real loader stays gated behind consent, see index.html. -->
   <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2270643049659747');
-    fbq('track', 'PageView');
-    fbq('track', 'ViewContent', { content_name: 'founder_story', content_category: 'marketing_site' });
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window,document,'script');
+    window.__recoveryOSPixelId = '2270643049659747';
+    window.__recoveryOSPixelExtraEvent = { name: 'ViewContent', params: { content_name: 'founder_story', content_category: 'marketing_site' } };
+    window.__recoveryOSLoadMetaPixel = function (pixelId, extraEvent) {
+      if (window.__recoveryOSMetaPixelLoaded) return;
+      window.__recoveryOSMetaPixelLoaded = true;
+      var t = document.createElement('script');
+      t.async = true;
+      t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(t, s);
+      fbq('init', pixelId);
+      fbq('track', 'PageView');
+      if (extraEvent) fbq('track', extraEvent.name, extraEvent.params);
+    };
   </script>
   <!-- End Meta Pixel Code -->
   <script>
@@ -129,10 +166,26 @@
       color: #f2f8fc;
     }
 
+    .story-byline-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .story-byline-photo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid rgba(0, 212, 170, 0.45);
+    }
+
     .story-byline {
       margin: 0;
       color: #7aa8bc;
       font-size: 0.9rem;
+      line-height: 1.5;
     }
 
     /* ── Prose ── */
@@ -319,9 +372,7 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCL443VB"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2270643049659747&ev=PageView&noscript=1" alt="" />
-  </noscript>
+  <!-- No noscript Meta Pixel fallback - see index.html for why. -->
   <div class="page">
 
     <header class="site-header">
@@ -336,7 +387,14 @@
       <section class="story-header">
         <p class="eyebrow">The story behind the app</p>
         <h1 class="story-title">I built what I needed.</h1>
-        <p class="story-byline">By Michael du Preez — founder, PhaseWright Labs / RecoveryOS</p>
+        <div class="story-byline-row">
+          <img class="story-byline-photo" src="/brand/founder-michael.png" alt="Michael du Preez, founder of RecoveryOS" width="56" height="56" loading="lazy" decoding="async" />
+          <p class="story-byline">
+            By Michael du Preez — founder, PhaseWright Labs / RecoveryOS
+            <br />
+            <a href="https://www.facebook.com/MichaelFrenchieDuPreez" rel="noopener noreferrer">Follow me on Facebook</a>
+          </p>
+        </div>
       </section>
 
       <!-- Brief version -->
@@ -457,7 +515,12 @@
     <footer class="site-footer">
       <p>Built by PhaseWright Labs.</p>
       <p>Need support? <a href="mailto:support@recoveryos.org">support@recoveryos.org</a></p>
-      <p><a href="/legal/privacy-policy.html">Privacy policy</a></p>
+      <p class="footer-legal-links">
+        <a href="/legal/privacy-policy.html">Privacy policy</a> ·
+        <a href="/legal/terms-of-service.html">Terms of service</a> ·
+        <a href="/ai-info.html">AI info</a> ·
+        <a href="#" data-ros-open-consent>Cookie settings</a>
+      </p>
     </footer>
 
   </div>

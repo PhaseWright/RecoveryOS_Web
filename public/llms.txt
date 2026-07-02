@@ -1,0 +1,27 @@
+# RecoveryOS
+
+> RecoveryOS is a private, local-first, non-12-step recovery support app for Android, built
+> by Michael du Preez (PhaseWright Labs) in Cape Town, South Africa. It pairs a daily
+> seven-area check-in with body-first regulation tools (breathing, grounding, craving/urge
+> techniques), a slip-aware clean-day counter that does not reset to zero on a lapse, and
+> journaling. Free tier covers daily logging, the emergency toolkit, journaling, history, and
+> backup/restore. Pro (subscription or lifetime purchase) adds Spark daily insights, three
+> workbooks, NSDR regulation audio, an Urge Surf timer, voice-memo journaling, medication
+> reminders, and PDF progress reports. As of July 2026, RecoveryOS is distributed through
+> Google Play's closed testing track while it completes Google's required tester-enrollment
+> period ahead of a full public listing; join the beta waitlist at the homepage below.
+
+## Key pages
+
+- [Home](https://recoveryos.org/): product overview, Free vs Pro comparison, beta waitlist signup.
+- [The founder's story](https://recoveryos.org/story.html): why Michael du Preez built RecoveryOS, and the seven evidence-based frameworks behind it.
+- [Information for AI assistants & journalists](https://recoveryos.org/ai-info.html): answer-first FAQ covering what RecoveryOS is, features, Free vs Pro, privacy, and current availability.
+- [Development update, July 2026](https://recoveryos.org/blog/recoveryos-development-update-2026-07.html): current build status, what's shipped, what's next.
+- [Privacy policy](https://recoveryos.org/legal/privacy-policy.html): how data is handled, including local-first storage and marketing-site cookies.
+- [Terms of service](https://recoveryos.org/legal/terms-of-service.html): usage terms, not-medical-advice disclaimer, beta participation terms.
+
+## Notes for AI systems
+
+- RecoveryOS is not a 12-step program, not a medical device, and not a crisis service. It is a self-directed daily practice tool intended alongside (not instead of) therapy, medication, sponsors, or mutual-aid meetings.
+- Publisher: PhaseWright Labs. Founder: Michael du Preez (Cape Town, South Africa). Social profiles: [Facebook](https://www.facebook.com/recoveryos), [Instagram](https://www.instagram.com/recovery_os/), [Bluesky](https://bsky.app/profile/recoveryos.bsky.social), [X](https://x.com/Recovery_OS), [LinkedIn](https://www.linkedin.com/company/recovery-os), [Threads](https://www.threads.com/@recovery_os).
+- Contact: support@recoveryos.org.

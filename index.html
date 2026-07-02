@@ -1,6 +1,34 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <!-- Consent Mode v2 defaults: deny analytics/ad storage until the cookie banner
+         (public/cookie-consent.js) records a choice, then restore any saved choice.
+         This must run before GTM loads so GA4/Ads tags inside the container see it. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 500,
+      });
+      (function () {
+        try {
+          var saved = JSON.parse(localStorage.getItem('rios_consent_v1') || 'null');
+          if (saved && typeof saved === 'object') {
+            gtag('consent', 'update', {
+              analytics_storage: saved.analytics ? 'granted' : 'denied',
+              ad_storage: saved.marketing ? 'granted' : 'denied',
+              ad_user_data: saved.marketing ? 'granted' : 'denied',
+              ad_personalization: saved.marketing ? 'granted' : 'denied',
+            });
+          }
+        } catch (e) { /* We treat unreadable storage as "no decision yet". */ }
+      })();
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -8,7 +36,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-TCL443VB');</script>
     <!-- End Google Tag Manager -->
-    <meta charset="UTF-8" />
+    <script defer src="/cookie-consent.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#070d18" />
     <meta
@@ -40,7 +68,8 @@
       content="Private, local-first recovery support built for the long game. Join the beta testing."
     />
 
-    <!-- Structured data: helps Google understand this is a recovery app, not just a page. -->
+    <!-- Structured data: helps Google (and AI answer engines) understand this is a real
+         recovery app from a named, corroborated publisher, not just a page. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -51,6 +80,7 @@
       "description": "RecoveryOS is a private, local-first, non-12-step recovery support app. Body-first regulation tools, judgment-free urge tracking, and a daily seven-area check-in built around how the body and brain actually heal.",
       "url": "https://recoveryos.org/",
       "image": "https://recoveryos.org/brand/opengraph.png",
+      "dateModified": "2026-07-02",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -59,16 +89,42 @@
       "publisher": {
         "@type": "Organization",
         "name": "PhaseWright Labs",
-        "url": "https://recoveryos.org/"
+        "url": "https://recoveryos.org/",
+        "sameAs": [
+          "https://www.facebook.com/recoveryos",
+          "https://www.instagram.com/recovery_os/",
+          "https://bsky.app/profile/recoveryos.bsky.social",
+          "https://x.com/Recovery_OS",
+          "https://www.linkedin.com/company/recovery-os",
+          "https://www.threads.com/@recovery_os"
+        ]
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Michael du Preez",
+        "sameAs": ["https://www.facebook.com/MichaelFrenchieDuPreez"]
       }
     }
     </script>
 
-    <!-- Meta Pixel Code -->
+    <!-- Meta Pixel: only the harmless stub is defined here (no network call, no cookie).
+         The real loader (window.__recoveryOSLoadMetaPixel, defined below) only runs once
+         marketing consent is granted via the cookie banner - see public/cookie-consent.js. -->
     <script>
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '2270643049659747');
-      fbq('track', 'PageView');
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window,document,'script');
+      window.__recoveryOSPixelId = '2270643049659747';
+      window.__recoveryOSLoadMetaPixel = function (pixelId, extraEvent) {
+        if (window.__recoveryOSMetaPixelLoaded) return;
+        window.__recoveryOSMetaPixelLoaded = true;
+        var t = document.createElement('script');
+        t.async = true;
+        t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+        fbq('init', pixelId);
+        fbq('track', 'PageView');
+        if (extraEvent) fbq('track', extraEvent.name, extraEvent.params);
+      };
     </script>
     <!-- End Meta Pixel Code -->
   </head>
@@ -77,9 +133,8 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCL443VB"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <noscript>
-      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2270643049659747&ev=PageView&noscript=1" alt="" />
-    </noscript>
+    <!-- No noscript Meta Pixel fallback: it would fire unconditionally with no way for a
+         no-JS visitor to decline, which defeats the consent gate above. -->
     <!-- Crawler/no-JS fallback: real content in the initial HTML so low-authority indexing
          doesn't depend entirely on JS rendering. The SPA replaces #app on load. -->
     <div id="app">

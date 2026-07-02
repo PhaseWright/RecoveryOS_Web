@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Consent Mode v2 defaults - see index.html for the full explanation. Must run before GTM. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500,
+    });
+    (function () {
+      try {
+        var saved = JSON.parse(localStorage.getItem('rios_consent_v1') || 'null');
+        if (saved && typeof saved === 'object') {
+          gtag('consent', 'update', {
+            analytics_storage: saved.analytics ? 'granted' : 'denied',
+            ad_storage: saved.marketing ? 'granted' : 'denied',
+            ad_user_data: saved.marketing ? 'granted' : 'denied',
+            ad_personalization: saved.marketing ? 'granted' : 'denied',
+          });
+        }
+      } catch (e) { /* We treat unreadable storage as "no decision yet". */ }
+    })();
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TCL443VB');</script>
+  <!-- End Google Tag Manager -->
+  <script defer src="/cookie-consent.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#070d18" />
+  <meta name="description" content="Where RecoveryOS actually stands in early July 2026: what's shipped, what's Pro vs Free, and why it's not on the public Play Store yet — written by founder Michael du Preez." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="canonical" href="https://recoveryos.org/blog/recoveryos-development-update-2026-07.html" />
+  <title>Where RecoveryOS actually stands — July 2026 — RecoveryOS</title>
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="RecoveryOS" />
+  <meta property="og:title" content="Where RecoveryOS actually stands — July 2026" />
+  <meta property="og:description" content="What's shipped, what's Free vs Pro, and why public launch isn't quite here yet — a straight update from founder Michael du Preez." />
+  <meta property="og:url" content="https://recoveryos.org/blog/recoveryos-development-update-2026-07.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Where RecoveryOS actually stands — July 2026" />
+  <meta name="twitter:description" content="What's shipped, what's Free vs Pro, and why public launch isn't quite here yet — a straight update from founder Michael du Preez." />
+
+  <!-- Meta Pixel: harmless stub only - gated behind consent, see index.html. -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window,document,'script');
+    window.__recoveryOSPixelId = '2270643049659747';
+    window.__recoveryOSPixelExtraEvent = { name: 'ViewContent', params: { content_name: 'dev_update_2026_07', content_category: 'marketing_site' } };
+    window.__recoveryOSLoadMetaPixel = function (pixelId, extraEvent) {
+      if (window.__recoveryOSMetaPixelLoaded) return;
+      window.__recoveryOSMetaPixelLoaded = true;
+      var t = document.createElement('script');
+      t.async = true;
+      t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(t, s);
+      fbq('init', pixelId);
+      fbq('track', 'PageView');
+      if (extraEvent) fbq('track', extraEvent.name, extraEvent.params);
+    };
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Where RecoveryOS actually stands — July 2026",
+    "datePublished": "2026-07-02",
+    "dateModified": "2026-07-02",
+    "author": { "@type": "Person", "name": "Michael du Preez", "url": "https://recoveryos.org/story.html" },
+    "publisher": { "@type": "Organization", "name": "PhaseWright Labs", "url": "https://recoveryos.org/" },
+    "mainEntityOfPage": "https://recoveryos.org/blog/recoveryos-development-update-2026-07.html"
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root { font-family: "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(0, 212, 170, 0.14), transparent 38%),
+        radial-gradient(circle at 20% 10%, rgba(0, 168, 255, 0.08), transparent 34%),
+        #070d18;
+      color: #dde8f0;
+      line-height: 1.7;
+    }
+    a { color: #00d4aa; text-underline-offset: 3px; }
+    a:hover { color: #7af5de; }
+    .page { width: min(720px, 100%); margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+    .site-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2.5rem; border-bottom: 1px solid #162538; padding-bottom: 1rem; }
+    .brand-lockup { display: inline-flex; align-items: center; text-decoration: none; }
+    .brand-lockup img { height: 32px; width: auto; display: block; }
+    .nav-back { font-size: 0.85rem; font-weight: 600; color: #7aa8bc; text-decoration: none; letter-spacing: 0.03em; }
+    .nav-back:hover { color: #00d4aa; }
+    .eyebrow { margin: 0 0 0.75rem; color: #00d4aa; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.82rem; }
+    .post-title { margin: 0 0 0.75rem; font-size: clamp(1.8rem, 4.5vw, 2.6rem); line-height: 1.15; letter-spacing: -0.02em; color: #f2f8fc; }
+    .byline-row { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 2.5rem; }
+    .byline-photo { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid rgba(0, 212, 170, 0.45); }
+    .byline { margin: 0; color: #7aa8bc; font-size: 0.88rem; }
+    .prose { font-size: 1.03rem; line-height: 1.8; color: #c8dae8; }
+    .prose p { margin: 0 0 1.35rem; }
+    .prose h2 { margin: 2.2rem 0 1rem; font-size: 1.25rem; color: #f2f8fc; letter-spacing: -0.01em; }
+    .prose ul { margin: 0 0 1.35rem; padding-left: 1.2rem; }
+    .prose li { margin-bottom: 0.5rem; }
+    .prose strong { color: #f2f8fc; }
+    .status-block { background: #0d1626; border: 1px solid #162538; border-left: 3px solid #00d4aa; border-radius: 0.5rem; padding: 1.25rem 1.5rem; margin: 0 0 2rem; }
+    .status-block p { margin: 0; }
+    .cta-block { margin-top: 2.5rem; background: #0d1626; border: 1px solid #162538; border-radius: 0.85rem; padding: 1.75rem; text-align: center; }
+    .cta-block h2 { margin: 0 0 0.75rem; font-size: 1.25rem; color: #f2f8fc; }
+    .cta-block p { margin: 0 0 1.25rem; color: #a9c0d0; font-size: 0.95rem; }
+    .btn { display: inline-block; padding: 0.65rem 1.4rem; border-radius: 0.45rem; font-weight: 600; font-size: 0.92rem; text-decoration: none; background: #00d4aa; color: #021018; }
+    .btn:hover { opacity: 0.85; }
+    .site-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #162538; text-align: center; font-size: 0.85rem; color: #4a6a82; }
+    .site-footer a { color: #7aa8bc; }
+    .site-footer a:hover { color: #00d4aa; }
+    .site-footer p { margin: 0.25rem 0; }
+    @media (max-width: 600px) { .page { padding: 1rem 1rem 3rem; } }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCL443VB"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <!-- No noscript Meta Pixel fallback - see index.html for why. -->
+
+  <div class="page">
+    <header class="site-header">
+      <a class="brand-lockup" href="/" aria-label="RecoveryOS home">
+        <img src="/brand/RecoveryOS_Horizontal_Logo.svg" alt="RecoveryOS" />
+      </a>
+      <a class="nav-back" href="/">← Back to RecoveryOS</a>
+    </header>
+
+    <main>
+      <p class="eyebrow">Building in public — July 2026</p>
+      <h1 class="post-title">Where RecoveryOS actually stands right now</h1>
+      <div class="byline-row">
+        <img class="byline-photo" src="/brand/founder-michael.png" alt="Michael du Preez, founder of RecoveryOS" width="48" height="48" loading="lazy" decoding="async" />
+        <p class="byline">By Michael du Preez — 2 July 2026</p>
+      </div>
+
+      <article class="prose">
+        <div class="status-block">
+          <p><strong>Short version:</strong> RecoveryOS is a real, working app — not a concept, not a mockup. It's on Google Play right now, in closed testing, at build v1.1.1. It is not yet on the public Play Store. That's a Google process requirement, not a "the app isn't ready" problem, and I'd rather tell you exactly where the line is than round up.</p>
+        </div>
+
+        <p>I keep seeing recovery apps launch with a lot of noise and not much underneath. I'd rather do the opposite: be quiet about the marketing and specific about the build. So here's exactly where things stand, with real numbers, not launch-hype numbers.</p>
+
+        <h2>What's actually shipped</h2>
+        <p>Free tier is not a trial — it's a complete daily practice tool on its own:</p>
+        <ul>
+          <li>A seven-area daily log: nervous system, dopamine management, craving log, identity and mind, honesty check-in, connection, and nutrition, plus an end-of-day reflection.</li>
+          <li>A slip-aware clean-day counter — logging a slip doesn't zero out your streak, it gets stored as context.</li>
+          <li>A full emergency toolkit: the physiological sigh, 5-4-3-2-1 grounding, a mismatch protocol, cognitive defusion, and HALT prompts.</li>
+          <li>Journaling with gratitude replay, month/year history views, local backup and restore, and app lock.</li>
+          <li>Optional encrypted Google Drive backup/sync — I shipped a fix for this on 30 June after the original Google sign-in flow broke inside Android's in-app browser view. It's solid now.</li>
+        </ul>
+        <p>Pro (subscription with a 14-day trial, or a lifetime purchase) adds Spark daily insights, three structured workbooks, guided NSDR regulation audio, a 15-minute Urge Surf timer, voice-memo journaling, medication/supplement reminders, a 7-day mood sparkline, weekly summary notifications, and a personalized PDF progress report you can hand to a therapist or sponsor.</p>
+
+        <h2>Why it's not on the public Play Store yet</h2>
+        <p>This is the part most apps don't explain, so I will. Google requires a personal developer account to run a closed testing track with real opted-in testers for 14 continuous days before it will even let you apply for production (public) access. As of today, I'm at <strong>10 of the 12 testers</strong> I need for that gate. Not a technical problem. Not a feature gap. Just a recruitment number I'm closing out.</p>
+        <p>Once that clock finishes, I apply for production access, and — assuming Google approves it — RecoveryOS goes on the public Play Store. If you want to help close that gap and get early access at the same time, the waitlist on the homepage is how you get a tester invite.</p>
+
+        <h2>What's deliberately not in v1</h2>
+        <p>No in-app AI companion. I looked at it, decided the core daily-practice tools needed to be right first, and pushed AI features to a later decision. If you've seen "AI companion" mentioned in older marketing copy, that's ahead of where the shipped app actually is — I'd rather flag that than let it stand uncorrected.</p>
+        <p>No iOS yet, either. The groundwork exists, but an Apple Developer account, certificates, and TestFlight distribution are still ahead of Android. I'll write a proper update when that work actually starts, not before.</p>
+
+        <h2>What's next</h2>
+        <p>In order: close the last two testers, let the 14-day clock finish, apply for Play production access, launch publicly, then start on iOS. No detours planned before that.</p>
+      </article>
+
+      <div class="cta-block">
+        <h2>Want early access before the public launch?</h2>
+        <p>Join the beta waitlist and you'll get a tester invite as spots open, plus launch updates when RecoveryOS goes public.</p>
+        <a class="btn" href="/#waitlist">Join the beta testing</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>Built by PhaseWright Labs.</p>
+      <p>Need support? <a href="mailto:support@recoveryos.org">support@recoveryos.org</a></p>
+      <p>
+        <a href="/legal/privacy-policy.html">Privacy policy</a> ·
+        <a href="/legal/terms-of-service.html">Terms of service</a> ·
+        <a href="/ai-info.html">AI info</a> ·
+        <a href="#" data-ros-open-consent>Cookie settings</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

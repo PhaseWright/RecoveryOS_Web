@@ -5,4 +5,21 @@ Allow: /
 
 # Block nothing sensitive lives behind the SPA; legal pages are fine to index.
 
+# Explicit allow lines for AI answer-engine crawlers (belt-and-suspenders alongside the
+# wildcard above — these already had access, this just documents the intent to keep it).
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
 Sitemap: https://recoveryos.org/sitemap.xml

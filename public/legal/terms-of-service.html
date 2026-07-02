@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Consent Mode v2 defaults - see index.html for the full explanation. Must run before GTM. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500,
+    });
+    (function () {
+      try {
+        var saved = JSON.parse(localStorage.getItem('rios_consent_v1') || 'null');
+        if (saved && typeof saved === 'object') {
+          gtag('consent', 'update', {
+            analytics_storage: saved.analytics ? 'granted' : 'denied',
+            ad_storage: saved.marketing ? 'granted' : 'denied',
+            ad_user_data: saved.marketing ? 'granted' : 'denied',
+            ad_personalization: saved.marketing ? 'granted' : 'denied',
+          });
+        }
+      } catch (e) { /* We treat unreadable storage as "no decision yet". */ }
+    })();
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TCL443VB');</script>
+  <!-- End Google Tag Manager -->
+  <script defer src="/cookie-consent.js"></script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="canonical" href="https://recoveryos.org/legal/terms-of-service.html" />
+  <title>Recovery OS — Terms of Service</title>
+  <style>
+    body { font-family: system-ui, Segoe UI, sans-serif; line-height: 1.6; max-width: 42rem; margin: 0 auto; padding: 1.25rem; color: #1a2a3a; background: #f7fafc; }
+    h1 { font-size: 1.35rem; letter-spacing: 0.08em; }
+    h2 { font-size: 1.05rem; margin-top: 1.75rem; }
+    p, li, td, th { font-size: 0.95rem; }
+    ul { padding-left: 1.2rem; }
+    .muted { color: #4a667a; font-size: 0.88rem; }
+    a { color: #009980; }
+    .callout { background: #fff4e0; border: 1px solid #eecf9a; border-radius: 0.4rem; padding: 0.75rem 0.9rem; font-size: 0.9rem; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCL443VB"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <h1>RECOVERY OS — TERMS OF SERVICE</h1>
+  <p class="muted">Effective date: 2 July 2026. Last updated: 2 July 2026.</p>
+
+  <div class="callout">
+    <strong>Plain-language note:</strong> we drafted this ourselves as a standard SaaS/health-app template. It is not a substitute for legal advice, and we recommend having it reviewed by a South African attorney before treating it as final — particularly the liability, disclaimer, and governing-law sections.
+  </div>
+
+  <h2>1. Acceptance of these terms</h2>
+  <p>By using recoveryos.org, joining the beta testing waitlist, or installing and using the Recovery OS app, you agree to these Terms of Service. If you do not agree, do not use the site or app. These terms work alongside our <a href="/legal/privacy-policy.html">Privacy policy</a>, which explains how we handle information.</p>
+
+  <h2>2. Who we are</h2>
+  <p>Recovery OS is published by PhaseWright Labs (developer: CodeManMike, Michael du Preez), an independent developer operating from Cape Town, South Africa. Contact: <a href="mailto:support@recoveryos.org">support@recoveryos.org</a>.</p>
+
+  <h2>3. Description of service</h2>
+  <p>Recovery OS is a local-first, non-12-step recovery support app for Android, currently distributed through Google Play's closed testing track while we complete Google's tester-enrollment requirements ahead of public listing. The marketing site at recoveryos.org provides information about the app and an early-access beta waitlist.</p>
+  <p>We may add, change, or remove features, and may change pricing or the Free/Pro split, at any time. We will make reasonable efforts to communicate material changes affecting existing Pro subscribers.</p>
+
+  <h2>4. Eligibility</h2>
+  <p>Recovery OS is intended for adults (18 and over) managing their own recovery. By using the app or site, you confirm you are at least 18 years old. We do not knowingly collect information from anyone under 18 — see the Privacy policy for details.</p>
+
+  <h2>5. Not medical advice, not an emergency service</h2>
+  <div class="callout">
+    <strong>Recovery OS is not a medical device, not a substitute for professional treatment, and not an emergency or crisis service.</strong> If you are in crisis, experiencing a medical emergency, or at risk of harming yourself or others, contact your local emergency number, a crisis line, or emergency medical services immediately — do not rely on this app.
+  </div>
+  <p>Content in the app (including workbooks, Spark daily insights, and regulation exercises) is educational and self-directed. It does not create a therapist-client, doctor-patient, or counselor relationship, and it is not a replacement for therapy, medication, sponsor support, mutual-aid meetings, or clinical care. Use it alongside, not instead of, professional support.</p>
+
+  <h2>6. Beta testing and waitlist participation</h2>
+  <p>Joining the beta waitlist or becoming a Google Play closed-testing tester means you may receive pre-release builds that are less stable than a public release, may contain bugs, and may change significantly before public launch. We may add or remove testers, change the testing track, or pause the program at any time. Waitlist and tester communications are limited to launch updates, tester invites, and release announcements as described in the Privacy policy.</p>
+
+  <h2>7. Your account and data</h2>
+  <p>Recovery OS does not require a Recovery OS user account for core functionality. Most app data (journal entries, logs, settings) is stored locally on your device by default, as described in the Privacy policy. You are responsible for your device's security, for any passphrase you set for optional encrypted Google Drive backups (we cannot recover a lost passphrase), and for keeping your own backups if that matters to you.</p>
+
+  <h2>8. Google Play billing and Pro subscriptions</h2>
+  <p>Pro features are unlocked through Google Play Billing (monthly or yearly subscription with a trial period, or a one-time lifetime purchase), or through a gift code. Purchases, refunds, trial terms, and cancellations for subscriptions are governed by Google Play's own terms and refund policies — we do not process your payment details directly. Pricing shown in the Play Store is authoritative; any price mentioned elsewhere is illustrative only.</p>
+
+  <h2>9. Intellectual property</h2>
+  <p>The Recovery OS name, logo, and marketing site content are owned by PhaseWright Labs unless otherwise noted. The Recovery OS application source code is licensed under AGPL-3.0; see the project repository for full license terms. Your own journal entries, logs, and other content you create in the app remain yours — we do not claim ownership of it, and outside the limited service uses described in the Privacy policy (for example, entitlement verification or support), we do not access it.</p>
+
+  <h2>10. Acceptable use</h2>
+  <p>You agree not to: reverse engineer the app to bypass entitlement/billing checks; use the site or app to harass, abuse, or harm another person; attempt to gain unauthorized access to our systems, other users' data, or our Cloudflare/Firebase infrastructure; scrape or bulk-extract site content for competitive or spam purposes; or use the waitlist form to submit false, abusive, or automated (bot) signups.</p>
+
+  <h2>11. Disclaimers</h2>
+  <p>The site and app are provided "as is" and "as available," without warranties of any kind, express or implied, including merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the app will be uninterrupted, error-free, or that it will meet your specific recovery needs. Beta and closed-testing builds in particular may be unstable.</p>
+
+  <h2>12. Limitation of liability</h2>
+  <p>To the maximum extent permitted by South African law, PhaseWright Labs and Michael du Preez will not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of data, profits, or goodwill, arising from your use of (or inability to use) the site or app. Where liability cannot be excluded by law, it is limited to the amount you paid us in the 12 months before the claim, or ZAR 100 if you have not paid us anything.</p>
+  <p>Nothing in these terms limits liability for gross negligence, willful misconduct, or anything else that cannot lawfully be limited.</p>
+
+  <h2>13. Termination</h2>
+  <p>You may stop using the site or app, and uninstall it, at any time. We may suspend or terminate your access to the beta waitlist, closed testing, or (in cases of clear abuse of section 10) the app itself, with or without notice. Sections that by their nature should survive termination (intellectual property, disclaimers, limitation of liability, governing law) will continue to apply.</p>
+
+  <h2>14. Changes to these terms</h2>
+  <p>We may update these terms as the app or service changes. We will update the "Last updated" date above; for material changes, we will make reasonable efforts to flag it (for example, via a waitlist email or an in-app notice) before the change takes effect.</p>
+
+  <h2>15. Governing law</h2>
+  <p>These terms are governed by the laws of the Republic of South Africa, without regard to conflict-of-law principles. Any dispute will be subject to the jurisdiction of the courts of the Western Cape, South Africa, unless mandatory consumer-protection law in your own country gives you the right to bring a claim elsewhere.</p>
+
+  <h2>16. Contact</h2>
+  <p>Questions about these terms: <a href="mailto:support@recoveryos.org">support@recoveryos.org</a> (or: support [at] recoveryos.org).</p>
+
+  <hr style="border:none;border-top:1px solid #d6dee6;margin:2rem 0 1rem;" />
+  <p class="muted">
+    <a href="/">RecoveryOS home</a> ·
+    <a href="/legal/privacy-policy.html">Privacy policy</a> ·
+    <a href="/ai-info.html">AI info</a> ·
+    <a href="#" data-ros-open-consent>Cookie settings</a>
+  </p>
+</body>
+</html>

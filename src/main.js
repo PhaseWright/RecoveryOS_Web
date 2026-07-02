@@ -18,8 +18,9 @@ import {
 } from "./metaPixel.js";
 import { getStoreBadgeMarkup } from "./storeLinks.js";
 
-const socialSectionHidden =
-  import.meta.env.DEV || import.meta.env.VITE_SHOW_SOCIAL === "true" ? "" : "hidden";
+// Brand social accounts are live (Facebook, Instagram, Bluesky, X, LinkedIn, Threads), so this
+// section shows by default now. VITE_SHOW_SOCIAL=false is an explicit opt-out escape hatch.
+const socialSectionHidden = import.meta.env.VITE_SHOW_SOCIAL === "false" ? "hidden" : "";
 
 const { googlePlay: googlePlayBadge, appStore: appStoreBadge } = getStoreBadgeMarkup();
 
@@ -239,16 +240,32 @@ document.querySelector("#app").innerHTML = `
       </section>
 
       <section class="founder-quote" data-animate>
-        <h2>A note from the founder</h2>
-        <blockquote>
-          I have been in recovery for many years, and I have been involved in service and recovery support for all of that time.
-          But nonetheless, relapses happened, and every time, I felt I had to start at the bottom again. That is not the case.
-          I have learned, grown, and found new tools that helped me build a version of myself that can exist beyond recovery.
-          I built RecoveryOS because I knew what I needed to stay focused on who I am, not what I was.
-          It has been helping me. I hope it helps you.
-        </blockquote>
-        <p class="founder-signoff">— Michael, founder of RecoveryOS</p>
-        <a class="founder-story-link" href="/story.html">Read the full story →</a>
+        <div class="founder-quote__layout">
+          <img
+            class="founder-photo"
+            src="/brand/founder-michael.png"
+            alt="Michael, founder of RecoveryOS"
+            width="72"
+            height="72"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="founder-quote__body">
+            <h2>A note from the founder</h2>
+            <blockquote>
+              I have been in recovery for many years, and I have been involved in service and recovery support for all of that time.
+              But nonetheless, relapses happened, and every time, I felt I had to start at the bottom again. That is not the case.
+              I have learned, grown, and found new tools that helped me build a version of myself that can exist beyond recovery.
+              I built RecoveryOS because I knew what I needed to stay focused on who I am, not what I was.
+              It has been helping me. I hope it helps you.
+            </blockquote>
+            <p class="founder-signoff">
+              — Michael, founder of RecoveryOS ·
+              <a href="https://www.facebook.com/MichaelFrenchieDuPreez" target="_blank" rel="noopener noreferrer">Follow me on Facebook</a>
+            </p>
+            <a class="founder-story-link" href="/story.html">Read the full story →</a>
+          </div>
+        </div>
       </section>
 
       <section id="privacy" class="trust" data-animate>
@@ -332,32 +349,42 @@ document.querySelector("#app").innerHTML = `
     <section class="site-social trust" ${socialSectionHidden} aria-labelledby="social-heading">
       <h2 id="social-heading">Social</h2>
       <p class="site-social-lead">
-        We will wire real links here when our public channels go live. Icons below use standard brand artwork for recognition only.
+        Follow RecoveryOS for craving science, build updates, and beta news.
       </p>
       <ul class="site-social-list">
         <li>
-          <a href="#" class="site-social-link site-social-link--pending" aria-disabled="true" tabindex="-1">
+          <a href="https://www.facebook.com/recoveryos" class="site-social-link" target="_blank" rel="noopener noreferrer">
             <img src="/social/facebook.svg" width="32" height="32" alt="Facebook" decoding="async" />
           </a>
         </li>
         <li>
-          <a href="#" class="site-social-link site-social-link--pending" aria-disabled="true" tabindex="-1">
+          <a href="https://www.instagram.com/recovery_os/" class="site-social-link" target="_blank" rel="noopener noreferrer">
             <img src="/social/instagram.svg" width="32" height="32" alt="Instagram" decoding="async" />
           </a>
         </li>
         <li>
-          <a href="#" class="site-social-link site-social-link--pending" aria-disabled="true" tabindex="-1">
+          <a href="https://bsky.app/profile/recoveryos.bsky.social" class="site-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="/social/bluesky.svg" width="32" height="32" alt="Bluesky" decoding="async" />
+          </a>
+        </li>
+        <li>
+          <a href="https://x.com/Recovery_OS" class="site-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="/social/x.svg" width="32" height="32" alt="X" decoding="async" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/recovery-os" class="site-social-link" target="_blank" rel="noopener noreferrer">
             <img src="/social/linkedin.svg" width="32" height="32" alt="LinkedIn" decoding="async" />
+          </a>
+        </li>
+        <li>
+          <a href="https://www.threads.com/@recovery_os" class="site-social-link" target="_blank" rel="noopener noreferrer">
+            <img src="/social/threads.svg" width="32" height="32" alt="Threads" decoding="async" />
           </a>
         </li>
         <li>
           <a href="#" class="site-social-link site-social-link--pending" aria-disabled="true" tabindex="-1">
             <img src="/social/youtube.svg" width="32" height="32" alt="YouTube" decoding="async" />
-          </a>
-        </li>
-        <li>
-          <a href="#" class="site-social-link site-social-link--pending" aria-disabled="true" tabindex="-1">
-            <img src="/social/x.svg" width="32" height="32" alt="X" decoding="async" />
           </a>
         </li>
       </ul>
@@ -370,7 +397,10 @@ document.querySelector("#app").innerHTML = `
         <a href="mailto:support@recoveryos.org">support@recoveryos.org</a>
       </p>
       <p class="footer-legal">
-        <a href="/legal/privacy-policy.html">Privacy policy</a>
+        <a href="/legal/privacy-policy.html">Privacy policy</a> ·
+        <a href="/legal/terms-of-service.html">Terms of service</a> ·
+        <a href="/ai-info.html">AI info</a> ·
+        <a href="#" data-ros-open-consent>Cookie settings</a>
       </p>
     </footer>
   </div>
