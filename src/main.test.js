@@ -56,6 +56,10 @@ describe("main analytics", () => {
   });
 
   it("pushes a GA signup event when the waitlist signup succeeds", async () => {
+    vi.doMock("./firebaseClient.js", () => ({
+      isFirebaseConfigured: vi.fn(() => true),
+    }));
+
     vi.doMock("./waitlist.js", () => ({
       joinWaitlist: vi.fn().mockResolvedValue({
         status: "created",
