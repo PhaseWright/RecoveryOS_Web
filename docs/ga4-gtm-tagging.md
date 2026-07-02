@@ -2,6 +2,11 @@
 
 This site emits first-party `dataLayer` events and lets Google Tag Manager translate them into GA4 events.
 
+> **Status: live.** The GTM variables/triggers/tags and GA4 custom dimensions described
+> below are provisioned and kept in sync by scripts in
+> [`infra/gtm-ga4/`](../infra/gtm-ga4/README.md) rather than manual clicking. Update
+> `infra/gtm-ga4/scripts/gtm-config.mjs` and this doc together when adding new events.
+
 ## Event names emitted by the site
 
 | dataLayer event | When it fires | Key params |

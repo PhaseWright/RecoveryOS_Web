@@ -1,0 +1,12 @@
+{
+  "name": "gtm-ga4-automation-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Standalone Node scripts for RecoveryOS GTM/GA4 automation. Not part of the Vite site bundle.",
+  "scripts": {
+    "discover": "node discover.mjs"
+  },
+  "dependencies": {
+    "google-auth-library": "^9.14.2"
+  }
+}
