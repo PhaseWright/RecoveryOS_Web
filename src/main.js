@@ -3,6 +3,13 @@ import { isFirebaseConfigured } from "./firebaseClient.js";
 import { joinWaitlist } from "./waitlist.js";
 import { telemetryEvent } from "./telemetry.js";
 import {
+  initAnalyticsContactTracking,
+  initAnalyticsStoreTracking,
+  observeAnalyticsEventOnce,
+  trackScreenshotOpen,
+  trackWaitlistSignup,
+} from "./googleAnalytics.js";
+import {
   initContactLinkTracking,
   initStoreLinkTracking,
   observeViewContentOnce,
@@ -416,6 +423,11 @@ form.addEventListener("submit", async (event) => {
         content_name: "beta_waitlist",
         content_category: "marketing_site",
       });
+      trackWaitlistSignup({
+        signup_status: "created",
+        content_name: "beta_waitlist",
+        content_category: "marketing_site",
+      });
       setFormState({ loading: false, tone: "success", message: result.message });
       form.reset();
       return;
@@ -527,6 +539,10 @@ function initScreenshotLightbox() {
     img.src = sourceImg.currentSrc || sourceImg.src;
     img.alt = sourceImg.alt || "";
     trackViewContent({
+      content_name: sourceImg.alt || "app_screenshot",
+      content_category: "product_gallery",
+    });
+    trackScreenshotOpen({
       content_name: sourceImg.alt || "app_screenshot",
       content_category: "product_gallery",
     });
@@ -716,10 +732,22 @@ function initScrollAnimations() {
 
 initScreenshotLightbox();
 initScrollAnimations();
+initAnalyticsContactTracking();
 initContactLinkTracking();
+initAnalyticsStoreTracking();
 initStoreLinkTracking();
+observeAnalyticsEventOnce("#waitlist", {
+  section_name: "beta_waitlist_section",
+  content_name: "beta_waitlist_section",
+  content_category: "marketing_site",
+});
 observeViewContentOnce("#waitlist", {
   content_name: "beta_waitlist_section",
+  content_category: "marketing_site",
+});
+observeAnalyticsEventOnce("#professionals", {
+  section_name: "professionals_overview",
+  content_name: "professionals_overview",
   content_category: "marketing_site",
 });
 observeViewContentOnce("#professionals", {

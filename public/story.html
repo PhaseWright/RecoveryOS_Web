@@ -33,6 +33,16 @@
     fbq('track', 'ViewContent', { content_name: 'founder_story', content_category: 'marketing_site' });
   </script>
   <!-- End Meta Pixel Code -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "recoveryos_section_view",
+      page_type: "story",
+      section_name: "founder_story",
+      content_name: "founder_story",
+      content_category: "marketing_site",
+    });
+  </script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -458,7 +468,17 @@
         var target = event.target;
         var anchor =
           target && target.closest ? target.closest('a[href^="mailto:"]') : null;
-        if (!anchor || typeof fbq !== "function") return;
+        if (!anchor) return;
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "recoveryos_contact_click",
+          page_type: "story",
+          contact_method: "email",
+          content_name: "support_email",
+        });
+
+        if (typeof fbq !== "function") return;
         fbq("track", "Contact", {
           content_name: "support_email",
           content_category: "marketing_site",
