@@ -21,6 +21,8 @@ stable.
 | GA4 account | `399845394` ("RecoveryOS") |
 | GA4 property | `543969137` ("waitlist") |
 | GA4 measurement ID | `G-9M4GTKXQNZ` |
+| GA4 property settings | `Africa/Johannesburg`, ZAR, Healthcare industry category |
+| GA4 key events | `sign_up` (our waitlist conversion); plus default template events `purchase`, `close_convert_lead`, `qualify_lead` (unused, left as-is) |
 
 ## Service account
 
@@ -49,6 +51,7 @@ actually write.
 | `gtm-config.mjs` | Declarative source of truth: data layer variable names, event-to-GA4-event mappings, GA4 measurement ID. Keep in sync with `docs/ga4-gtm-tagging.md`. |
 | `apply-gtm.mjs [--apply] [--publish]` | Creates the Data Layer Variables, Custom Event triggers, GA4 Configuration tag, and GA4 Event tags in the GTM workspace. `--apply` writes a draft; `--apply --publish` also creates and publishes a container version (goes live). Idempotent — skips anything that already exists by name. |
 | `apply-ga4-custom-dimensions.mjs [--apply]` | Registers event-scoped GA4 custom dimensions for each data layer parameter, so they're queryable in GA4 reports (not just DebugView). Idempotent. |
+| `apply-ga4-key-events.mjs [--apply]` | Marks GA4 events (e.g. `sign_up`) as Key Events (conversions) on the property. Idempotent. |
 
 ### Example
 
