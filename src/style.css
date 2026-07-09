@@ -1,14 +1,18 @@
 :root {
-  font-family: "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.5;
   font-weight: 400;
   color: #dde8f0;
-  background: #070d18;
+  background: var(--bg-base);
   color-scheme: dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, blockquote {
+  font-family: var(--font-display);
 }
 
 /* We tame iOS Safari font inflation on orientation change. */
@@ -64,10 +68,11 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top right, rgba(0, 212, 170, 0.18), transparent 38%),
+    radial-gradient(circle at top right, rgba(var(--accent-teal-rgb), 0.18), transparent 38%),
     radial-gradient(circle at 20% 10%, rgba(0, 168, 255, 0.12), transparent 34%),
-    radial-gradient(circle at 70% 65%, rgba(36, 107, 254, 0.12), transparent 48%),
-    #070d18;
+    radial-gradient(circle at 70% 65%, rgba(var(--accent-blue-rgb), 0.12), transparent 48%),
+    radial-gradient(circle at 50% 100%, rgba(var(--accent-warm-rgb), 0.05), transparent 45%),
+    var(--bg-base);
   color: #dde8f0;
 }
 
@@ -931,11 +936,8 @@ h1 {
 }
 
 /* ============================================================
-   TYPOGRAPHY — Inter
+   TYPOGRAPHY: Fraunces (display) + Manrope (body), via theme.css
    ============================================================ */
-:root {
-  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
-}
 
 /* ============================================================
    HERO — 2-col layout with phone visual
