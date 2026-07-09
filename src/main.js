@@ -45,11 +45,9 @@ document.querySelector("#app").innerHTML = `
             <div class="hero-stores">
               <div class="hero-store-col">
                 ${googlePlayBadge}
-                <a class="btn btn-secondary" href="#waitlist">Join the beta testing</a>
               </div>
               <div class="hero-store-col">
                 ${appStoreBadge}
-                <a class="btn btn-secondary" href="#professionals">View professional overview</a>
               </div>
             </div>
           </div>
@@ -83,7 +81,7 @@ document.querySelector("#app").innerHTML = `
             body-first tools to regulate before you react - because good decisions come from calm, not willpower alone.
           </p>
         </article>
-        <article class="feature-card" data-animate style="transition-delay: 0.1s">
+        <article class="feature-card" data-animate>
           <p class="feature-label">Know your patterns</p>
           <h2>Track urges without judgment</h2>
           <p>
@@ -91,7 +89,7 @@ document.querySelector("#app").innerHTML = `
             Patterns you can see are patterns you can work with.
           </p>
         </article>
-        <article class="feature-card" data-animate style="transition-delay: 0.2s">
+        <article class="feature-card" data-animate>
           <p class="feature-label">Build the self</p>
           <h2>Seven areas. One honest check-in.</h2>
           <p>
@@ -101,33 +99,63 @@ document.querySelector("#app").innerHTML = `
         </article>
       </section>
 
+      <section class="founder-quote" data-animate>
+        <div class="founder-quote__layout">
+          <img
+            class="founder-photo"
+            src="/brand/founder-michael.png"
+            alt="Michael, founder of RecoveryOS"
+            width="72"
+            height="72"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="founder-quote__body">
+            <h2>A note from the founder</h2>
+            <blockquote>
+              I built this on a river when I was twelve, in the rare hours my father was clear-headed enough to be fully present.
+              Loose muscles, slight smile, clear eyes, bright world - that's the state I've spent my life trying to get back to.
+              Recovery gave me pieces of it. Relapse took them away more than once, and each time I felt like I had to start over
+              from nothing. I don't believe that anymore. What I'd actually learned stayed learned; I just needed better tools to
+              use it. RecoveryOS is the operating system I built myself, one honest day at a time. It's been running for me.
+              I hope it runs for you too.
+            </blockquote>
+            <p class="founder-signoff">
+              Michael, founder of RecoveryOS ·
+              <a href="https://www.facebook.com/MichaelFrenchieDuPreez" target="_blank" rel="noopener noreferrer">Follow me on Facebook</a>
+            </p>
+            <a class="founder-story-link" href="/story.html">Read the full story →</a>
+          </div>
+        </div>
+      </section>
+
       <section class="feature-gallery" aria-label="RecoveryOS app screenshots">
         <article class="screenshot-card" data-animate>
           <img src="/screenshots/Workbook.png" alt="RecoveryOS workbook progression view" loading="lazy" />
           <h3>Workbooks</h3>
           <p>Long-form identity and recovery work with chapter progression.</p>
         </article>
-        <article class="screenshot-card" data-animate style="transition-delay: 0.08s">
+        <article class="screenshot-card" data-animate>
           <img src="/screenshots/Spark.png" alt="RecoveryOS Spark insights reading view" loading="lazy" />
           <h3>Spark insights</h3>
           <p>Evidence-based entries that keep mindset, meaning, and direction in motion.</p>
         </article>
-        <article class="screenshot-card" data-animate style="transition-delay: 0.16s">
+        <article class="screenshot-card" data-animate>
           <img src="/screenshots/Calendar.png" alt="RecoveryOS recovery calendar and trend view" loading="lazy" />
           <h3>Calendar intelligence</h3>
           <p>Review patterns, streaks, and trigger context across real calendar time.</p>
         </article>
-        <article class="screenshot-card" data-animate style="transition-delay: 0.24s">
+        <article class="screenshot-card" data-animate>
           <img src="/screenshots/Mood_Challenges.png" alt="RecoveryOS mood and challenge dashboard" loading="lazy" />
           <h3>Mood and challenge signal</h3>
           <p>Daily score tracking with weekly insight blocks and practical wins logging.</p>
         </article>
-        <article class="screenshot-card" data-animate style="transition-delay: 0.32s">
+        <article class="screenshot-card" data-animate>
           <img src="/screenshots/Backup_report.png" alt="RecoveryOS backup and report export tools" loading="lazy" />
           <h3>Backup and reports</h3>
           <p>Build support-ready summaries and retain ownership of your data.</p>
         </article>
-        <article class="screenshot-card" data-animate style="transition-delay: 0.40s">
+        <article class="screenshot-card" data-animate>
           <img src="/screenshots/Settings.png" alt="RecoveryOS settings and progression panel" loading="lazy" />
           <h3>Adaptive settings</h3>
           <p>Personalize text size, safety options, goals, and progression framing.</p>
@@ -135,21 +163,21 @@ document.querySelector("#app").innerHTML = `
       </section>
 
       <section id="plans" class="compare-section trust" aria-labelledby="plans-heading" data-animate>
-        <h2 id="plans-heading">Free vs Pro — what's included</h2>
+        <h2 id="plans-heading">Free vs Pro: what's included</h2>
         <p class="compare-intro">
           RecoveryOS stays useful without a subscription. Pro deepens regulation, insight, and reporting when you want the full toolkit.
         </p>
         <div class="compare-grid">
           <div class="compare-column compare-column--basic">
             <h3 class="compare-heading">Basic (free)</h3>
-            <p class="compare-tagline">Mobile-first daily practice — strong on its own.</p>
+            <p class="compare-tagline">Mobile-first daily practice, strong on its own.</p>
             <ul class="compare-list">
               <li>Daily log across seven inventory domains including honesty check-in and end-of-day reflection</li>
               <li>Dashboard essentials: clean day counter, streaks, XP, challenges, Today's Signal, weekly insight card</li>
               <li>Emergency toolkit: physiological sigh, grounding, HALT, mismatch protocol and more, all with full guidance support</li>
               <li>History: month calendar, year aggregates, rich day detail</li>
               <li>Journal with gratitude replay</li>
-              <li>Backup and restore — your data stays portable</li>
+              <li>Backup and restore, so your data stays portable</li>
               <li>App lock</li>
               <li>Badges, monthly challenges, and milestone share card</li>
             </ul>
@@ -178,14 +206,14 @@ document.querySelector("#app").innerHTML = `
           <p class="pro-highlight__eyebrow">RecoveryOS Pro</p>
           <h2 id="pro-heading">Regulate deeper. Get access to our <em>Spark</em> daily insights. Bring a real report to the conversation.</h2>
           <p class="pro-highlight__copy">
-            Pro layers regulation audio (NSDR today; expanded meditation library planned), Spark's evidence-grounded just for today,
-            and a PDF progress workflow so you can export a structured summary when <em>you</em> choose to share it —
-            with therapists, sponsors, coaches, or loved ones supporting your recovery.
+            Pro layers regulation audio (NSDR today; expanded meditation library planned), Spark's evidence-grounded
+            "just for today" readings, and a PDF progress workflow so you can export a structured summary when
+            <em>you</em> choose to share it, with therapists, sponsors, coaches, or loved ones supporting your recovery.
           </p>
           <ul class="pro-highlight__bullets">
             <li>Body-first tools alongside journaling and analytics.</li>
-            <li>Early access to new features and improvements.</li>
-            <li>You get to help shape RecoveryOS into the best tool for your recovery.</li>
+            <li>First look at new features while we're still building them.</li>
+            <li>Your feedback during beta testing directly shapes what ships.</li>
           </ul>
           <div class="pro-highlight__cta">
             <a class="btn btn-primary pro-highlight__btn" href="#waitlist">Join the beta testing for launch + Pro updates</a>
@@ -197,8 +225,8 @@ document.querySelector("#app").innerHTML = `
         <h2>For professionals</h2>
         <p>
           RecoveryOS can sit alongside therapy, coaching, mutual aid, medication, sober living, or aftercare planning.
-          People using Pro can generate a <strong>structured PDF progress report</strong> — a support-ready snapshot they
-          control — useful for prep between sessions, sponsor check-ins, or grounded conversations with loved ones who are
+          People using Pro can generate a <strong>structured PDF progress report</strong>: a support-ready snapshot they
+          control, useful for prep between sessions, sponsor check-ins, or grounded conversations with loved ones who are
           part of their recovery network.
         </p>
         <p>
@@ -213,58 +241,29 @@ document.querySelector("#app").innerHTML = `
       <section id="roadmap" class="roadmap-section trust" aria-labelledby="roadmap-heading">
         <h2 id="roadmap-heading">Product roadmap</h2>
         <p class="roadmap-disclaimer">
-          These are our plans, but we will grow and evolve with your feedback.
+          These are our plans, not promises. Beta testing feedback will change what we build next.
         </p>
         <div class="roadmap-grid">
           <article class="roadmap-card" data-animate>
             <h3>Libraries &amp; audio</h3>
             <p>Additional workbook libraries and expanded meditation / regulation audio beyond today's Pro NSDR player.</p>
           </article>
-          <article class="roadmap-card" data-animate style="transition-delay: 0.08s">
+          <article class="roadmap-card" data-animate>
             <h3>Community</h3>
-            <p>A deliberate community layer — designed around safety and recovery-first norms.</p>
+            <p>A deliberate community layer, designed around safety and recovery-first norms.</p>
           </article>
-          <article class="roadmap-card" data-animate style="transition-delay: 0.16s">
+          <article class="roadmap-card" data-animate>
             <h3>Backup &amp; sync</h3>
             <p>Encrypted cloud backup and cross-device sync while preserving local-first ownership principles.</p>
           </article>
-          <article class="roadmap-card" data-animate style="transition-delay: 0.24s">
+          <article class="roadmap-card" data-animate>
             <h3>Accountability</h3>
-            <p>User-chosen accountability buddy flows with thoughtful automation — consent-forward by design.</p>
+            <p>User-chosen accountability buddy flows with thoughtful automation, consent-forward by design.</p>
           </article>
-          <article class="roadmap-card roadmap-card--wide" data-animate style="transition-delay: 0.32s">
+          <article class="roadmap-card roadmap-card--wide" data-animate>
             <h3>SupportOS</h3>
-            <p>Companion experience for supporters, sponsors, and loved ones — extending the RecoveryOS ecosystem without blurring clinical boundaries.</p>
+            <p>Companion experience for supporters, sponsors, and loved ones, extending the RecoveryOS ecosystem without blurring clinical boundaries.</p>
           </article>
-        </div>
-      </section>
-
-      <section class="founder-quote" data-animate>
-        <div class="founder-quote__layout">
-          <img
-            class="founder-photo"
-            src="/brand/founder-michael.png"
-            alt="Michael, founder of RecoveryOS"
-            width="72"
-            height="72"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="founder-quote__body">
-            <h2>A note from the founder</h2>
-            <blockquote>
-              I have been in recovery for many years, and I have been involved in service and recovery support for all of that time.
-              But nonetheless, relapses happened, and every time, I felt I had to start at the bottom again. That is not the case.
-              I have learned, grown, and found new tools that helped me build a version of myself that can exist beyond recovery.
-              I built RecoveryOS because I knew what I needed to stay focused on who I am, not what I was.
-              It has been helping me. I hope it helps you.
-            </blockquote>
-            <p class="founder-signoff">
-              — Michael, founder of RecoveryOS ·
-              <a href="https://www.facebook.com/MichaelFrenchieDuPreez" target="_blank" rel="noopener noreferrer">Follow me on Facebook</a>
-            </p>
-            <a class="founder-story-link" href="/story.html">Read the full story →</a>
-          </div>
         </div>
       </section>
 

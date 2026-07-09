@@ -1004,32 +1004,64 @@ h1 {
    HERO ENTRANCE ANIMATION
    ============================================================ */
 @keyframes hero-fade-in {
-  from { opacity: 0; transform: translateY(18px); }
+  from { opacity: 0; transform: translateY(16px) scale(0.99); }
   to   { opacity: 1; transform: none; }
 }
 
 .hero-content {
-  animation: hero-fade-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: hero-fade-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .hero-visual {
-  animation: hero-fade-in 0.7s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: hero-fade-in 0.65s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* ============================================================
    SCROLL-TRIGGERED ANIMATIONS
+   One shared entrance treatment (fade + rise + soft scale) for every
+   [data-animate] element, so sections and cards pop in the same way
+   instead of each drifting by a different distance/speed.
    ============================================================ */
 [data-animate] {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(16px) scale(0.98);
   transition:
-    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 [data-animate].animated {
   opacity: 1;
   transform: none;
+}
+
+/* Card-grid stagger: one consistent 0.08s rhythm, driven by position in
+   the grid rather than per-card inline styles, so adding/removing a card
+   can't throw the rhythm off. */
+.features .feature-card:nth-child(2),
+.feature-gallery .screenshot-card:nth-child(2),
+.roadmap-grid .roadmap-card:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.features .feature-card:nth-child(3),
+.feature-gallery .screenshot-card:nth-child(3),
+.roadmap-grid .roadmap-card:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.feature-gallery .screenshot-card:nth-child(4),
+.roadmap-grid .roadmap-card:nth-child(4) {
+  transition-delay: 0.24s;
+}
+
+.feature-gallery .screenshot-card:nth-child(5),
+.roadmap-grid .roadmap-card:nth-child(5) {
+  transition-delay: 0.32s;
+}
+
+.feature-gallery .screenshot-card:nth-child(6) {
+  transition-delay: 0.4s;
 }
 
 @media (prefers-reduced-motion: reduce) {
