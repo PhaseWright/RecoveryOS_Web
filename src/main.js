@@ -34,7 +34,7 @@ document.querySelector("#app").innerHTML = `
     </header>
 
     <main>
-      <section class="hero">
+      <section class="hero aurora-surface">
         <div class="hero-content">
           <h1>Recovery isn't willpower. It's practice.</h1>
           <p class="hero-copy">
