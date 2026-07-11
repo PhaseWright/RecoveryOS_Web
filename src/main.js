@@ -69,7 +69,6 @@ document.querySelector("#app").innerHTML = `
             and choose your next move. That's what RecoveryOS is built for.
           </p>
         </div>
-        <img class="section-mark" src="/brand/RecoveryOS_Mark.svg" alt="" aria-hidden="true" />
       </section>
 
       <section id="protocol" class="features">
