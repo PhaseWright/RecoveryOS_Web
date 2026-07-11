@@ -48,3 +48,6 @@ _*-backup/
 
 # Firebase local runtime cache (not firebase.json / .firebaserc)
 .firebase/
+
+# Brainstorming companion mockups (ephemeral design scratch space)
+.superpowers/

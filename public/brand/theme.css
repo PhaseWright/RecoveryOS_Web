@@ -1,0 +1,28 @@
+/*
+ * Shared visual tokens for RecoveryOS. Every HTML surface on the site
+ * (the Vite-bundled homepage app and the static pages in /public) links
+ * this file so color, type, and texture stay in sync instead of
+ * drifting apart. This file defines tokens only, no layout or
+ * component rules.
+ */
+:root {
+  /* Color */
+  --bg-base: #060d16;
+  --accent-teal: #00d4aa;
+  --accent-teal-soft: #7af5de;
+  --accent-blue: #246bfe;
+  --accent-warm: #ffb066;
+
+  /* RGB triplets for use inside rgba(), since a hex custom property
+     can't be passed directly to rgba(). */
+  --accent-teal-rgb: 0, 212, 170;
+  --accent-blue-rgb: 36, 107, 254;
+  --accent-warm-rgb: 255, 176, 102;
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', 'Segoe UI', Roboto, sans-serif;
+
+  /* Shared grain texture for the homepage and standalone-page aurora layers. */
+  --grain-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+}
