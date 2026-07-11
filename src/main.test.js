@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 describe("screenshot lightbox", () => {
   beforeEach(() => {
@@ -13,27 +13,29 @@ describe("screenshot lightbox", () => {
   it("keeps a reopened image after a pending close transition finishes", async () => {
     await import("./main.js");
 
-    const thumbs = document.querySelectorAll(".screenshot-card img");
+    const viewerThumbs = document.querySelectorAll(".included-viewer__thumb");
+    const mainImg = document.querySelector(".included-viewer__main");
     const overlay = document.querySelector(".screenshot-lightbox");
     const lightboxImg = document.querySelector(".screenshot-lightbox__img");
     const closeBtn = document.querySelector(".screenshot-lightbox__close");
 
-    thumbs[0].dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
+    mainImg.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
     closeBtn.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
-    thumbs[1].dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
+    viewerThumbs[1].dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
+    mainImg.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
     overlay.dispatchEvent(new TransitionEvent("transitionend", { bubbles: true }));
 
-    expect(lightboxImg.src).toBe(thumbs[1].currentSrc || thumbs[1].src);
-    expect(lightboxImg.alt).toBe(thumbs[1].alt);
+    expect(lightboxImg.src).toBe(mainImg.currentSrc || mainImg.src);
+    expect(lightboxImg.alt).toBe(mainImg.alt);
   });
 
   it("traps tab focus inside the open lightbox", async () => {
     await import("./main.js");
 
-    const thumb = document.querySelector(".screenshot-card img");
+    const mainImg = document.querySelector(".included-viewer__main");
     const closeBtn = document.querySelector(".screenshot-lightbox__close");
 
-    thumb.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
+    mainImg.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
 
     const tabEvent = new KeyboardEvent("keydown", {
       key: "Tab",
@@ -47,6 +49,47 @@ describe("screenshot lightbox", () => {
   });
 });
 
+describe("included screenshot viewer", () => {
+  beforeEach(() => {
+    vi.resetModules();
+    vi.useFakeTimers();
+    document.body.innerHTML = '<div id="app"></div>';
+    document.body.style.overflow = "";
+    window.dataLayer = [];
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
+  it("updates the main image and caption when a thumbnail is selected", async () => {
+    await import("./main.js");
+
+    const thumbnails = document.querySelectorAll(".included-viewer__thumb");
+    const mainImg = document.querySelector(".included-viewer__main");
+    const captionTitle = document.querySelector("#included-caption-title");
+
+    thumbnails[2].dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
+
+    expect(mainImg.src).toContain("/screenshots/Calendar.png");
+    expect(mainImg.alt).toBe("Calendar intelligence");
+    expect(mainImg.getAttribute("aria-label")).toBe("Preview: Calendar intelligence");
+    expect(captionTitle.textContent).toBe("Calendar intelligence");
+    expect(thumbnails[2].getAttribute("aria-current")).toBe("true");
+  });
+
+  it("auto-advances every four seconds", async () => {
+    await import("./main.js");
+
+    const mainImg = document.querySelector(".included-viewer__main");
+    expect(mainImg.src).toContain("/screenshots/Workbook.png");
+
+    vi.advanceTimersByTime(4000);
+
+    expect(mainImg.src).toContain("/screenshots/Spark.png");
+  });
+});
+
 describe("main analytics", () => {
   beforeEach(() => {
     vi.resetModules();
@@ -56,15 +99,17 @@ describe("main analytics", () => {
   });
 
   it("pushes a GA signup event when the waitlist signup succeeds", async () => {
+    const joinWaitlist = vi.fn().mockResolvedValue({
+      status: "created",
+      message: "Thanks. You're signed up for beta testing.",
+    });
+
     vi.doMock("./firebaseClient.js", () => ({
       isFirebaseConfigured: vi.fn(() => true),
     }));
 
     vi.doMock("./waitlist.js", () => ({
-      joinWaitlist: vi.fn().mockResolvedValue({
-        status: "created",
-        message: "Thanks. You're signed up for beta testing.",
-      }),
+      joinWaitlist,
     }));
 
     await import("./main.js");
@@ -84,5 +129,7 @@ describe("main analytics", () => {
       content_name: "beta_waitlist",
       content_category: "marketing_site",
     });
+    expect(joinWaitlist).toHaveBeenCalledWith("test@example.com");
+    expect(document.querySelector('input[name="interests"]')).toBeNull();
   });
 });

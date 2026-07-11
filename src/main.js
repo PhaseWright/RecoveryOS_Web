@@ -34,7 +34,7 @@ document.querySelector("#app").innerHTML = `
     </header>
 
     <main>
-      <section class="hero aurora-surface">
+      <section class="hero">
         <div class="hero-content">
           <h1>Recovery isn't willpower. It's practice.</h1>
           <p class="hero-copy">
@@ -99,14 +99,14 @@ document.querySelector("#app").innerHTML = `
         </article>
       </section>
 
-      <section class="founder-quote" data-animate>
+      <section class="founder-quote frosted-panel" data-animate>
         <div class="founder-quote__layout">
           <img
             class="founder-photo"
             src="/brand/founder-michael.png"
             alt="Michael, founder of RecoveryOS"
-            width="72"
-            height="72"
+            width="140"
+            height="140"
             loading="lazy"
             decoding="async"
           />
@@ -129,95 +129,55 @@ document.querySelector("#app").innerHTML = `
         </div>
       </section>
 
-      <section class="feature-gallery" aria-label="RecoveryOS app screenshots">
-        <article class="screenshot-card" data-animate>
-          <img src="/screenshots/Workbook.png" alt="RecoveryOS workbook progression view" loading="lazy" />
-          <h3>Workbooks</h3>
-          <p>Long-form identity and recovery work with chapter progression.</p>
-        </article>
-        <article class="screenshot-card" data-animate>
-          <img src="/screenshots/Spark.png" alt="RecoveryOS Spark insights reading view" loading="lazy" />
-          <h3>Spark insights</h3>
-          <p>Evidence-based entries that keep mindset, meaning, and direction in motion.</p>
-        </article>
-        <article class="screenshot-card" data-animate>
-          <img src="/screenshots/Calendar.png" alt="RecoveryOS recovery calendar and trend view" loading="lazy" />
-          <h3>Calendar intelligence</h3>
-          <p>Review patterns, streaks, and trigger context across real calendar time.</p>
-        </article>
-        <article class="screenshot-card" data-animate>
-          <img src="/screenshots/Mood_Challenges.png" alt="RecoveryOS mood and challenge dashboard" loading="lazy" />
-          <h3>Mood and challenge signal</h3>
-          <p>Daily score tracking with weekly insight blocks and practical wins logging.</p>
-        </article>
-        <article class="screenshot-card" data-animate>
-          <img src="/screenshots/Backup_report.png" alt="RecoveryOS backup and report export tools" loading="lazy" />
-          <h3>Backup and reports</h3>
-          <p>Build support-ready summaries and retain ownership of your data.</p>
-        </article>
-        <article class="screenshot-card" data-animate>
-          <img src="/screenshots/Settings.png" alt="RecoveryOS settings and progression panel" loading="lazy" />
-          <h3>Adaptive settings</h3>
-          <p>Personalize text size, safety options, goals, and progression framing.</p>
-        </article>
-      </section>
-
-      <section id="plans" class="compare-section trust" aria-labelledby="plans-heading" data-animate>
-        <h2 id="plans-heading">Free vs Pro: what's included</h2>
-        <p class="compare-intro">
-          RecoveryOS stays useful without a subscription. Pro deepens regulation, insight, and reporting when you want the full toolkit.
-        </p>
-        <div class="compare-grid">
-          <div class="compare-column compare-column--basic">
-            <h3 class="compare-heading">Basic (free)</h3>
-            <p class="compare-tagline">Mobile-first daily practice, strong on its own.</p>
-            <ul class="compare-list">
-              <li>Daily log across seven inventory domains including honesty check-in and end-of-day reflection</li>
-              <li>Dashboard essentials: clean day counter, streaks, XP, challenges, Today's Signal, weekly insight card</li>
-              <li>Emergency toolkit: physiological sigh, grounding, HALT, mismatch protocol and more, all with full guidance support</li>
-              <li>History: month calendar, year aggregates, rich day detail</li>
-              <li>Journal with gratitude replay</li>
-              <li>Backup and restore, so your data stays portable</li>
-              <li>App lock</li>
-              <li>Badges, monthly challenges, and milestone share card</li>
-            </ul>
-          </div>
-          <div class="compare-column compare-column--pro">
-            <h3 class="compare-heading compare-heading--pro">Pro</h3>
-            <p class="compare-tagline compare-tagline--pro">Depth for regulation, insight, and clinical-adjacent reporting.</p>
-            <ul class="compare-list compare-list--pro">
-              <li>Spark daily insights reader</li>
-              <li>Three structured workbooks (to start with, more to come)</li>
-              <li>Guided self-regulation audio sessions</li>
-              <li>Urge Surfing helper</li>
-              <li>Voice memo journal</li>
-              <li>Medication and supplement reminders</li>
-              <li>Get reminded about what wins you've had, to keep you motivated and grounded.</li>
-              <li>Dashboard 7-day mood sparkline</li>
-              <li>Weekly summary notifications to keep you on track</li>
-              <li>Your own personalized PDF progress report to share with your therapist, sponsor, or loved ones</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="pro" class="pro-highlight" aria-labelledby="pro-heading" data-animate>
-        <div class="pro-highlight__inner">
-          <p class="pro-highlight__eyebrow">RecoveryOS Pro</p>
-          <h2 id="pro-heading">Regulate deeper. Get access to our <em>Spark</em> daily insights. Bring a real report to the conversation.</h2>
-          <p class="pro-highlight__copy">
-            Pro layers regulation audio (NSDR today; expanded meditation library planned), Spark's evidence-grounded
-            "just for today" readings, and a PDF progress workflow so you can export a structured summary when
-            <em>you</em> choose to share it, with therapists, sponsors, coaches, or loved ones supporting your recovery.
-          </p>
-          <ul class="pro-highlight__bullets">
-            <li>Body-first tools alongside journaling and analytics.</li>
-            <li>First look at new features while we're still building them.</li>
-            <li>Your feedback during beta testing directly shapes what ships.</li>
+      <section id="included" class="included-section" data-animate>
+        <div class="included-text">
+          <p class="eyebrow">Free vs Pro</p>
+          <h2>What's included, and what you'll see in the app</h2>
+          <p class="included-tagline">Mobile-first daily practice, strong on its own.</p>
+          <h3>Basic (free)</h3>
+          <ul class="included-list">
+            <li>Daily log across seven inventory domains including honesty check-in and end-of-day reflection</li>
+            <li>Dashboard essentials: clean day counter, streaks, XP, challenges, Today's Signal, weekly insight card</li>
+            <li>Emergency toolkit: physiological sigh, grounding, HALT, mismatch protocol and more, all with full guidance support</li>
+            <li>History: month calendar, year aggregates, rich day detail</li>
+            <li>Journal with gratitude replay</li>
+            <li>Backup and restore, so your data stays portable</li>
+            <li>App lock</li>
+            <li>Badges, monthly challenges, and milestone share card</li>
           </ul>
-          <div class="pro-highlight__cta">
-            <a class="btn btn-primary pro-highlight__btn" href="#waitlist">Join the beta testing for launch + Pro updates</a>
+          <h3 class="included-pro-heading">Pro</h3>
+          <p class="included-tagline">Depth for regulation, insight, and clinical-adjacent reporting.</p>
+          <ul class="included-list included-list--pro">
+            <li>Spark daily insights reader</li>
+            <li>Three structured workbooks (to start with, more to come)</li>
+            <li>Guided self-regulation audio sessions</li>
+            <li>Urge Surfing helper</li>
+            <li>Voice memo journal</li>
+            <li>Medication and supplement reminders</li>
+            <li>Get reminded about what wins you've had, to keep you motivated and grounded.</li>
+            <li>Dashboard 7-day mood sparkline</li>
+            <li>Weekly summary notifications to keep you on track</li>
+            <li>Your own personalized PDF progress report to share with your therapist, sponsor, or loved ones</li>
+          </ul>
+        </div>
+
+        <div class="included-viewer frosted-panel">
+          <div class="included-viewer__stage">
+            <img class="included-viewer__main" src="/screenshots/Workbook.png" alt="Workbooks" decoding="async" />
+            <span class="included-viewer__hint">Click to zoom</span>
           </div>
+          <div class="included-viewer__thumbs" aria-label="Choose an app screenshot">
+            <button type="button" class="included-viewer__thumb included-viewer__thumb--active" data-caption="Workbooks" data-detail="Long-form identity and recovery work with chapter progression." aria-label="Show Workbooks screenshot" aria-current="true"><img src="/screenshots/Workbook.png" alt="" loading="lazy" /></button>
+            <button type="button" class="included-viewer__thumb" data-caption="Spark insights" data-detail="Evidence-based entries that keep mindset, meaning, and direction in motion." aria-label="Show Spark insights screenshot"><img src="/screenshots/Spark.png" alt="" loading="lazy" /></button>
+            <button type="button" class="included-viewer__thumb" data-caption="Calendar intelligence" data-detail="Review patterns, streaks, and trigger context across real calendar time." aria-label="Show Calendar intelligence screenshot"><img src="/screenshots/Calendar.png" alt="" loading="lazy" /></button>
+            <button type="button" class="included-viewer__thumb" data-caption="Mood and challenge signal" data-detail="Daily score tracking with weekly insight blocks and practical wins logging." aria-label="Show Mood and challenge signal screenshot"><img src="/screenshots/Mood_Challenges.png" alt="" loading="lazy" /></button>
+            <button type="button" class="included-viewer__thumb" data-caption="Backup and reports" data-detail="Build support-ready summaries and retain ownership of your data." aria-label="Show Backup and reports screenshot"><img src="/screenshots/Backup_report.png" alt="" loading="lazy" /></button>
+            <button type="button" class="included-viewer__thumb" data-caption="Adaptive settings" data-detail="Personalize text size, safety options, goals, and progression framing." aria-label="Show Adaptive settings screenshot"><img src="/screenshots/Settings.png" alt="" loading="lazy" /></button>
+          </div>
+          <p class="included-viewer__caption" aria-live="polite">
+            <strong id="included-caption-title">Workbooks</strong>
+            <span id="included-caption-detail">Long-form identity and recovery work with chapter progression.</span>
+          </p>
         </div>
       </section>
 
@@ -283,7 +243,7 @@ document.querySelector("#app").innerHTML = `
         </ul>
       </section>
 
-      <section id="waitlist" class="waitlist" data-animate>
+      <section id="waitlist" class="waitlist frosted-panel" data-animate>
         <div class="waitlist-head">
           <p class="eyebrow">Beta testing</p>
           <h2>Join the RecoveryOS beta testing</h2>
@@ -318,27 +278,6 @@ document.querySelector("#app").innerHTML = `
             <button id="waitlist-submit" class="btn btn-primary" type="submit">
               Join the beta testing
             </button>
-          </div>
-          <div class="waitlist-interests" role="group" aria-labelledby="interests-label">
-            <p id="interests-label" class="waitlist-interests__legend">What interests you most? <span class="waitlist-interests__opt">(optional)</span></p>
-            <div class="waitlist-interests__grid">
-              <label class="waitlist-check">
-                <input type="checkbox" name="interests" value="daily-structure" />
-                <span>Daily structure &amp; journaling</span>
-              </label>
-              <label class="waitlist-check">
-                <input type="checkbox" name="interests" value="craving-management" />
-                <span>Craving &amp; trigger management</span>
-              </label>
-              <label class="waitlist-check">
-                <input type="checkbox" name="interests" value="progress-tracking" />
-                <span>Progress tracking &amp; reporting</span>
-              </label>
-              <label class="waitlist-check">
-                <input type="checkbox" name="interests" value="community" />
-                <span>Community &amp; accountability</span>
-              </label>
-            </div>
           </div>
           <p id="waitlist-message" class="waitlist-message" role="status" aria-live="polite"></p>
         </form>
@@ -442,10 +381,7 @@ form.addEventListener("submit", async (event) => {
 
   try {
     const email = emailInput.value ?? "";
-    const interests = [...form.querySelectorAll('input[name="interests"]:checked')].map(
-      (el) => el.value,
-    );
-    const result = await joinWaitlist(email, interests);
+    const result = await joinWaitlist(email);
 
     if (result.status === "created") {
       trackLead({
@@ -487,7 +423,7 @@ setFormState({ loading: false, tone: "neutral", message: "" });
  * so you can zoom all the way out. Smooth fade + pop-in on open, fade-out on close.
  */
 function initScreenshotLightbox() {
-  const thumbs = document.querySelectorAll(".screenshot-card img");
+  const thumbs = document.querySelectorAll(".included-viewer__main");
   if (!thumbs.length) return;
 
   const overlay = document.createElement("div");
@@ -737,6 +673,59 @@ function initScreenshotLightbox() {
   });
 }
 
+/**
+ * We keep the viewer state in one place so manual selection and timed
+ * advancement update the image, caption, and accessible state together.
+ */
+function initIncludedViewer() {
+  const thumbs = Array.from(document.querySelectorAll(".included-viewer__thumb"));
+  const mainImg = /** @type {HTMLImageElement | null} */ (
+    document.querySelector(".included-viewer__main")
+  );
+  const captionTitle = document.querySelector("#included-caption-title");
+  const captionDetail = document.querySelector("#included-caption-detail");
+  if (!thumbs.length || !mainImg || !captionTitle || !captionDetail) return;
+
+  const AUTO_ADVANCE_MS = 4000;
+  let current = 0;
+  let timer;
+
+  function setActive(index, userInitiated = false) {
+    const thumb = /** @type {HTMLButtonElement} */ (thumbs[index]);
+    const thumbnailImage = /** @type {HTMLImageElement | null} */ (thumb.querySelector("img"));
+    if (!thumbnailImage) return;
+
+    current = index;
+    thumbs.forEach((item, itemIndex) => {
+      const isActive = itemIndex === index;
+      item.classList.toggle("included-viewer__thumb--active", isActive);
+      if (isActive) item.setAttribute("aria-current", "true");
+      else item.removeAttribute("aria-current");
+    });
+
+    mainImg.src = thumbnailImage.src;
+    mainImg.alt = thumb.dataset.caption || "RecoveryOS app screenshot";
+    mainImg.setAttribute("aria-label", `Preview: ${mainImg.alt}`);
+    captionTitle.textContent = thumb.dataset.caption || "";
+    captionDetail.textContent = thumb.dataset.detail || "";
+
+    if (userInitiated) restartAutoAdvance();
+  }
+
+  function restartAutoAdvance() {
+    window.clearInterval(timer);
+    timer = window.setInterval(() => {
+      setActive((current + 1) % thumbs.length);
+    }, AUTO_ADVANCE_MS);
+  }
+
+  thumbs.forEach((thumb, index) => {
+    thumb.addEventListener("click", () => setActive(index, true));
+  });
+
+  restartAutoAdvance();
+}
+
 function initScrollAnimations() {
   // We skip when IntersectionObserver is unavailable (jsdom in Vitest, very old browsers).
   if (typeof IntersectionObserver === "undefined") return;
@@ -760,6 +749,7 @@ function initScrollAnimations() {
 }
 
 initScreenshotLightbox();
+initIncludedViewer();
 initScrollAnimations();
 initAnalyticsContactTracking();
 initContactLinkTracking();
