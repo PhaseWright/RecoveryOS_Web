@@ -66,7 +66,7 @@ document.querySelector("#app").innerHTML = `
           <p>
             Sobriety is measured in moments, not milestones. When a craving hits at 2pm on a Tuesday,
             you don't need a streak counter - you need something that helps you regulate, recognize what's happening,
-            and choose your next move. That's what RecoveryOS is built for.
+            and choose your next move. That's what I built RecoveryOS for.
           </p>
         </div>
       </section>
@@ -92,8 +92,8 @@ document.querySelector("#app").innerHTML = `
           <p class="feature-label">Build the self</p>
           <h2>Seven areas. One honest check-in.</h2>
           <p>
-            A daily audit across nervous system, dopamine management, craving log, identity and mind, honesty check-in,
-            connection, nutrition, and end-of-day reflection. Not to grade yourself - to know yourself.
+            A daily check-in across the nervous system, dopamine management, craving log, identity and mind, honesty check-in,
+            connection, nutrition, and end-of-day reflections. Not to grade yourself - to know yourself.
           </p>
         </article>
       </section>
@@ -112,12 +112,12 @@ document.querySelector("#app").innerHTML = `
           <div class="founder-quote__body">
             <h2>A note from the founder</h2>
             <blockquote>
-              I built this on a river when I was twelve, in the rare hours my father was clear-headed enough to be fully present.
+              My happiest memory was on a river when I was twelve, in the rare hours my father was clear-headed enough to be fully present and not drunk.
               Loose muscles, slight smile, clear eyes, bright world - that's the state I've spent my life trying to get back to.
-              Recovery gave me pieces of it. Relapse took them away more than once, and each time I felt like I had to start over
-              from nothing. I don't believe that anymore. What I'd actually learned stayed learned; I just needed better tools to
-              use it. RecoveryOS is the operating system I built myself, one honest day at a time. It's been running for me.
-              I hope it runs for you too.
+              Recovery gave me little pieces of it. Relapse took them away more than once, and each and every time I felt like I had to start over
+              from nothing, day 0, just the same failure again. I don't believe that anymore. What I'd actually learned stayed learned; I just needed better tools to
+              use it. So I built RecoveryOS for myself, and I now use it every day. It has helped me keep making the right choice, moment by moment.
+              It helps me, and I want to share it with others with the hope that it might help them too.
             </blockquote>
             <p class="founder-signoff">
               Michael, founder of RecoveryOS ·
@@ -135,21 +135,21 @@ document.querySelector("#app").innerHTML = `
           <p class="included-tagline">Mobile-first daily practice, strong on its own.</p>
           <h3>Basic (free)</h3>
           <ul class="included-list">
-            <li>Daily log across seven inventory domains including honesty check-in and end-of-day reflection</li>
-            <li>Dashboard essentials: clean day counter, streaks, XP, challenges, Today's Signal, weekly insight card</li>
+            <li>Daily log across seven inventory domains including honesty check-in and end-of-day reflections</li>
+            <li>Dashboard essentials: clean day counter, streaks, XP, challenges, Today's Signal (a small quote), weekly insight card</li>
             <li>Emergency toolkit: physiological sigh, grounding, HALT, mismatch protocol and more, all with full guidance support</li>
             <li>History: month calendar, year aggregates, rich day detail</li>
             <li>Journal with gratitude replay</li>
-            <li>Backup and restore, so your data stays portable</li>
-            <li>App lock</li>
+            <li>Backup and restore, so your logs are shared between your devices, but only yours</li>
+            <li>App lock, to keep your journey safe</li>
             <li>Badges, monthly challenges, and milestone share card</li>
           </ul>
           <h3 class="included-pro-heading">Pro</h3>
           <p class="included-tagline">Depth for regulation, insight, and clinical-adjacent reporting.</p>
           <ul class="included-list included-list--pro">
-            <li>Spark daily insights reader</li>
+            <li>Spark daily insights reader (written by me and put together from research done across many fields)</li>
             <li>Three structured workbooks (to start with, more to come)</li>
-            <li>Guided self-regulation audio sessions</li>
+            <li>Guided self-regulation audio sessions (Beta)</li>
             <li>Urge Surfing helper</li>
             <li>Voice memo journal</li>
             <li>Medication and supplement reminders</li>
