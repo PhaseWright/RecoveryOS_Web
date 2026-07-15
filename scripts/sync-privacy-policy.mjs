@@ -1,6 +1,7 @@
 import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { applyMarketingSiteShell } from "./privacy-policy-shell.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const webRoot = path.resolve(__dirname, "..");
@@ -32,7 +33,9 @@ if (!sourcePath) {
 }
 
 const policyHtml = await readFile(sourcePath, "utf8");
-const finalHtml = applyMarketingSiteOverlay(policyHtml, sourcePath === targetPath);
+const finalHtml = applyMarketingSiteShell(
+  applyMarketingSiteOverlay(policyHtml, sourcePath === targetPath),
+);
 
 await mkdir(targetDir, { recursive: true });
 await writeFile(targetPath, finalHtml, "utf8");
@@ -162,7 +165,7 @@ function applyMarketingSiteOverlay(html, isSelfSync) {
   }
 
   const footerLinks = `
-  <hr style="border:none;border-top:1px solid #d6dee6;margin:2rem 0 1rem;" />
+  <hr class="legal-rule" />
   <p class="muted">
     <a href="/">RecoveryOS home</a> ·
     <a href="/legal/terms-of-service.html">Terms of service</a> ·
