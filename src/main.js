@@ -17,6 +17,7 @@ import {
   trackViewContent,
 } from "./metaPixel.js";
 import { getStoreBadgeMarkup } from "./storeLinks.js";
+import { initScrollAnimations } from "./scrollAnimations.js";
 
 // Brand social accounts are live (Facebook, Instagram, Bluesky, X, LinkedIn, Threads), so this
 // section shows by default now. VITE_SHOW_SOCIAL=false is an explicit opt-out escape hatch.
@@ -723,28 +724,6 @@ function initIncludedViewer() {
   });
 
   restartAutoAdvance();
-}
-
-function initScrollAnimations() {
-  // We skip when IntersectionObserver is unavailable (jsdom in Vitest, very old browsers).
-  if (typeof IntersectionObserver === "undefined") return;
-
-  const targets = document.querySelectorAll("[data-animate]");
-  if (!targets.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animated");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: "0px 0px -32px 0px" },
-  );
-
-  targets.forEach((el) => observer.observe(el));
 }
 
 initScreenshotLightbox();
