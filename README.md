@@ -222,8 +222,12 @@ This repo deploys to a Cloudflare Pages project (recommended project name: `reco
 For CLI deploys:
 
 ```bash
-npx wrangler pages deploy dist --project-name=recoveryos-web
+cd dist
+npx wrangler pages deploy . --project-name=recoveryos-web
 ```
+
+Run Wrangler from `dist` so the sibling Firebase `functions/` project is not
+misclassified as Cloudflare Pages Functions during a static-site upload.
 
 ## Waitlist data model
 
