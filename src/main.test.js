@@ -71,7 +71,7 @@ describe("included screenshot viewer", () => {
 
     thumbnails[2].dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
 
-    expect(mainImg.src).toContain("/screenshots/Calendar.png");
+    expect(mainImg.src).toContain("/screenshots/Calendar.webp");
     expect(mainImg.alt).toBe("Calendar intelligence");
     expect(mainImg.getAttribute("aria-label")).toBe("Preview: Calendar intelligence");
     expect(captionTitle.textContent).toBe("Calendar intelligence");
@@ -82,11 +82,11 @@ describe("included screenshot viewer", () => {
     await import("./main.js");
 
     const mainImg = document.querySelector(".included-viewer__main");
-    expect(mainImg.src).toContain("/screenshots/Workbook.png");
+    expect(mainImg.src).toContain("/screenshots/Workbook.webp");
 
     vi.advanceTimersByTime(4000);
 
-    expect(mainImg.src).toContain("/screenshots/Spark.png");
+    expect(mainImg.src).toContain("/screenshots/Spark.webp");
   });
 });
 

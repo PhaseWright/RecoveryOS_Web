@@ -55,7 +55,7 @@ document.querySelector("#app").innerHTML = `
         </div>
         <div class="hero-visual" aria-hidden="true">
           <div class="phone-frame">
-            <img src="/screenshots/Mood_Challenges.png" alt="" decoding="async" />
+            <img src="/screenshots/Mood_Challenges.webp" alt="" decoding="async" fetchpriority="high" />
           </div>
         </div>
       </section>
@@ -103,7 +103,7 @@ document.querySelector("#app").innerHTML = `
         <div class="founder-quote__layout">
           <img
             class="founder-photo"
-            src="/brand/founder-michael.png"
+            src="/brand/founder-michael.webp"
             alt="Michael, founder of RecoveryOS"
             width="140"
             height="140"
@@ -163,16 +163,16 @@ document.querySelector("#app").innerHTML = `
 
         <div class="included-viewer frosted-panel">
           <div class="included-viewer__stage">
-            <img class="included-viewer__main" src="/screenshots/Workbook.png" alt="Workbooks" decoding="async" />
+            <img class="included-viewer__main" src="/screenshots/Workbook.webp" alt="Workbooks" decoding="async" loading="lazy" />
             <span class="included-viewer__hint">Click to zoom</span>
           </div>
           <div class="included-viewer__thumbs" aria-label="Choose an app screenshot">
-            <button type="button" class="included-viewer__thumb included-viewer__thumb--active" data-caption="Workbooks" data-detail="Long-form identity and recovery work with chapter progression." aria-label="Show Workbooks screenshot" aria-current="true"><img src="/screenshots/Workbook.png" alt="" loading="lazy" /></button>
-            <button type="button" class="included-viewer__thumb" data-caption="Spark insights" data-detail="Evidence-based entries that keep mindset, meaning, and direction in motion." aria-label="Show Spark insights screenshot"><img src="/screenshots/Spark.png" alt="" loading="lazy" /></button>
-            <button type="button" class="included-viewer__thumb" data-caption="Calendar intelligence" data-detail="Review patterns, streaks, and trigger context across real calendar time." aria-label="Show Calendar intelligence screenshot"><img src="/screenshots/Calendar.png" alt="" loading="lazy" /></button>
-            <button type="button" class="included-viewer__thumb" data-caption="Mood and challenge signal" data-detail="Daily score tracking with weekly insight blocks and practical wins logging." aria-label="Show Mood and challenge signal screenshot"><img src="/screenshots/Mood_Challenges.png" alt="" loading="lazy" /></button>
-            <button type="button" class="included-viewer__thumb" data-caption="Backup and reports" data-detail="Build support-ready summaries and retain ownership of your data." aria-label="Show Backup and reports screenshot"><img src="/screenshots/Backup_report.png" alt="" loading="lazy" /></button>
-            <button type="button" class="included-viewer__thumb" data-caption="Adaptive settings" data-detail="Personalize text size, safety options, goals, and progression framing." aria-label="Show Adaptive settings screenshot"><img src="/screenshots/Settings.png" alt="" loading="lazy" /></button>
+            <button type="button" class="included-viewer__thumb included-viewer__thumb--active" data-caption="Workbooks" data-detail="Long-form identity and recovery work with chapter progression." aria-label="Show Workbooks screenshot" aria-current="true"><img src="/screenshots/Workbook.webp" alt="" loading="lazy" /></button>
+            <button type="button" class="included-viewer__thumb" data-caption="Spark insights" data-detail="Evidence-based entries that keep mindset, meaning, and direction in motion." aria-label="Show Spark insights screenshot"><img src="/screenshots/Spark.webp" alt="" loading="lazy" /></button>
+            <button type="button" class="included-viewer__thumb" data-caption="Calendar intelligence" data-detail="Review patterns, streaks, and trigger context across real calendar time." aria-label="Show Calendar intelligence screenshot"><img src="/screenshots/Calendar.webp" alt="" loading="lazy" /></button>
+            <button type="button" class="included-viewer__thumb" data-caption="Mood and challenge signal" data-detail="Daily score tracking with weekly insight blocks and practical wins logging." aria-label="Show Mood and challenge signal screenshot"><img src="/screenshots/Mood_Challenges.webp" alt="" loading="lazy" /></button>
+            <button type="button" class="included-viewer__thumb" data-caption="Backup and reports" data-detail="Build support-ready summaries and retain ownership of your data." aria-label="Show Backup and reports screenshot"><img src="/screenshots/Backup_report.webp" alt="" loading="lazy" /></button>
+            <button type="button" class="included-viewer__thumb" data-caption="Adaptive settings" data-detail="Personalize text size, safety options, goals, and progression framing." aria-label="Show Adaptive settings screenshot"><img src="/screenshots/Settings.webp" alt="" loading="lazy" /></button>
           </div>
           <p class="included-viewer__caption" aria-live="polite">
             <strong id="included-caption-title">Workbooks</strong>
