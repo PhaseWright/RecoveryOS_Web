@@ -51,3 +51,7 @@ _*-backup/
 
 # Brainstorming companion mockups (ephemeral design scratch space)
 .superpowers/
+
+# Agent tool local state (Codex config, Serena cache/memories) — machine-local, not project source
+.codex/
+.serena/
