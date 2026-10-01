@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Full history so the build can stamp sitemap lastmod from per-file commit dates.
+          fetch-depth: 0
 
       - name: Checkout canonical app repository
         uses: actions/checkout@v4

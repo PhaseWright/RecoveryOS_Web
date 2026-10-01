@@ -74,37 +74,66 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "RecoveryOS",
-      "operatingSystem": "Android",
-      "applicationCategory": "HealthApplication",
-      "description": "RecoveryOS is a private, local-first, non-12-step recovery support app. Body-first regulation tools, judgment-free urge tracking, and a daily seven-area check-in built around how the body and brain actually heal.",
-      "url": "https://recoveryos.org/",
-      "image": "https://recoveryos.org/brand/opengraph.png",
-      "dateModified": "2026-07-02",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "PhaseWright Labs",
-        "url": "https://recoveryos.org/",
-        "sameAs": [
-          "https://www.facebook.com/recoveryos",
-          "https://www.instagram.com/recovery_os/",
-          "https://bsky.app/profile/recoveryos.bsky.social",
-          "https://x.com/Recovery_OS",
-          "https://www.linkedin.com/company/recovery-os",
-          "https://www.threads.com/@recovery_os"
-        ]
-      },
-      "creator": {
-        "@type": "Person",
-        "name": "Michael du Preez",
-        "sameAs": ["https://www.facebook.com/MichaelFrenchieDuPreez"]
-      }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://recoveryos.org/#organization",
+          "name": "RecoveryOS",
+          "alternateName": "Recovery OS",
+          "url": "https://recoveryos.org/",
+          "logo": "https://recoveryos.org/brand/opengraph.png",
+          "description": "RecoveryOS is a private, local-first, non-12-step recovery support app for Android, built in Cape Town, South Africa.",
+          "email": "michael@recoveryos.org",
+          "founder": { "@id": "https://recoveryos.org/#founder" },
+          "parentOrganization": { "@type": "Organization", "name": "PhaseWright Labs" },
+          "sameAs": [
+            "https://www.facebook.com/recoveryos",
+            "https://www.instagram.com/recovery_os/",
+            "https://bsky.app/profile/recoveryos.bsky.social",
+            "https://x.com/Recovery_OS",
+            "https://www.linkedin.com/company/recovery-os",
+            "https://www.threads.com/@recovery_os"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://recoveryos.org/#founder",
+          "name": "Michael du Preez",
+          "jobTitle": "Founder, RecoveryOS",
+          "url": "https://recoveryos.org/story.html",
+          "image": "https://recoveryos.org/brand/founder-michael.webp",
+          "worksFor": { "@id": "https://recoveryos.org/#organization" },
+          "sameAs": [
+            "https://www.linkedin.com/in/code-man-mike/",
+            "https://www.facebook.com/MichaelFrenchieDuPreez"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://recoveryos.org/#website",
+          "name": "RecoveryOS",
+          "url": "https://recoveryos.org/",
+          "publisher": { "@id": "https://recoveryos.org/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://recoveryos.org/#app",
+          "name": "RecoveryOS",
+          "operatingSystem": "Android",
+          "applicationCategory": "HealthApplication",
+          "description": "RecoveryOS is a private, local-first, non-12-step recovery support app. Body-first regulation tools, judgment-free urge tracking, and a daily seven-area check-in built around how the body and brain actually heal.",
+          "url": "https://recoveryos.org/",
+          "image": "https://recoveryos.org/brand/opengraph.png",
+          "dateModified": "2026-10-01",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "publisher": { "@id": "https://recoveryos.org/#organization" },
+          "creator": { "@id": "https://recoveryos.org/#founder" }
+        }
+      ]
     }
     </script>
 
@@ -136,23 +165,16 @@
     <!-- End Google Tag Manager (noscript) -->
     <!-- No noscript Meta Pixel fallback: it would fire unconditionally with no way for a
          no-JS visitor to decline, which defeats the consent gate above. -->
-    <!-- Crawler/no-JS fallback: real content in the initial HTML so low-authority indexing
-         doesn't depend entirely on JS rendering. The SPA replaces #app on load. -->
-    <div id="app">
-      <h1>RecoveryOS: Recovery isn't willpower. It's practice.</h1>
-      <p>
-        RecoveryOS is a private, local-first recovery support app. Not a 12-step program.
-        Not a shame tracker. Not a replacement for your counselor or your community. A daily
-        tool built around how your body and brain actually heal: body-first regulation before
-        you react, judgment-free urge and trigger tracking, and a daily seven-area check-in.
-        Your data stays on your device by default. Android beta testing is open now.
+    <!-- The build prerenders the full landing page into #app at the marker below (see
+         vite.config.js + src/pageMarkup.js), so crawlers and no-JS visitors get real content.
+         src/main.js attaches behaviour to that markup instead of re-rendering it. -->
+    <noscript>
+      <p style="margin:0;padding:0.75rem 1rem;text-align:center;">
+        The beta signup form needs JavaScript. To join the Android beta without it, email
+        <a href="mailto:michael@recoveryos.org">michael@recoveryos.org</a>.
       </p>
-      <noscript>
-        <p>RecoveryOS needs JavaScript for the full experience, but here's the short version:
-        a non-12-step, privacy-first daily recovery tool. Email frenchie.mike1123@gmail.com
-        or visit recoveryos.org to join the Android beta.</p>
-      </noscript>
-    </div>
+    </noscript>
+    <div id="app"><!--app-html--></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
