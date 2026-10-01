@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { renderPageMarkup } from "./pageMarkup.js";
 import { getStoreBadgeMarkup } from "./storeLinks.js";
-import { applyLastmod, sourcesForLoc } from "../scripts/sitemap-lastmod.mjs";
+import { applyLastmod, pickLastmod, sourcesForLoc } from "../scripts/sitemap-lastmod.mjs";
 
 describe("prerendered page markup", () => {
   const { googlePlay, appStore } = getStoreBadgeMarkup({});
@@ -12,6 +12,10 @@ describe("prerendered page markup", () => {
     expect(html).toContain('href="/story.html"');
     expect(html).toContain("https://www.facebook.com/recoveryos");
     expect(html).toContain('id="waitlist-form"');
+  });
+
+  it("ships the waitlist submit disabled until the script enables it", () => {
+    expect(html).toMatch(/<button id="waitlist-submit"[^>]*\sdisabled>/);
   });
 
   it("never exposes a personal mailbox", () => {
@@ -40,6 +44,19 @@ describe("sitemap lastmod", () => {
     const out = applyLastmod(xml, (loc) => (loc.endsWith("/") ? "2026-10-01" : null));
     expect(out).toContain("<loc>https://recoveryos.org/</loc>\n    <lastmod>2026-10-01</lastmod>");
     expect(out).toContain("<loc>https://recoveryos.org/story.html</loc>\n    <lastmod>2026-06-03</lastmod>");
+  });
+
+  it("prefers a newer upstream date for content synced at build time", () => {
+    const today = "2026-10-05";
+    expect(pickLastmod({ committed: "2026-07-15", upstream: "2026-09-20", dirty: true, today })).toBe("2026-09-20");
+    expect(pickLastmod({ committed: "2026-07-15", upstream: "2026-06-01", today })).toBe("2026-07-15");
+  });
+
+  it("dates uncommitted build-time changes as today when no upstream date exists", () => {
+    const today = "2026-10-05";
+    expect(pickLastmod({ committed: "2026-07-15", dirty: true, today })).toBe(today);
+    expect(pickLastmod({ committed: "2026-07-15", today })).toBe("2026-07-15");
+    expect(pickLastmod({ today })).toBeNull();
   });
 
   it("maps locations to the files that produce them", () => {

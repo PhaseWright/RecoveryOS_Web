@@ -256,7 +256,9 @@ export function renderPageMarkup({ googlePlayBadge, appStoreBadge, socialSection
               placeholder="you@example.com"
               required
             />
-            <button id="waitlist-submit" class="btn btn-primary" type="submit">
+            <!-- We ship the button disabled so the prerendered form cannot fall back to a native
+                 GET (email in the URL) before main.js attaches the real submit handler. -->
+            <button id="waitlist-submit" class="btn btn-primary" type="submit" disabled>
               Join the beta testing
             </button>
           </div>
