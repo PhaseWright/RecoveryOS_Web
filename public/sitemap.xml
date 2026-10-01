@@ -7,37 +7,37 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://recoveryos.org/story.html</loc>
+    <loc>https://recoveryos.org/story</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://recoveryos.org/legal/privacy-policy.html</loc>
+    <loc>https://recoveryos.org/legal/privacy-policy</loc>
     <lastmod>2026-07-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://recoveryos.org/legal/terms-of-service.html</loc>
+    <loc>https://recoveryos.org/legal/terms-of-service</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://recoveryos.org/ai-info.html</loc>
+    <loc>https://recoveryos.org/ai-info</loc>
     <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://recoveryos.org/blog/recoveryos-development-update-2026-07.html</loc>
+    <loc>https://recoveryos.org/blog/recoveryos-development-update-2026-07</loc>
     <lastmod>2026-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://recoveryos.org/blog/one-year-clean-again-2026-10.html</loc>
+    <loc>https://recoveryos.org/blog/one-year-clean-again-2026-10</loc>
     <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

@@ -105,7 +105,7 @@ export function renderPageMarkup({ googlePlayBadge, appStoreBadge, socialSection
               Michael, founder of RecoveryOS ·
               <a href="https://www.facebook.com/MichaelFrenchieDuPreez" target="_blank" rel="noopener noreferrer">Follow me on Facebook</a>
             </p>
-            <a class="founder-story-link" href="/story.html">Read the full story →</a>
+            <a class="founder-story-link" href="/story">Read the full story →</a>
           </div>
         </div>
       </section>
@@ -318,9 +318,9 @@ export function renderPageMarkup({ googlePlayBadge, appStoreBadge, socialSection
         <a href="mailto:michael@recoveryos.org">michael@recoveryos.org</a>
       </p>
       <p class="footer-legal">
-        <a href="/legal/privacy-policy.html">Privacy policy</a> ·
-        <a href="/legal/terms-of-service.html">Terms of service</a> ·
-        <a href="/ai-info.html">AI info</a> ·
+        <a href="/legal/privacy-policy">Privacy policy</a> ·
+        <a href="/legal/terms-of-service">Terms of service</a> ·
+        <a href="/ai-info">AI info</a> ·
         <a href="#" data-ros-open-consent>Cookie settings</a>
       </p>
     </footer>

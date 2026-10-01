@@ -2,7 +2,7 @@ import { execFileSync } from "node:child_process";
 import { basename, dirname } from "node:path";
 
 const SITE_ORIGIN = "https://recoveryos.org";
-const PRIVACY_POLICY_PATH = "/legal/privacy-policy.html";
+const PRIVACY_POLICY_PATH = "/legal/privacy-policy";
 
 // The homepage is assembled from several sources, so its lastmod is the newest commit across them.
 const HOME_SOURCES = ["index.html", "src/pageMarkup.js", "src/storeLinks.js"];
@@ -17,7 +17,8 @@ const isDate = (value) => /^\d{4}-\d{2}-\d{2}$/.test(value ?? "");
 export function sourcesForLoc(loc) {
   const path = loc.replace(SITE_ORIGIN, "");
   if (path === "/" || path === "") return HOME_SOURCES;
-  return [`public${path}`];
+  // Public URLs are extensionless (Cloudflare Pages redirects .html away); the files are not.
+  return [`public${path}.html`];
 }
 
 /**

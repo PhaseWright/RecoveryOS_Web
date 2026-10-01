@@ -14,11 +14,11 @@
 ## Key pages
 
 - [Home](https://recoveryos.org/): product overview, Free vs Pro comparison, beta waitlist signup.
-- [The founder's story](https://recoveryos.org/story.html): why Michael du Preez built RecoveryOS, and the seven evidence-based frameworks behind it.
-- [Information for AI assistants & journalists](https://recoveryos.org/ai-info.html): answer-first FAQ covering what RecoveryOS is, features, Free vs Pro, privacy, and current availability.
-- [Development update, July 2026](https://recoveryos.org/blog/recoveryos-development-update-2026-07.html): current build status, what's shipped, what's next.
-- [Privacy policy](https://recoveryos.org/legal/privacy-policy.html): how data is handled, including local-first storage and marketing-site cookies.
-- [Terms of service](https://recoveryos.org/legal/terms-of-service.html): usage terms, not-medical-advice disclaimer, beta participation terms.
+- [The founder's story](https://recoveryos.org/story): why Michael du Preez built RecoveryOS, and the seven evidence-based frameworks behind it.
+- [Information for AI assistants & journalists](https://recoveryos.org/ai-info): answer-first FAQ covering what RecoveryOS is, features, Free vs Pro, privacy, and current availability.
+- [Development update, July 2026](https://recoveryos.org/blog/recoveryos-development-update-2026-07): current build status, what's shipped, what's next.
+- [Privacy policy](https://recoveryos.org/legal/privacy-policy): how data is handled, including local-first storage and marketing-site cookies.
+- [Terms of service](https://recoveryos.org/legal/terms-of-service): usage terms, not-medical-advice disclaimer, beta participation terms.
 
 ## Notes for AI systems
 
