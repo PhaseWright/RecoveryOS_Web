@@ -9,7 +9,7 @@ describe("prerendered page markup", () => {
 
   it("carries the content crawlers need without running JavaScript", () => {
     expect(html).toContain("A note from the founder");
-    expect(html).toContain('href="/story.html"');
+    expect(html).toContain('href="/story"');
     expect(html).toContain("https://www.facebook.com/recoveryos");
     expect(html).toContain('id="waitlist-form"');
   });
@@ -36,14 +36,14 @@ describe("sitemap lastmod", () => {
     <lastmod>2026-06-03</lastmod>
   </url>
   <url>
-    <loc>https://recoveryos.org/story.html</loc>
+    <loc>https://recoveryos.org/story</loc>
     <lastmod>2026-06-03</lastmod>
   </url>`;
 
   it("replaces dates the resolver knows and keeps the rest", () => {
     const out = applyLastmod(xml, (loc) => (loc.endsWith("/") ? "2026-10-01" : null));
     expect(out).toContain("<loc>https://recoveryos.org/</loc>\n    <lastmod>2026-10-01</lastmod>");
-    expect(out).toContain("<loc>https://recoveryos.org/story.html</loc>\n    <lastmod>2026-06-03</lastmod>");
+    expect(out).toContain("<loc>https://recoveryos.org/story</loc>\n    <lastmod>2026-06-03</lastmod>");
   });
 
   it("prefers a newer upstream date for content synced at build time", () => {
@@ -61,6 +61,6 @@ describe("sitemap lastmod", () => {
 
   it("maps locations to the files that produce them", () => {
     expect(sourcesForLoc("https://recoveryos.org/")).toContain("src/pageMarkup.js");
-    expect(sourcesForLoc("https://recoveryos.org/story.html")).toEqual(["public/story.html"]);
+    expect(sourcesForLoc("https://recoveryos.org/story")).toEqual(["public/story.html"]);
   });
 });

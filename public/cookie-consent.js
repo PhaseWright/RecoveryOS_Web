@@ -85,7 +85,7 @@
       '<div class="ros-consent__card">' +
       '<p class="ros-consent__text">' +
       "We use cookies that are necessary for this site to run, plus optional analytics (GA4) and marketing (Meta Pixel) cookies that stay off until you say yes. See our " +
-      '<a href="/legal/privacy-policy.html">privacy policy</a> for the full list.' +
+      '<a href="/legal/privacy-policy">privacy policy</a> for the full list.' +
       "</p>" +
       '<div class="ros-consent__categories" data-ros-categories hidden>' +
       '<label class="ros-consent__toggle"><input type="checkbox" checked disabled /><span>Necessary <em>(always on)</em></span></label>' +
