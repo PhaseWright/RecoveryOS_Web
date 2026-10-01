@@ -32,10 +32,15 @@ export function normalizeStoreUrl(raw) {
   }
 }
 
-/** @param {StorePlatform} platform */
-export function getStoreUrl(platform) {
+/**
+ * We take env as a parameter so the build-time prerender (Node, no import.meta.env) and the
+ * browser resolve store links from the same source.
+ * @param {StorePlatform} platform
+ * @param {Record<string, string | undefined>} [env]
+ */
+export function getStoreUrl(platform, env = import.meta.env) {
   const key = STORE_CONFIG[platform].envKey;
-  return normalizeStoreUrl(import.meta.env[key]);
+  return normalizeStoreUrl(env?.[key]);
 }
 
 /** @param {StorePlatform} platform */
@@ -45,11 +50,12 @@ export function isStoreLinkActive(platform) {
 
 /**
  * @param {StorePlatform} platform
+ * @param {Record<string, string | undefined>} [env]
  * @returns {string}
  */
-export function renderStoreBadge(platform) {
+export function renderStoreBadge(platform, env = import.meta.env) {
   const config = STORE_CONFIG[platform];
-  const href = getStoreUrl(platform);
+  const href = getStoreUrl(platform, env);
   const img = `<img class="hero-store-badge ${config.imgClass}" src="${config.imgSrc}" alt="${config.imgAlt}" decoding="async" />`;
 
   if (href) {
@@ -59,10 +65,13 @@ export function renderStoreBadge(platform) {
   return `<div class="hero-store-item hero-store-item--pending" aria-disabled="true">${img}<span class="store-badge store-badge--soon">Coming soon</span></div>`;
 }
 
-/** @returns {{ googlePlay: string, appStore: string }} */
-export function getStoreBadgeMarkup() {
+/**
+ * @param {Record<string, string | undefined>} [env]
+ * @returns {{ googlePlay: string, appStore: string }}
+ */
+export function getStoreBadgeMarkup(env = import.meta.env) {
   return {
-    googlePlay: renderStoreBadge("google_play"),
-    appStore: renderStoreBadge("app_store"),
+    googlePlay: renderStoreBadge("google_play", env),
+    appStore: renderStoreBadge("app_store", env),
   };
 }

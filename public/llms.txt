@@ -24,4 +24,4 @@
 
 - RecoveryOS is not a 12-step program, not a medical device, and not a crisis service. It is a self-directed daily practice tool intended alongside (not instead of) therapy, medication, sponsors, or mutual-aid meetings.
 - Publisher: PhaseWright Labs. Founder: Michael du Preez (Cape Town, South Africa). Social profiles: [Facebook](https://www.facebook.com/recoveryos), [Instagram](https://www.instagram.com/recovery_os/), [Bluesky](https://bsky.app/profile/recoveryos.bsky.social), [X](https://x.com/Recovery_OS), [LinkedIn](https://www.linkedin.com/company/recovery-os), [Threads](https://www.threads.com/@recovery_os).
-- Contact: support@recoveryos.org.
+- Contact: michael@recoveryos.org.
